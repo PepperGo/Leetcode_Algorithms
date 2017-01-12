@@ -25,3 +25,17 @@ public class Solution {
 
 //Submission Result: Time Limit Exceeded!!!
 
+public class Solution {
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> resultList = new ArrayList<Integer>();
+        resultList.add(1);
+        for(int i = 1; i <=rowIndex; i++){
+            for(int j = i-1; j > 0; j--){
+                resultList.set(j,resultList.get(j-1)+resultList.get(j));
+            } 
+            resultList.add(1);
+        }
+
+        return resultList;
+    }
+}
