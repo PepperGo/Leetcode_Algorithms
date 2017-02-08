@@ -1,0 +1,37 @@
+public class Solution {
+    public String longestPalindrome(String s) {
+
+    int length = 0;
+    int left = 0;
+    int right = 0;
+    for(int i = 0 ; i < s.length() - 1; i++){
+        int l1 = lengthOfPalindrome(s,i,i);
+        int l2 = lengthOfPalindrome(s,i,i+1);
+        length = Math.max(l1, l2);
+        if(length > right - left){
+            if(l1 > l2){
+                left = i - length/2;
+                right = i + length/2 ;
+            }else{
+                left = i - length/2 + 1;
+                right = i + length/2;
+            }
+        }
+        }
+           return s.substring(left, right + 1); 
+           //String substring(int beginIndex, int endIndex): 
+           //Returns the substring starting from the given index(beginIndex) till the specified index(endIndex). 
+    }
+    
+ 
+        
+    
+    int lengthOfPalindrome(String s, int left, int right){
+        while(left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)){
+            left--;
+            right++;
+        }
+        return right - left - 1;
+    }
+    
+}
