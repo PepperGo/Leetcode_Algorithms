@@ -1,0 +1,16 @@
+public class Solution {
+    public List<String> generateParenthesis(int n) {
+        ArrayList<String> result = new ArrayList<String>();
+        caculateResult(result, "", 0, 0, n);
+        return result;
+    }
+    
+    public void caculateResult(ArrayList<String> res, String str, int left, int right, int length){
+        if(left == length && right == length){
+            res.add(str);
+        }
+        
+        if(left < length) caculateResult(res, str + "(", left + 1, right, length );
+        if(right < left) caculateResult(res, str + ")", left, right + 1, length);
+    }
+}
