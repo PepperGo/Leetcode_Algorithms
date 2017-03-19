@@ -1,0 +1,48 @@
+class Solution {
+    public void nextPermutation(int[] nums) {
+        for(int i = nums.length - 2; i >= 0; i--){
+            if(nums[i] < nums[i+1]) {
+            	  findNextPer(nums,i);
+            	  break;
+               }
+            if(i == 0)  sortTheNum(nums, 0, nums.length-1);
+        } 
+    }
+    
+    void findNextPer(int[] nums, int index){
+        sortTheNum(nums, index + 1, nums.length-1);
+
+        for(int i = index + 1; i < nums.length; i++){
+            if(nums[i] > nums[index]){
+                swap(nums, i, index);
+                break;
+            }
+        }
+        sortTheNum(nums, index+1, nums.length-1);
+    }
+    
+    void sortTheNum(int[] nums, int start, int end){
+        for(int i = start; i <= end; i++){
+            swap(nums, i, getMinIndex(nums,i, end));
+        }
+    }
+    
+    void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    
+    int getMinIndex(int[] nums, int start, int end){
+        int min = nums[start];
+        int index = start;
+        for(int i = start; i <= end; i++){
+            if(nums[i] < min){
+                min = nums[i];
+                index = i;
+            }
+        }
+        return index;
+    }
+           
+}
