@@ -1,0 +1,28 @@
+public class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<Integer> set = new ArrayList<Integer>();
+        Arrays.sort(candidates);
+        getSet(result, candidates, target, set, 0);
+        return result;
+    }
+    
+    void getSet(List<List<Integer>> result, int[] candidates, int target, List<Integer> set, int start){
+
+        if(target == 0){
+        	result.add(new ArrayList<Integer> (set));
+        }
+        
+        if(target>0){
+            for(int i = start; i < candidates.length; i++){
+                set.add(candidates[i]);
+                getSet(result, candidates, target - candidates[i], set, i);
+                set.remove(set.size()-1);
+            }
+
+        }
+        
+          
+    }
+    
+}
