@@ -1,0 +1,20 @@
+public class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        List<Integer> set = new ArrayList<Integer>();
+        getPermute(result, set, nums);
+        return result;
+    }
+    
+    public void getPermute(List<List<Integer>> result, List<Integer> set, int[] nums){
+        if(set.size() == nums.length) result.add(new ArrayList<Integer>(set));
+        if(set.size() < nums.length){
+            for(int i = 0; i < nums.length; i++){
+                if(set.contains(nums[i])) continue;
+                set.add(nums[i]);
+                getPermute(result,set,nums);
+                set.remove(set.size()-1);
+            }
+        }
+    }
+}
