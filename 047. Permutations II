@@ -1,0 +1,30 @@
+public class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        List<Integer> ins = new ArrayList<Integer>();
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        boolean used[] = new boolean[nums.length];
+		Arrays.sort(nums);
+		for(int i = 0; i < used.length; i++){
+		   used[i] = false;
+		}
+        getPermuteUnique(result, ins, nums, used);
+        return result;
+    }
+    
+    public void getPermuteUnique(List<List<Integer>> result, List<Integer> ins, int[] nums, boolean[] used){
+        if(ins.size() == nums.length) result.add(new ArrayList<Integer> (ins));
+        if(ins.size() < nums.length){
+            for(int i = 0; i < nums.length; i++){
+			    if(used[i]) continue;
+			    if(i > 0 && !used[i-1] && nums[i]==nums[i-1]) continue;  //when a number has the same value with its previous, we can use this number only if his previous is used
+                ins.add(nums[i]);
+				used[i] = true;
+                getPermuteUnique(result, ins, nums, used);
+                ins.remove(ins.size()-1);
+				used[i] = false;
+            }
+        }
+    }
+    
+    
+}
