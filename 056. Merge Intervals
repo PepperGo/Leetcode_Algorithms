@@ -1,0 +1,55 @@
+
+/**
+ * Definition for an interval.
+ * public class Interval {
+ *     int start;
+ *     int end;
+ *     Interval() { start = 0; end = 0; }
+ *     Interval(int s, int e) { start = s; end = e; }
+ * }
+ */
+public class Solution {
+    public List<Interval> merge(List<Interval> intervals) {
+        List<Interval> result = new ArrayList<Interval>();
+		//sort the intervals by each item's start
+/*
+		
+		int length = intervals.size();
+		for(int i = 0; i < intervals.size(); i++){
+		    int index = 0;
+		    for(int j = 0; j < length--; j++){
+			    if(intervals.get(index).start > intervals.get(j).start)
+				    index = j;
+			}
+			intervals.add(intervals.get(index));
+            intervals.remove(index);			
+		}
+	*/	
+	    Collections.sort(intervals, new Comparator<Interval>(){
+            @Override
+            public int compare(Interval obj0, Interval obj1) {
+                return obj0.start - obj1.start;
+            }
+        });
+		
+		
+    	if(intervals.size() == 0) return new ArrayList<Interval> (0);
+		
+		result.add(intervals.get(0));
+		for(int i = 1; i < intervals.size(); i++){
+
+			if(result.get(result.size()-1).end >= intervals.get(i).start && result.get(result.size()-1).end <= intervals.get(i).end){
+			     Interval newIn = new Interval(result.get(result.size()-1).start, intervals.get(i).end);
+				 result.remove(result.size()-1);
+				 result.add(newIn);
+			}else if(result.get(result.size()-1).end >= intervals.get(i).start && result.get(result.size()-1).end > intervals.get(i).end){
+                 			
+			}else{
+			     result.add(intervals.get(i));
+			}
+			
+		}
+		
+		return result;
+    }
+}
