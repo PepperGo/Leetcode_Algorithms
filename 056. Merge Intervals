@@ -31,7 +31,16 @@ public class Solution {
                 return obj0.start - obj1.start;
             }
         });
-		
+       /*
+       public interface More ...Comparator<T> {
+       Parameters:
+       o1 the first object to be compared.
+       o2 the second object to be compared.
+       Returns:
+       a negative integer, zero, or a positive integer as the first argument is less than, equal to, or greater than the second.
+       
+       see: http://grepcode.com/file/repository.grepcode.com/java/root/jdk/openjdk/6-b14/java/util/Collections.java#Collections.sort%28java.util.List%2Cjava.util.Comparator%29
+       */
 		
     	if(intervals.size() == 0) return new ArrayList<Interval> (0);
 		
