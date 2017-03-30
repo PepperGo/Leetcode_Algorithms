@@ -1,0 +1,35 @@
+public class Solution {
+    public int[][] generateMatrix(int n) {
+        int[][] matrix = new int[n][n];
+        if(n == 0) return matrix;
+        int num = 1;
+        int startrow = 0; //move to left
+        int startcol = 0; //move to down
+        int endrow = n -1; 
+        int endcol = n -1;
+        while(num <= n*n){
+            for(int j = startrow; j <= endrow; j++){ //move to right
+                matrix[startcol][j] = num++;
+            }
+            startcol++;
+            
+            for(int i = startcol; i <= endcol; i++){ //move to down
+                matrix[i][endrow] = num++;
+            }
+            endrow--;
+            
+            for(int j = endrow; j >= startrow; j--){ // move to left
+                matrix[endcol][j] = num++;
+            }
+            endcol--;
+            
+            for(int i = endcol; i >= startcol; i--){  // move to up
+                matrix[i][startrow] = num++;
+            }
+            startrow++;
+
+        }
+        
+        return matrix;
+    }
+}
