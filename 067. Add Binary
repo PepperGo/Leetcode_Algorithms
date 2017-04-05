@@ -1,0 +1,18 @@
+public class Solution {
+    public String addBinary(String a, String b) {
+		 int m = a.length() - 1;
+		 int n = b.length() - 1;
+
+	     StringBuilder result = new StringBuilder(Math.max(m,n)+2);
+		 int cur = 0;
+		 while(m >= 0 || n >= 0 || cur > 0){
+		     int sum = cur;
+		     if(m >= 0) sum += a.charAt(m--) - '0';
+		     if(n >= 0) sum += b.charAt(n--) - '0';
+		     result.append(sum%2);
+		     cur = sum/2;
+		 }
+		 return result.reverse().toString();
+		 
+    }
+}
