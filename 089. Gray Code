@@ -1,0 +1,38 @@
+public class Solution {
+    public List<Integer> grayCode(int n) {
+		List<Integer> result = new ArrayList<Integer>();
+		for(int i = 0; i < 1<<n; i++) result.add(i^ i>>1);
+		return result;
+    }
+}
+
+
+
+https://en.wikipedia.org/wiki/Gray_code
+
+/*
+ * This function converts an unsigned binary
+ * number to reflected binary Gray code.
+ *
+ * The operator >> is shift right. The operator ^ is exclusive or.
+ */
+unsigned int binaryToGray(unsigned int num)
+{
+    return num ^ (num >> 1);
+}
+
+/*
+ * This function converts a reflected binary
+ * Gray code number to a binary number.
+ * Each Gray code bit is exclusive-ored with all
+ * more significant bits.
+ */
+unsigned int grayToBinary(unsigned int num)
+{
+    unsigned int mask;
+    for (mask = num >> 1; mask != 0; mask = mask >> 1)
+    {
+        num = num ^ mask;
+    }
+    return num;
+}
