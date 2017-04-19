@@ -12,7 +12,7 @@ public class Solution {
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
 		getList(result,root, 0);
-		Collections.reverse(result);
+		Collections.reverse(result); // or ArrayList.add(0, new ArrayList<Integer>) in the getList method;
 		return result;
     }
 	
