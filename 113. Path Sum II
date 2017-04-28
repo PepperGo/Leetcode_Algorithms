@@ -1,0 +1,32 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+		List<Integer> item = new ArrayList<Integer>();
+		getList(result, item, root, sum);
+		return result;
+    }
+	
+	public void getList(List<List<Integer>> result, List<Integer> item, TreeNode root, int sum){
+		if(root == null) return;
+		item.add(root.val);
+		if(root.left == null && root.right == null && sum == root.val)
+		    result.add(new ArrayList(item));   //// why we need to add new ArrayList(item):
+		                                       //create a new list that has the same content as the original list 
+		                                       //if not, we get the same list all the time
+                                               
+		else{
+	        getList(result, item, root.left, sum - root.val);
+		    getList(result, item, root.right, sum - root.val);
+		}
+		item.remove(item.size()-1);
+	}
+}
