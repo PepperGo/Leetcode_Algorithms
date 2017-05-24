@@ -1,0 +1,18 @@
+public class Solution {
+    public int findMin(int[] nums) {
+        int start = 0;
+        int end = nums.length - 1;
+        int mid = 0;
+        while(start < end){
+            if(nums[start] < nums[end]) return nums[start];
+            mid = start + (end - start)/2;  // binary search bug: if the size of array are too large, equal or larger than the upper bound of int type, hi + lo may cause an overflow and become a negative number.
+            if(nums[mid] < nums[start])
+                end = mid;
+            else if(nums[mid] > nums[start])
+                start = mid + 1;
+            else 
+                start++;
+        }
+        return nums[start];
+    }
+}
