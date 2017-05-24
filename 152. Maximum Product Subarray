@@ -1,0 +1,18 @@
+public class Solution {
+    public int maxProduct(int[] nums) {
+        if(nums.length == 0) return 0;
+        int maxpre = nums[0];
+        int minpre = nums[0];
+        int maxnow = nums[0];
+        int maxhere, minhere;
+        
+        for(int i = 1; i < nums.length; i++){
+            maxhere = Math.max(Math.max(maxpre*nums[i], minpre*nums[i]), nums[i]);
+            minhere = Math.min(Math.min(maxpre*nums[i], minpre*nums[i]), nums[i]);
+            maxnow = Math.max(maxhere, maxnow);
+            maxpre = maxhere;
+            minpre = minhere;
+        }
+        return maxnow;
+    }
+}
