@@ -1,0 +1,23 @@
+public class Solution {
+    public boolean isHappy(int n) {
+        int slow = n;
+        int fast = n;
+        do{
+  //          if(fast == 1) return true;
+            slow = nextNum(slow);
+            fast = nextNum(nextNum(fast));
+        }while(slow != fast);
+        if(slow == 1) return true;
+        else return false;
+    }
+    
+    public int nextNum(int n){
+        int result = 0, single = 0;
+        while(n != 0){
+            single = n % 10;
+            result += single * single;
+            n = n/10;
+        }
+        return result;
+    }
+}
