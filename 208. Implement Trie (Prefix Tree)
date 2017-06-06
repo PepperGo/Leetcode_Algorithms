@@ -1,3 +1,6 @@
+//https://community.oracle.com/thread/2070706
+//https://leetcode.com/articles/implement-trie-prefix-tree/
+
 public class Trie {
     private TrieNode root;
 
