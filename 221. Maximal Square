@@ -1,0 +1,19 @@
+public class Solution {
+    public int maximalSquare(char[][] matrix) {
+        int height = matrix.length;
+        if(height == 0) return 0;
+        int width = matrix[0].length;
+        
+        int[][] dp = new int[height + 1][width + 1];
+        int maxlength = 0;
+        for(int i = 1; i < height + 1; i++){
+            for(int j = 1; j < width + 1; j++){
+                if(matrix[i - 1][j - 1] == '1'){
+                    dp[i][j] = Math.min(Math.min(dp[i - 1][j - 1], dp[i - 1][j]), dp[i][j - 1]) + 1;
+                    maxlength = Math.max(dp[i][j], maxlength);
+                }
+            }
+        }
+        return maxlength * maxlength;
+    }
+}
