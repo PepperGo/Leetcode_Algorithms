@@ -26,3 +26,36 @@ class Solution {
 			return count(root.left) + count(root.right) + 1;
 	}
 }
+
+//Solution2: inorder Traversal - Recursive
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+	
+	private int value;
+	private int count;
+	
+    public int kthSmallest(TreeNode root, int k) {
+        count = k;
+		inorderTraversal(root);
+		return value;
+    }
+	
+	public void inorderTraversal(TreeNode root){
+		if(root.left != null) inorderTraversal(root.left);
+		count--;
+		if(count == 0){
+			value = root.val;
+			return;
+		}
+		if(root.right != null) inorderTraversal(root.right);
+	}
+
+}
