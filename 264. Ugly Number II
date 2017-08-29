@@ -1,0 +1,17 @@
+class Solution {
+    public int nthUglyNumber(int n) {
+        int[] result = new int[n];
+		int t1 = 0, t2 = 0, t3 = 0;
+		int factor2 = 2, factor3  = 3, factor5 = 5;
+		result[0] = 1;
+		for(int i = 1; i < n; i++){
+		     int min = Math.min(Math.min(factor2, factor3), factor5);
+		     result[i] = min;
+			 if(factor2 == min) factor2 = 2*result[++t1];
+			 if(factor3 == min) factor3 = 3*result[++t2];
+			 if(factor5 == min) factor5 = 5*result[++t3];
+		}
+		return result[n-1];
+		
+    }
+}
