@@ -1,0 +1,19 @@
+class Solution {
+    public int addDigits(int num) {
+		String str = num + "";
+        if(str.length() == 1 ) return Integer.parseInt(str);
+		int result = 0;
+		for(int i = 0; i < str.length(); i++){
+			result += str.charAt(i) - '0';
+		}
+		return addDigits(result);
+    }
+}
+
+
+//no loop/recursion in O(1) runtime
+class Solution {
+    public int addDigits(int num) {
+	    return 1 + (num - 1) % 9;
+    }
+}
