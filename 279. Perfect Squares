@@ -1,0 +1,15 @@
+class Solution {
+    public int numSquares(int n) {
+	    int[] count = new int[n+1];
+		Arrays.fill(count, Integer.MAX_VALUE);
+		count[0] = 0;
+		for(int i = 1; i < n + 1; i++){
+		     int min = Integer.MAX_VALUE;
+		     for(int j = 1; j * j <= i ; j++){
+			     min = Math.min(min, 1 + count[i - j*j]);
+			 }
+			 count[i] = min;	
+		}
+        return count[n];
+    }
+}
