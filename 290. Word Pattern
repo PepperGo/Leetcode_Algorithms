@@ -1,0 +1,32 @@
+//https://stackoverflow.com/questions/1669885/what-happens-when-a-duplicate-key-is-put-into-a-hashmap
+//What happens when a duplicate key is put into a HashMap
+//HashMap:
+/*
+public V put(K key,
+    V value)
+Associates the specified value with the specified key in this map. If the map previously contained a mapping for the key, the old value is replaced.
+Specified by:
+put in interface Map<K,V>
+Overrides:
+put in class AbstractMap<K,V>
+Parameters:
+key - key with which the specified value is to be associated
+value - value to be associated with the specified key
+!!! Returns:
+!!! the previous value associated with key, or null if there was no mapping for key. (A null return can also indicate that the map previously associated null with key.)
+*/
+
+class Solution {
+   public boolean wordPattern(String pattern, String str) {
+        String[] words = str.split(" ");
+		if(words.length != pattern.length()) return false;
+		Map hashmap = new HashMap();
+		
+		for(int i = 0; i < words.length; i++){
+			// boolean result = !Objects.equals(hashmap.put(String.valueOf(pattern.charAt(i)), i),hashmap.put(words[i], i));
+		     if(!Objects.equals(hashmap.put(pattern.charAt(i), i),hashmap.put(words[i], i))) 
+		    	 return false;	      
+		}
+		return true;
+    }
+}
