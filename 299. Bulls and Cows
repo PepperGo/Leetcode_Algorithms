@@ -1,19 +1,45 @@
 class Solution {
     public String getHint(String secret, String guess) {
-        int length = secret.length;
-        boolean[] used = new boolean[length];
-        Arrays.fill(uesd, false);
+        int length = secret.length();
+        boolean[] gused = new boolean[length];
+        boolean[] sused = new boolean[length];
+        Arrays.fill(gused, false);
+        Arrays.fill(sused, false);
         int a = 0, b = 0;
+        for(int i = 0; i < length; i++)
+             if(secret.charAt(i) == guess.charAt(i)){
+                 a++;
+                 gused[i] = true;
+                 sused[i] = true;
+             }
+        
         for(int i = 0; i < length; i++){
             for(int j = 0; j < length; j++){
-                if(secret.charAt(i) == secret.charAt(j) && secret[j] == false){
-                    if(i == j) a++;
-                    else b++;
-                    secret[j] = true;
+                if((sused[i] == false) && (gused[j] == false) && (secret.charAt(i) == guess.charAt(j))){
+                    b++;
+                    gused[j] = true;
+                    sused[i] = true;
+                    break;
                 }
             }
         }
         return (new StringBuilder(a + "A" + b + "B")).toString();
         
     }
+}
+
+//
+
+public String getHint(String secret, String guess) {
+    int bulls = 0;
+    int cows = 0;
+    int[] numbers = new int[10];
+    for (int i = 0; i<secret.length(); i++) {
+        if (secret.charAt(i) == guess.charAt(i)) bulls++;
+        else {
+            if (numbers[secret.charAt(i)-'0']++ < 0) cows++;
+            if (numbers[guess.charAt(i)-'0']-- > 0) cows++;
+        }
+    }
+    return bulls + "A" + cows + "B";
 }
