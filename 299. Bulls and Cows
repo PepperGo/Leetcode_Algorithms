@@ -1,0 +1,19 @@
+class Solution {
+    public String getHint(String secret, String guess) {
+        int length = secret.length;
+        boolean[] used = new boolean[length];
+        Arrays.fill(uesd, false);
+        int a = 0, b = 0;
+        for(int i = 0; i < length; i++){
+            for(int j = 0; j < length; j++){
+                if(secret.charAt(i) == secret.charAt(j) && secret[j] == false){
+                    if(i == j) a++;
+                    else b++;
+                    secret[j] = true;
+                }
+            }
+        }
+        return (new StringBuilder(a + "A" + b + "B")).toString();
+        
+    }
+}
