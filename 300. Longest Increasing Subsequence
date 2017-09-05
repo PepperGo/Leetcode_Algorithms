@@ -1,0 +1,20 @@
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+	   if(nums.length == 0) return 0;
+       int[] dp = new int[nums.length];
+	   dp[0] = 1; // end in index 0
+	   int maxLength = 1;
+	   for(int i = 1; i < nums.length; i++){
+	       int temp = 0;
+	       for(int j = 0; j < i; j++){
+		       if(nums[i] > nums[j])
+		          temp = Math.max(temp, dp[j]);
+		   }
+		   dp[i] = temp + 1;
+		   maxLength = Math.max(maxLength,dp[i]);
+	   }
+	   return maxLength;
+	   
+    }
+}
+//BinarySearch && DP :http://blog.csdn.net/cxhply/article/details/49423501
