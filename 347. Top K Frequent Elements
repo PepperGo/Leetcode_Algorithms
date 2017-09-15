@@ -1,0 +1,26 @@
+class Solution {
+    //https://www.quora.com/What-is-the-difference-between-HashSet-HashMap-and-hash-table-How-do-they-behave-in-a-multi-threaded-environment
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        Map<Integer,Integer> hashMap = new HashMap();
+        for(int num : nums)
+            hashMap.put(num, hashMap.getOrDefault(num, 0)+ 1);
+        
+        List<Integer>[] count = new List[nums.length + 1];
+        for(int key : hashMap.keySet()){
+            if(count[hashMap.get(key)] == null){
+                count[hashMap.get(key)] = new ArrayList<Integer>();
+            }
+            count[hashMap.get(key)].add(key);
+        }
+        
+        List<Integer> res = new ArrayList<Integer>();
+        for(int kCount = count.length - 1; kCount >= 0 && res.size() < k; kCount--){
+            if(count[kCount] != null)
+                res.addAll(count[kCount]); 
+        }
+        return res;
+    }
+}
+
+//One special problem is: res.addAll(count[kCount]) would add all the numbers has the same frequency.
+//Leetcode compiler cannot detect that special problem.
