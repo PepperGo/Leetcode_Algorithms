@@ -1,0 +1,74 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        for(int i = 0; i < nums.length - 2; i++){
+            if(nums[i] > 0) break;
+            if(i == 0 || nums[i] != nums[i - 1]){
+                int lo = i + 1, hi = nums.length - 1, sum = 0 - nums[i];
+                while(lo < hi){
+                    if(nums[lo] + nums[hi] == sum){
+                        res.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
+                        while(lo < hi && nums[lo] == nums[lo + 1]) lo++;
+                        while(lo < hi && nums[hi] == nums[hi - 1]) hi--;
+                        lo++;
+                        hi--;
+                    }
+                    else if(nums[lo] + nums[hi] < sum) lo++;
+                    else hi--;
+                }
+            }
+        }
+        return res;
+    }
+}
+
+
+//standard bi-directional 2Sum sweep of the remaining part of the array
+
+
+
+
+
+
+
+
+
+//Time limited: O(n^2*logn)
+class Solution {
+    private int[] nums;
+    
+    public List<List<Integer>> threeSum(int[] nums) {
+       
+        List<List<Integer>> outList = new ArrayList<List<Integer>>();
+        Arrays.sort(nums);
+        this.nums = nums;
+        for(int i = 0; i < nums.length - 2; i++){
+            if(nums[i] > 0) break;
+            for(int j = i + 1; j < nums.length - 1; j++){
+                int target = - nums[i] - nums[j];
+                if(binarySearch(j + 1, nums.length - 1, target)){
+                    List<Integer> inList = new ArrayList<Integer>();
+                    inList.add(nums[i]);
+                    inList.add(nums[j]);
+                    inList.add(target);
+                    if(!outList.contains(inList)) outList.add(inList);
+                } 
+            }
+        }
+        return outList;
+    }
+    
+    public boolean binarySearch(int start, int end, int target){   
+        while(start <= end){
+            int mid = start + (end - start)/2;
+            if(nums[mid] == target)
+                return true;
+            else if(nums[mid] > target)
+                end = mid - 1;
+            else
+                start = mid + 1; 
+        }
+        return false;
+    }
+}
