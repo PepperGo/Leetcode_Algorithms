@@ -1,0 +1,16 @@
+class Solution {
+    public void sortColors(int[] nums) {
+	     int headone = 0;
+		 int endone = nums.length - 1;		 
+         for(int i = 0; i <= endone; i++){
+		     while(nums[i] == 2 && i < endone) swap(nums, i, endone--);
+			 while(nums[i] == 0 && i > headone) swap(nums, i, headone++);
+		 }
+    }
+	
+	public void swap(int[] nums, int i, int j){
+	     int temp = nums[i];
+		 nums[i] = nums[j];
+		 nums[j] = temp;
+	}
+}
