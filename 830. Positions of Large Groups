@@ -1,0 +1,40 @@
+class Solution {
+    public List<List<Integer>> largeGroupPositions(String S) {
+        
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if(S.length() == 0) return result;
+        int count = 1;
+        for(int i = 0; i < S.length() - 1; i++){
+            if(S.charAt(i) == S.charAt(i + 1))
+               count++;
+            else{
+                if(count >= 3){
+                    List<Integer> pair = new ArrayList<Integer>();
+                    pair.add(i - count + 1);
+                    pair.add(i);
+                    result.add(pair);
+               }
+                count = 1;
+            }             
+        }
+        if(count>=3){
+              List<Integer> pair = new ArrayList<Integer>();
+              pair.add(S.length() - count);
+              pair.add(S.length() - 1);
+              result.add(pair);
+        }
+        return result;
+    }
+}
+
+//---------------------------------------------------------------------------------------------
+    public List<List<Integer>> largeGroupPositions(String S) {
+        int i = 0, j = 0, N = S.length();
+        List<List<Integer>> res = new ArrayList<>();
+        while (j < N) {
+            while (j < N && S.charAt(j) == S.charAt(i)) ++j;
+            if (j - i >= 3) res.add(Arrays.asList(i, j - 1));
+            i = j;
+        }
+        return res;
+    }
