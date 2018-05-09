@@ -1,0 +1,36 @@
+class Solution {
+    public String toGoatLatin(String S) {
+        String[] strArray= S.split(" ");
+        for(int i = 0; i < strArray.length; i++){
+            if(isStartByVowel(strArray[i]))
+                strArray[i] = strArray[i].concat("ma");
+            else
+                strArray[i] = strArray[i].substring(1).concat(strArray[i].charAt(0) + "").concat("ma");
+            for(int j = 0; j <= i; j++)
+                strArray[i] = strArray[i].concat("a");
+        }
+        return String.join(" ", strArray);
+    }
+    
+    public Boolean isStartByVowel(String str){
+        char ch = str.charAt(0);
+        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')
+            return true;
+        else 
+            return false;
+    }
+    
+}
+
+//------------------------------------------------------------------------------------------------------------
+  public String toGoatLatin(String S) {
+        Set<Character> vowel = new HashSet<Character>();
+        for (char c : "aeiouAEIOU".toCharArray()) vowel.add(c);
+        String res = "";
+        int i = 0, j = 0;
+        for (String w : S.split("\\s")) {
+            res += ' ' + (vowel.contains(w.charAt(0)) ? w : w.substring(1) + w.charAt(0)) + "ma";
+            for (j = 0, ++i; j < i; ++j) res += "a";
+        };
+        return res.substring(1);
+    }
