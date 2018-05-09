@@ -26,3 +26,36 @@ Some useful links:
 
 #### 3. Arrays.asList(i, j - 1) V
 Link: [Arrays (Java Platform SE 7 )](https://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html#asList(T...))
+
+
+
+### 824. Goat Latin
+#### 1. String Methods
+```
+String concat(String str), 	boolean	contains(CharSequence s),  static String copyValueOf(char[] data), boolean	endsWith(String suffix), boolean	equals(Object anObject), int	indexOf(int ch), int	indexOf(int ch, int fromIndex), int indexOf(String str), int lastIndexOf(String str), int	length(), String	replaceAll(String regex, String replacement), String[] split(String regex), 
+
+String	substring(int beginIndex), String	substring(int beginIndex, int endIndex)
+char[]	toCharArray(), 
+
+```
+#### 2. String array to array
+```
+If you just want a "debug-style" dump of an array:
+
+String str = Arrays.toString(arr);
+or, for more control (before Java 8):
+
+StringBuilder builder = new StringBuilder();
+for(String s : arr) {
+    builder.append(s);
+}
+String str = builder.toString();
+(Java 8 and above):
+
+String str = String.join(",", arr);
+```
+
+Some links:   
+[String (Java Platform SE 7 )](https://docs.oracle.com/javase/7/docs/api/java/lang/String.html)  
+[Java String Array to String](https://www.journaldev.com/773/java-string-array-to-string)  
+[Convert array of strings into a string in Java](https://stackoverflow.com/questions/5283444/convert-array-of-strings-into-a-string-in-java)  
