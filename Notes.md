@@ -54,7 +54,20 @@ String str = builder.toString();
 
 String str = String.join(",", arr);
 ```
+#### 3. if-condition to for-loop
 
+```
+ if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' || ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')
+            return true;
+        else 
+            return false;
+```
+
+```
+for (char c : "aeiouAEIOU".toCharArray()) 
+    vowel.add(c);
+
+```
 Some links:   
 [String (Java Platform SE 7 )](https://docs.oracle.com/javase/7/docs/api/java/lang/String.html)  
 [Java String Array to String](https://www.journaldev.com/773/java-string-array-to-string)  
