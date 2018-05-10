@@ -72,3 +72,29 @@ Some links:
 [String (Java Platform SE 7 )](https://docs.oracle.com/javase/7/docs/api/java/lang/String.html)  
 [Java String Array to String](https://www.journaldev.com/773/java-string-array-to-string)  
 [Convert array of strings into a string in Java](https://stackoverflow.com/questions/5283444/convert-array-of-strings-into-a-string-in-java)  
+
+
+### 819. Most Common Word
+#### 1. "\\s" or "\\s+" is better than " "
+
+#### 2. Remove punctuation
+```
+String[] words = instring.replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+");
+```
+For this question,
+```
+String[] words = paragraph.replaceAll("[!?',;.]","").toLowerCase().split("\\s+");
+```
+Link:
+1. [How can I remove punctuation from input text in Java?](https://stackoverflow.com/questions/18830813/how-can-i-remove-punctuation-from-input-text-in-java)
+
+#### 3. Hashtable, HashSet, HashMap
+
+##### (1) Comparsion
+
+##### (2) Operations
+
+##### (3) Traversal
+
+
+#### 4. 
