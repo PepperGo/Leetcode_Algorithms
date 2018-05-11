@@ -91,10 +91,69 @@ Link:
 #### 3. Hashtable, HashSet, HashMap
 
 ##### (1) Comparsion
-
+[What is the difference between HashSet, HashMap and hash table?](https://www.quora.com/What-is-the-difference-between-HashSet-HashMap-and-hash-table-How-do-they-behave-in-a-multi-threaded-environment)   
+[Hashtable, HashMap, HashSet , hash table concept in Java collection framework](https://stackoverflow.com/questions/47838841/hashtable-hashmap-hashset-hash-table-concept-in-java-collection-framework)   
 ##### (2) Operations
 
 ##### (3) Traversal
+- HashSet  
+```
+(1)
+     Iterator<String> it = hset.iterator();
+     while(it.hasNext()){
+        System.out.println(it.next());
+     }
+     
+(2)   Set<String> set = new HashSet<String>();
+
+    for (String s : set) {
+        System.out.println(s);
+    }
+    
+(3) set.forEach(System.out::println);
 
 
-#### 4. 
+```  
+
+- HashMap
+
+If you're only interested in the keys, you can iterate through the keySet() of the map:  
+```
+Map<String, Object> map = ...;
+
+for (String key : map.keySet()) {
+    // ...
+}
+```
+If you only need the values, use values():
+```
+for (Object value : map.values()) {
+    // ...
+}
+```  
+Finally, if you want both the key and value, use entrySet():
+
+```
+for (Map.Entry<String, Object> entry : map.entrySet()) {
+    String key = entry.getKey();
+    Object value = entry.getValue();
+    // ...
+}
+
+```  
+
+
+[How to Iterate over a Set/HashSet](https://beginnersbook.com/2014/08/how-to-iterate-over-a-sethashset/)    
+[Iterate through a HashMap](https://stackoverflow.com/questions/1066589/iterate-through-a-hashmap)   
+
+
+
+- Hash
+```
+        Set<String> keys = hm.keySet();
+        for(String key: keys){
+            System.out.println("Value of "+key+" is: "+hm.get(key));
+        }
+```
+
+[Program: How to iterate through Hashtable?](http://www.java2novice.com/java-collections-and-util/hashtable/iterate/)     
