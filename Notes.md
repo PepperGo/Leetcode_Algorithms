@@ -156,4 +156,46 @@ for (Map.Entry<String, Object> entry : map.entrySet()) {
         }
 ```
 
-[Program: How to iterate through Hashtable?](http://www.java2novice.com/java-collections-and-util/hashtable/iterate/)     
+[Program: How to iterate through Hashtable?](http://www.java2novice.com/java-collections-and-util/hashtable/iterate/)    
+
+
+### 812. Largest Triangle Area
+
+#### 1. Two dimensional array
+
+##### (1) Basic
+```
+int[][] multi = new int[5][10];
+```
+which is a short hand for something like this:
+```
+int[][] multi = new int[5][];
+multi[0] = new int[10];
+multi[1] = new int[10];
+multi[2] = new int[10];
+multi[3] = new int[10];
+multi[4] = new int[10];
+```
+Note that every element will be initialized to the default value for int, 0, so the above are also equivalent to:
+```
+int[][] multi = new int[][]{
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+};
+```
+[Syntax for creating a two-dimensional array](https://stackoverflow.com/questions/12231453/syntax-for-creating-a-two-dimensional-array)  
+
+[Two-Dimensional Arrays](https://www.cs.cmu.edu/~mrmiller/15-110/Handouts/arrays2D.pdf)    
+
+##### (2) Size
+int[][] rating = new int[3][4];
+
+What is the value of rating.length?  Answer: 3, the number of rows (first dimension)   
+
+What is the value of rating[0].length? Answer: 4, the number of columns (second dimension)   
+
+
+
