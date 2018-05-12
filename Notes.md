@@ -227,3 +227,15 @@ Returns true if and only if this string contains the specified sequence of char 
 
 
 
+### 804. Unique Morse Code Words
+#### 1. HashSet Operationbs
+```
+boolean	add(E e)  
+void	clear()  
+Object	clone()  
+boolean	contains(Object o)  
+boolean	isEmpty()  
+Iterator<E>	iterator()     
+boolean	remove(Object o)     
+int	size()
+```
