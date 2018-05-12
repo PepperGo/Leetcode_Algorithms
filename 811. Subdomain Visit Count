@@ -1,0 +1,27 @@
+class Solution {
+    public List<String> subdomainVisits(String[] cpdomains) {
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        List<String> result = new ArrayList<String>();
+        for(String str : cpdomains){
+            int count = Integer.parseInt(str.split(" ")[0]);
+            String url = str.split(" ")[1];
+            if(hashMap.containsKey(url)) 
+                hashMap.put(url, hashMap.get(url) + count);
+            else 
+                hashMap.put(url, count);
+
+            while(url.contains(".")){       
+                url = url.substring(url.indexOf('.') + 1);
+                if(hashMap.containsKey(url)) 
+                    hashMap.put(url, hashMap.get(url) + count);
+                else 
+                    hashMap.put(url, count);              
+            }  
+        }
+        for(String key : hashMap.keySet()){
+            String entry = hashMap.get(key) + " " + key;
+            result.add(entry);
+        }
+        return result;
+    }
+}
