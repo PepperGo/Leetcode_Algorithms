@@ -198,4 +198,32 @@ What is the value of rating.length?  Answer: 3, the number of rows (first dimens
 What is the value of rating[0].length? Answer: 4, the number of columns (second dimension)   
 
 
+### 811. Subdomain Visit Count
+#### 1. Type conversion in Java
+String to int:   
+```
+(1)
+String number = "10";
+int result = Integer.parseInt(number);			
+(2)
+String number = "10";
+Integer result = Integer.valueOf(number);
+```   
+int to String:
+```
+(1)
+Integer.toString(int)
+(2)
+String.valueOf(int)
+```
+[Type conversion in Java with Examples](https://www.geeksforgeeks.org/type-conversion-java-examples/)   
+
+#### 2. hashMap.containsKey(Key key)
+
+#### 3. boolean	contains(CharSequence s)
+Returns true if and only if this string contains the specified sequence of char values.
+
+#### 4. int	indexOf(int ch), int indexOf(String str), int indexOf(int ch, int fromIndex), int indexOf(String str, int fromIndex)
+
+
 
