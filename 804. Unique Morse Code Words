@@ -1,0 +1,16 @@
+class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+        HashSet<String> hashSet = new HashSet<String>();
+        String[] index = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        for(String word : words){
+            String mcode = null;
+            for(int i = 0; i < word.length(); i++){
+                mcode += index[ word.charAt(i) - 'a'];
+            }
+            if(!hashSet.contains(mcode))
+                hashSet.add(mcode);
+        }   
+        return hashSet.size();
+        
+    }
+}
