@@ -1,0 +1,11 @@
+class Solution {
+    public boolean rotateString(String A, String B) {
+        if(A.length() != B.length()) return false;
+        String AA = A + A;
+        return AA.contains(B);
+    }
+}
+
+public boolean rotateString(String A, String B) {
+    return A.length() == B.length() && (A + A).contains(B);
+}
