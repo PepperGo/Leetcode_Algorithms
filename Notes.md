@@ -239,3 +239,27 @@ Iterator<E>	iterator()
 boolean	remove(Object o)     
 int	size()
 ```
+
+
+### 784. Letter Case Permutation
+#### 1. valueOf()
+static String	valueOf(boolean b)  
+static String	valueOf(char c)  
+static String	valueOf(char[] data)  
+static String	valueOf(char[] data, int offset, int count)  
+static String	valueOf(double d)  
+static String	valueOf(float f)  
+static String	valueOf(int i)  
+static String	valueOf(long l)  
+static String	valueOf(Object obj)  
+
+#### 2. Character Class
+static boolean	isDigit(char ch)    
+static boolean	isAlphabetic(int codePoint)   
+static boolean	isLowerCase(char ch)  
+static boolean	isUpperCase(char ch)  
+
+
+
+Links:   
+[Class Character](https://docs.oracle.com/javase/7/docs/api/java/lang/Character.html)   
