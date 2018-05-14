@@ -1,0 +1,59 @@
+class Solution {
+    public List<String> letterCasePermutation(String S) {
+        List<String> result = new ArrayList<String>();
+        if(S.length() == 0){
+            result.add("");
+            return result;
+        }
+        String newStr = S.toLowerCase();  
+        char ch = newStr.charAt(0);
+        if(newStr.length() == 1){
+            if(ch <= 'z' && ch >= 'a'){
+                 result.add(String.valueOf(ch));
+                 char mutation = (char) (ch + 'A' - 'a');
+                 result.add(String.valueOf(mutation));  
+            }else
+                 result.add(String.valueOf(ch));
+            return result;
+        }
+        
+        List<String> permutationList = letterCasePermutation(newStr.substring(1));
+        
+        for(String str : permutationList){
+            if(ch <= 'z' && ch >= 'a'){
+                result.add(ch + str);
+                char mutation = (char) (ch + 'A' - 'a');
+                result.add(mutation + str);
+            }else
+                result.add(ch + str);
+        }
+
+        return result;
+    }
+}
+
+
+/*-------------------------------------------------*/
+class Solution {
+    public List<String> letterCasePermutation(String S) {
+        List<String> ans=new ArrayList<>();
+        compute(ans,S.toCharArray(),0);
+        return ans;
+    }
+    
+    public void compute(List<String> ans, char[] chars, int index)
+    {
+        if(index==chars.length)
+            ans.add(new String(chars));
+        else
+        {
+            if(Character.isLetter(chars[index]))
+            {
+                chars[index]=Character.toLowerCase(chars[index]);
+                compute(ans,chars,index+1);
+                chars[index]=Character.toUpperCase(chars[index]);
+            }
+            compute(ans,chars,index+1);
+        }
+    }
+}
