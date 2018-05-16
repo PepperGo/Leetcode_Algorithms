@@ -322,4 +322,7 @@ Link:
 
 #### 2. Recursive + public variable
 
+### 771. Jewels and Stones
 
+#### 1. Regex
+S.replaceAll("[^" + J + "]", "").length();
