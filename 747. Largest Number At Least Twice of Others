@@ -1,0 +1,17 @@
+class Solution {
+    public int dominantIndex(int[] nums) {
+        //int firstL, secondL, index = 0;  Wrong!
+        int firstL = 0, secondL = 0, index = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] > firstL){
+                secondL = firstL;
+                firstL = nums[i]; 
+                index = i;
+            }else if(nums[i] > secondL)
+                secondL = nums[i];
+        }
+        if(firstL >= 2*secondL) return index;
+        else return -1;
+        
+    }
+}
