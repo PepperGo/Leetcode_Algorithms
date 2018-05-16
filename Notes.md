@@ -326,3 +326,22 @@ Link:
 
 #### 1. Regex
 S.replaceAll("[^" + J + "]", "").length();
+
+### 747. Largest Number At Least Twice of Others
+#### 1. Return the two largest values in an array of values
+```
+int largestA = Integer.MIN_VALUE, largestB = Integer.MIN_VALUE;
+
+for(int value : values) {
+    if(value > largestA) {
+        largestB = largestA;
+        largestA = value;
+     } else if (value > largestB) {
+            largestB = value;
+     }
+ }
+
+
+```
+[Return the two largest integers in an array of values](https://stackoverflow.com/questions/16384472/return-the-two-largest-integers-in-an-array-of-values)  
+
