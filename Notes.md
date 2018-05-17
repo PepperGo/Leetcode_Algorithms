@@ -345,3 +345,8 @@ for(int value : values) {
 ```
 [Return the two largest integers in an array of values](https://stackoverflow.com/questions/16384472/return-the-two-largest-integers-in-an-array-of-values)  
 
+### 746. Min Cost Climbing Stairs
+
+#### 1. DP & Recursive
+[Solution](https://leetcode.com/problems/min-cost-climbing-stairs/discuss/110111/Easy-to-understand-C++-using-DP-with-detailed-explanation)  
+
