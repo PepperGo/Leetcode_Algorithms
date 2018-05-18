@@ -350,3 +350,29 @@ for(int value : values) {
 #### 1. DP & Recursive
 [Solution](https://leetcode.com/problems/min-cost-climbing-stairs/discuss/110111/Easy-to-understand-C++-using-DP-with-detailed-explanation)  
 
+
+### 744. Find Smallest Letter Greater Than Target
+#### 1.   int mid = lo + (hi - lo) / 2; instead of   int mid = (start + end)/2;
+
+#### 2. Binary Search(critical condition)
+Take care: This is just solution to question, not binary search codes!
+```
+ while(start <= end){
+            int mid = (start + end)/2;
+            if(target < letters[mid])
+                end = mid - 1; 
+            else
+                start = mid + 1;
+        }
+```   
+
+```
+ while(start < end){
+            int mid = (start + end)/2;
+            if(target < letters[mid])
+                end = mid;
+            else
+                start = mid + 1;
+        }
+
+```
