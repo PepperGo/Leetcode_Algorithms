@@ -376,3 +376,14 @@ Take care: This is just solution to question, not binary search codes!
         }
 
 ```
+
+### 744. Find Smallest Letter Greater Than Target
+#### 1. String.contains('a') X   => String.contains("a") V
+
+
+#### 2. Char to Integer
+```
+char c='1';  
+int a=Integer.parseInt(String.valueOf(c));  
+```   
+[Java Convert char to int](https://www.javatpoint.com/java-char-to-int)   
