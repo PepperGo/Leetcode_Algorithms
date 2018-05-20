@@ -1,0 +1,36 @@
+class Solution {
+    public int pivotIndex(int[] nums) {
+        for(int index = 0; index < nums.length; index++){
+
+            if(sumOfArray(nums, 0, index - 1) == sumOfArray(nums, index + 1, nums.length - 1)) 
+                return index;
+        }
+        return -1;        
+    }
+    
+    public int sumOfArray(int[] nums, int start, int end){
+        if(start == nums.length) return 0;
+        if(end == -1) return 0;
+        int sum = 0;
+        for(int i = start; i <= end; i++){
+            sum += nums[i];
+        }
+
+        return sum;
+    }
+}
+//---------------------------------------------------------------------------------------------------------
+
+class Solution {
+    public int pivotIndex(int[] nums) {
+        int sum = 0, left = 0;
+        for (int i = 0; i < nums.length; i++) sum += nums[i];
+        
+        for (int i = 0; i < nums.length; i++) {
+            if (i != 0) left += nums[i - 1];
+            if (sum - left - nums[i] == left) return i;
+        }
+        
+        return -1;
+    }
+}
