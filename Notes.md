@@ -387,3 +387,16 @@ char c='1';
 int a=Integer.parseInt(String.valueOf(c));  
 ```   
 [Java Convert char to int](https://www.javatpoint.com/java-char-to-int)   
+
+
+### 724. Find Pivot Index
+#### 1. += and =+
+a += b is short-hand for a = a + b (though note that the expression a will only be evaluated once.)   
+a =+ b is a = (+b), i.e. assigning the unary + of b to a.   
+
+[The difference between += and =+](https://stackoverflow.com/questions/6958401/the-difference-between-and)     
+
+#### 2. Solution!
+
+
+
