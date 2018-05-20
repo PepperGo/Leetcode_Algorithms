@@ -240,6 +240,13 @@ boolean	remove(Object o)
 int	size()
 ```
 
+#### Adding a duplicate value to a HashSet/HashMap
+In the case of HashMap, it replaces the old value with the new one.
+
+In the case of HashSet, the item isn't inserted.
+
+[Does adding a duplicate value to a HashSet/HashMap replace the previous value](https://stackoverflow.com/questions/12940663/does-adding-a-duplicate-value-to-a-hashset-hashmap-replace-the-previous-value)   
+
 
 ### 784. Letter Case Permutation
 #### 1. valueOf()
