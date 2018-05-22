@@ -1,0 +1,18 @@
+class Solution {
+    public String longestWord(String[] words) {
+        Arrays.sort(words);
+        HashSet<String> wordSet = new HashSet<String>();
+        String result = "";
+        for(String word : words){
+            if(word.length() == 1 || wordSet.contains(word.substring(0, word.length() - 1))){
+                result = result.length() >= word.length() ? result : word;
+                wordSet.add(word);
+            }
+        }
+        return result;
+    }
+}
+
+
+// Some funny idea:
+[Trie+DFS: clean, easy, explained and illustrated](https://leetcode.com/problems/longest-word-in-dictionary/discuss/112720/JAVA-16ms-(99)-@-20180108-Trie+DFS:-clean-easy-explained-and-illustrated)
