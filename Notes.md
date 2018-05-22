@@ -406,4 +406,61 @@ a =+ b is a = (+b), i.e. assigning the unary + of b to a.
 #### 2. Solution!
 
 
+### 720. Longest Word in Dictionary
+#### 1. Arrays Class
+(1) copyof
+java.util.Arrays.copyof() method is in java.util.Arrays class. It copies the specified array, truncating or padding with false (if necessary) so the copy has the specified length.
 
+Syntax:
+
+ copyOf(int[] original, int newLength) 
+original – original array
+newLength – copy of original array   
+
+int[] copy = Arrays.copyOf(org, 5);
+
+(2) copyOfRange
+This method creates a copy of elements, within a specified range of the original array.
+
+Syntax :
+
+public static int[] copyOfRange(int[] original_array, int from_index, int to_index)
+original_array : Array to be copied from
+from_index : Starting index of range to be copied
+to_end : Ending index of range to be copied
+
+ int[] copy1 = Arrays.copyOfRange(arr, 4, arr.length + 3);
+
+(3)	sort
+
+
+(4) toString
+
+The java.util.Arrays.toString(int[]) method returns a string representation of the contents of the specified int array. The string representation consists of a list of the array's elements, enclosed in square brackets ("[]"). Adjacent elements are separated by the characters ", " (a comma followed by a space).
+
+Declaration
+Following is the declaration for java.util.Arrays.toString() method
+
+public static String toString(int[] a)
+Parameters
+a − This is the array whose string representation to return.
+
+Return Value
+This method returns a string representation of a.
+
+Example:
+ int[] i1 = new int[] { 33, 12, 98 };  
+ System.out.println(Arrays.toString(i1));    //[33, 12, 98]
+ 
+
+[Class Arrays](https://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html)   
+
+#### 2. String.substring()
+public String substring(int startIndex): This method returns new String object containing the substring of the given string from specified startIndex (inclusive).
+public String substring(int startIndex, int endIndex): This method returns new String object containing the substring of the given string from specified startIndex to endIndex.
+
+startIndex: inclusive
+endIndex: exclusive
+
+String s="hello";  
+System.out.println(s.substring(0,2));//he  
