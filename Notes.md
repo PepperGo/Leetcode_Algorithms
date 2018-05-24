@@ -464,3 +464,32 @@ endIndex: exclusive
 
 String s="hello";  
 System.out.println(s.substring(0,2));//he  
+
+
+### 697. Degree of an Array
+#### 1. HashMap
+(1) a duplicate key is put into a HashMap   
+Associates the specified value with the specified key in this map. If the map previously contained a mapping for the key, the old value is replaced.   
+
+[What happens when a duplicate key is put into a HashMap?](https://stackoverflow.com/questions/1669885/what-happens-when-a-duplicate-key-is-put-into-a-hashmap)  
+
+(2) Find max value in HashMap   
+```
+    Map.Entry<Integer, Integer> maxEntry = null;
+
+    for (Map.Entry<Integer, Integer> entry : mapValues.entrySet()) {
+
+        if (maxEntry == null
+                || entry.getValue().compareTo(maxEntry.getValue()) > 0) {
+            maxEntry = entry;
+        }
+    }
+    assertEquals(new Integer(7), maxEntry.getValue());
+```
+[Find max value in HashMap](https://www.leveluplunch.com/java/examples/find-max-value-in-map/)   
+[Finding Key associated with max Value in a Java Map](https://stackoverflow.com/questions/5911174/finding-key-associated-with-max-value-in-a-java-map)    
+
+#### 2. Interface Comparable<T>
+Compares this object with the specified object for order. Returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.   
+    
+
