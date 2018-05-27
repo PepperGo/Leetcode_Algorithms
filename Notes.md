@@ -493,3 +493,9 @@ Associates the specified value with the specified key in this map. If the map pr
 Compares this object with the specified object for order. Returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.   
     
 
+### 693. Binary Number with Alternating Bits
+#### 1. Integer.toBinaryString
+public static String toBinaryString(int i)
+
+#### 2. public boolean matches(String regex)
+Integer.toBinaryString(n).matches("(10)*1?");
