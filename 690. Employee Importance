@@ -1,0 +1,63 @@
+/*
+// Employee info
+class Employee {
+    // It's the unique id of each node;
+    // unique id of this employee
+    public int id;
+    // the importance value of this employee
+    public int importance;
+    // the id of direct subordinates
+    public List<Integer> subordinates;
+};
+*/
+class Solution {
+    public int getImportance(List<Employee> employees, int id) {
+        HashMap<Integer, Integer> importanceTable = new HashMap<Integer, Integer>();
+        HashMap<Integer, List<Integer>> subTable = new HashMap<Integer, List<Integer>>();
+        for(Employee e : employees){
+            importanceTable.put(e.id, e.importance);
+            subTable.put(e.id, e.subordinates);
+        }
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(id);
+        int importance = 0;
+        while(!stack.isEmpty()){
+            int employeeId = stack.pop();
+            
+            importance += importanceTable.get(employeeId);
+            if(!subTable.get(employeeId).isEmpty()){
+                System.out.println(employeeId);
+                for(int subId : subTable.get(employeeId)){
+                    stack.push(subId);
+                }
+            }
+            System.out.print(employeeId);
+        }
+        
+        return importance;
+    }
+}
+
+
+
+
+//-------------------------------------------
+class Solution {
+    public int getImportance(List<Employee> employees, int id) {
+        int total = 0;
+        Map<Integer, Employee> map = new HashMap<>();
+        for (Employee employee : employees) {
+            map.put(employee.id, employee);
+        }
+        Queue<Employee> queue = new LinkedList<>();
+        queue.offer(map.get(id));
+        while (!queue.isEmpty()) {
+            Employee current = queue.poll();
+            total += current.importance;
+            for (int subordinate : current.subordinates) {
+                queue.offer(map.get(subordinate));
+            }
+        }
+        return total;
+    }
+}
