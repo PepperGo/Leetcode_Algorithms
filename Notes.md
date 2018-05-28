@@ -511,8 +511,10 @@ public V put(K key,V value), public V get(Object key), public boolean isEmpty(),
 A more complete and consistent set of LIFO stack operations is provided by the Deque interface and its implementations, which should be used in preference to this class. For example:
 
    Deque<Integer> stack = new ArrayDeque<Integer>();   
-    
-    
+ 
+ [Deque](https://docs.oracle.com/javase/7/docs/api/java/util/Deque.html)   
+ 
+Stack:  
 boolean	empty()
 Tests if this stack is empty.
 E	peek()
