@@ -499,3 +499,22 @@ public static String toBinaryString(int i)
 
 #### 2. public boolean matches(String regex)
 Integer.toBinaryString(n).matches("(10)*1?");
+
+
+### 690. Employee Importance
+#### 1. HashMap
+public V put(K key,V value), public V get(Object key), public boolean isEmpty(), public int size()  
+
+[HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)   
+
+#### 2. Stack
+boolean	empty()
+Tests if this stack is empty.
+E	peek()
+Looks at the object at the top of this stack without removing it from the stack.
+E	pop()
+Removes the object at the top of this stack and returns that object as the value of this function.
+E	push(E item)
+Pushes an item onto the top of this stack.
+int	search(Object o)
+
