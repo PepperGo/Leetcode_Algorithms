@@ -508,6 +508,11 @@ public V put(K key,V value), public V get(Object key), public boolean isEmpty(),
 [HashMap](https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html)   
 
 #### 2. Stack
+A more complete and consistent set of LIFO stack operations is provided by the Deque interface and its implementations, which should be used in preference to this class. For example:
+
+   Deque<Integer> stack = new ArrayDeque<Integer>();   
+    
+    
 boolean	empty()
 Tests if this stack is empty.
 E	peek()
