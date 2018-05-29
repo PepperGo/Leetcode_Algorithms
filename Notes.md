@@ -525,3 +525,14 @@ E	push(E item)
 Pushes an item onto the top of this stack.
 int	search(Object o)
 
+### 657. Judge Route Circle
+#### multiple if-else  ==> switch
+```
+  switch (ch) {
+                case 'U' : v++; break;
+                case 'D' : v--; break;
+                case 'R' : h++; break;
+                case 'L' : h--; break;
+            }
+```   
+
