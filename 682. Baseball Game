@@ -1,0 +1,22 @@
+class Solution {
+    public int calPoints(String[] ops) {
+        int sum = 0;
+        LinkedList<Integer> opsDeque = new LinkedList<Integer>();
+        for(String op : ops){
+            if(op.equals("C")){
+                sum -= opsDeque.removeLast();
+            }else if(op.equals("D")){
+                opsDeque.add(opsDeque.peekLast() * 2);
+                sum += opsDeque.peekLast();
+            }else if(op.equals("+")){
+                opsDeque.add(opsDeque.peekLast() + opsDeque.get(opsDeque.size() - 2));
+                sum += opsDeque.peekLast();
+            }else{
+                opsDeque.offerLast(Integer.parseInt(op));
+                sum += opsDeque.peekLast();
+            }
+                
+        }
+        return sum;
+    }
+}
