@@ -538,7 +538,7 @@ int	search(Object o)
 
 ### 682. Baseball Game
 #### 1. Deque
-[](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/java-collection.jpg)     
+![](https://cdncontribute.geeksforgeeks.org/wp-content/uploads/java-collection.jpg)     
 Deque deque = new LinkedList<>();  
 Deque<String> deque = new ArrayDeque<String>();
 
