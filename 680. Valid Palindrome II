@@ -1,0 +1,39 @@
+class Solution {
+    public boolean validPalindrome(String s) {   
+        if(isValidPalindrome(s)) return true;
+        for(int i = 0; i < s.length(); i++){
+            StringBuilder str = new StringBuilder(s);
+            String dStr = str.deleteCharAt(i).toString();
+            if(isValidPalindrome(dStr))
+                return true;
+        }
+        return false;
+    }
+    
+    public boolean isValidPalindrome(String s){
+        for(int i = 0, j = s.length() - 1; i <= j; i++, j--){
+            if(s.charAt(i) != s.charAt(j)) return false;
+        }
+        return true;
+    }
+}
+
+//Status: Time Limit Exceeded
+
+class Solution {
+    public boolean validPalindrome(String s) {   
+        for(int i = 0, j = s.length() - 1; i <= j; i++, j--){
+            if(s.charAt(i) != s.charAt(j)) return isValidPalindrome(s, i, j - 1)||isValidPalindrome(s, i + 1, j);
+        }
+        return true;
+    }
+    
+    public boolean isValidPalindrome(String s, int start, int end){
+        while(start <= end){
+            if(s.charAt(start) != s.charAt(end)) return false;
+            start++;
+            end--;
+        }  
+        return true;
+    }
+}
