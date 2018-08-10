@@ -556,3 +556,5 @@ pop(element): Removes an element from the head and returns it.
 removeFirst(): Removes the element at the head.   
 removeLast(): Removes the element at the tail.
 
+### 643. Maximum Average Subarray I
+[Why is Double.MIN_VALUE in not negative](https://stackoverflow.com/questions/3884793/why-is-double-min-value-in-not-negative)  
