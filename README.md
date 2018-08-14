@@ -558,3 +558,28 @@ removeLast(): Removes the element at the tail.
 
 ### 643. Maximum Average Subarray I
 [Why is Double.MIN_VALUE in not negative](https://stackoverflow.com/questions/3884793/why-is-double-min-value-in-not-negative)  
+### 637. Average of Levels in Binary Tree
+#### 1. Queue is abstract; cannot be instantiated
+Cannot instantiate Queue like: Queue<E> queue = new Queue<E>();
+
+[Cannot instantiate the type Queue. Why is this?](https://stackoverflow.com/questions/28641605/cannot-instantiate-the-type-queue-why-is-this)  
+
+[The Queue Interface](https://docs.oracle.com/javase/tutorial/collections/interfaces/queue.html)    
+
+[The Deque Interface](https://docs.oracle.com/javase/tutorial/collections/interfaces/deque.html)  
+
+[Lesson: Interfaces](https://docs.oracle.com/javase/tutorial/collections/interfaces/index.htmlLesson: Interfaces)  
+
+![](https://docs.oracle.com/javase/tutorial/figures/collections/colls-coreInterfaces.gif)  
+
+##### Deque:
+- Insert
+The **addfirst** and **offerFirst** methods insert elements **at the beginning of** the Deque instance. The methods **addLast** and **offerLast** insert elements **at the end** of the Deque instance. When the capacity of the Deque instance is restricted, the **preferred methods** are **offerFirst** and offerLast because **addFirst** might fail to throw an **exception** if it is full.
+
+- Remove
+The **removeFirst** and **pollFirst** methods remove elements from **the beginning of** the Deque instance. The **removeLast** and **pollLast** methods remove elements from **the end**. The methods **pollFirst** and **pollLast** return **null** if the Deque is empty whereas the methods **removeFirst** and **removeLast** throw an **exception** if the Deque instance is empty.
+
+- Retrieve
+The methods **getFirst** and **peekFirst** retrieve the **first element** of the Deque instance. These methods dont remove the value from the Deque instance. Similarly, the methods **getLast** and **peekLast** retrieve the last element. The methods **getFirst and getLast** throw an exception if the deque instance is empty whereas the methods **peekFirst** and **peekLast** return NULL.
+
+    
