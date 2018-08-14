@@ -585,3 +585,13 @@ The methods **getFirst** and **peekFirst** retrieve the **first element** of the
 
 #### 2. Use queue.isEmpty() instead of queue.size() == 0
     
+
+### 633. Sum of Square Numbers
+#### 1. double int compare
+[Is it valid to compare a double with an int in java?](https://stackoverflow.com/questions/13297207/is-it-valid-to-compare-a-double-with-an-int-in-java)
+
+
+#### 2. Primitive Data Types
+[Primitive Data Types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)   
+
+
