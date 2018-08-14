@@ -582,4 +582,6 @@ The **removeFirst** and **pollFirst** methods remove elements from **the beginni
 - Retrieve
 The methods **getFirst** and **peekFirst** retrieve the **first element** of the Deque instance. These methods dont remove the value from the Deque instance. Similarly, the methods **getLast** and **peekLast** retrieve the last element. The methods **getFirst and getLast** throw an exception if the deque instance is empty whereas the methods **peekFirst** and **peekLast** return NULL.
 
+
+#### 2. Use queue.isEmpty() instead of queue.size() == 0
     
