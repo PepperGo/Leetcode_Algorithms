@@ -589,7 +589,7 @@ The methods **getFirst** and **peekFirst** retrieve the **first element** of the
 ### 633. Sum of Square Numbers
 #### 1. double int compare
 [Is it valid to compare a double with an int in java?](https://stackoverflow.com/questions/13297207/is-it-valid-to-compare-a-double-with-an-int-in-java)
-
+Then performing operations (including comparisons) with two different numerical types, Java will perform an implicit widening conversion. This means that when you compare a double with an int, the int is converted to a double so that Java can then compare the values as two doubles.
 
 #### 2. Primitive Data Types
 [Primitive Data Types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)   
