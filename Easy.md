@@ -594,4 +594,23 @@ Then performing operations (including comparisons) with two different numerical 
 #### 2. Primitive Data Types
 [Primitive Data Types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)   
 
+### 605. Can Place Flowers
+#### 1. The else parts are the same, we can refine it
+
+#### 2. change flowerbed[i] = 1 to flowerbed[i++] = 1 to skip the neighbor;
+
+
+### 599. Minimum Index Sum of Two Lists
+#### 1. Use HashMap instead of HashTable in Leetcode
+[Differences between HashMap and Hashtable?](https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable)  
+
+HashMap(containsKey, put, get)
+
+#### 2. ArrayList to Array
+String [] countries = list.toArray(new String[list.size()]);
+
+#### 3. ArrayList: clear() && removeAll()
+[What is the difference between ArrayList.clear() and ArrayList.removeAll()?](https://stackoverflow.com/questions/7032070/what-is-the-difference-between-arraylist-clear-and-arraylist-removeall)  
+The time complexity of ArrayList.clear() is O(n) and of removeAll is O(n^2).  
+
 
