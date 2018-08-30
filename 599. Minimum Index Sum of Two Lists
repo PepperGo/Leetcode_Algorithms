@@ -1,0 +1,26 @@
+class Solution {
+    public String[] findRestaurant(String[] list1, String[] list2) {
+        HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+        for(int i = 0; i < list1.length; i++){
+            hashMap.put(list1[i], i);
+        }
+        int sum = Integer.MAX_VALUE;
+        String result = "";
+        List<String> commonRest = new ArrayList<String>();
+        for(int i = 0; i < list2.length; i++){
+            String duplicateKey = list2[i];
+            if(hashMap.containsKey(duplicateKey)){
+                if(i + hashMap.get(duplicateKey) < sum){
+                    commonRest.clear();
+                    commonRest.add(duplicateKey);
+                    sum = i + hashMap.get(duplicateKey);
+                }else if(i + hashMap.get(duplicateKey) == sum){
+                    commonRest.add(duplicateKey);
+                }
+                    
+            }
+        }
+        return commonRest.toArray(new String[commonRest.size()]);
+        
+    }
+}
