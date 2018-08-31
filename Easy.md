@@ -614,3 +614,10 @@ String [] countries = list.toArray(new String[list.size()]);
 The time complexity of ArrayList.clear() is O(n) and of removeAll is O(n^2).  
 
 
+### 594. Longest Harmonious Subsequence
+#### 1. getOrDefault(key, defaultValue)
+public V getOrDefault(Object key,
+                      V defaultValue)
+Description copied from interface: Map
+Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.
+
