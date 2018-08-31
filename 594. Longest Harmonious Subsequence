@@ -1,0 +1,35 @@
+class Solution {
+    public int findLHS(int[] nums) {
+        int result = 0;
+        HashMap<Integer, Integer> hashMap = new HashMap<Integer, Integer>();
+        for(int num : nums){
+            if(hashMap.containsKey(num)){
+                hashMap.put(num, hashMap.get(num) + 1); 
+            }else
+                hashMap.put(num, 1);
+        }
+        for(Integer key : hashMap.keySet()){
+            if(hashMap.containsKey(key + 1)) result = Math.max(result, hashMap.get(key) + hashMap.get(key + 1));
+        }
+        return result;
+        
+    }
+}
+
+
+//
+
+public class Solution {
+    public int findLHS(int[] nums) {
+        HashMap < Integer, Integer > map = new HashMap < > ();
+        int res = 0;
+        for (int num: nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        for (int key: map.keySet()) {
+            if (map.containsKey(key + 1))
+                res = Math.max(res, map.get(key) + map.get(key + 1));
+        }
+        return res;
+    }
+}
