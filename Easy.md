@@ -6,7 +6,9 @@ Generic type is List<Integer> and we are trying to pass object of subtype i.e. A
 Some useful links:   
 [Why can't I initialise List<List<Integer>> as List<List<Integer>> list = new ArrayList<ArrayList<Integer>>();?](https://www.quora.com/Why-cant-I-initialise-List-List-Integer-as-List-List-Integer-list-new-ArrayList-ArrayList-Integer)  
 [Is List<Dog> a subclass of List<Animal>? Why are Java generics not implicitly polymorphic?](https://stackoverflow.com/questions/2745265/is-listdog-a-subclass-of-listanimal-why-are-java-generics-not-implicitly-po)  
-[Why List<List<Integer>> list = new ArrayList<ArrayList<Integer>>() is wrong?](https://stackoverflow.com/questions/29266304/why-listlistinteger-list-new-arraylistarraylistinteger-is-wrong)  
+[Why List<List<Integer>> list = new ArrayList<ArrayList<Integer>>() is wrong?](https://stackoverflow.com/questions/29266304/why-listlistinteger-list-new-arraylistarraylistinteger-is-wrong)    
+[Java Generics FAQs - Generic And Parameterized Types ](http://www.angelikalanger.com/GenericsFAQ/FAQSections/ParameterizedTypes.html#FAQ102)  
+    
 
 #### 2. Java: String.length  X
 **Reason**:   
