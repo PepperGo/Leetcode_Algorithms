@@ -1,0 +1,26 @@
+class Solution {
+    //private HashMap<Charactor, String> hashMap = new HashMap<Charactor, String>();
+    String digitletter[] = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    
+    public List<String> letterCombinations(String digits) {
+        List<String> result = new ArrayList<String>();
+        if(digits.length() == 0) return result;
+        else if(digits.length() == 1){
+            int index = Character.getNumericValue(digits.charAt(0));
+            for(char ch : digitletter[index].toCharArray()){
+                result.add(Character.toString(ch));
+            }
+            return result;
+        }
+        else{
+            for(String str : letterCombinations(digits.substring(0, digits.length() - 1))){
+                for(char ch : digitletter[Integer.parseInt(digits.substring(digits.length() - 1))].toCharArray()){
+                    result.add(str + ch);
+                }
+            }
+            return result;
+        }
+    }
+}
+
+
