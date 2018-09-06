@@ -628,3 +628,10 @@ Returns the value to which the specified key is mapped, or defaultValue if this 
 [Class Collections - reverse](https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html#reverse(java.util.List))  
 
 #### 2. Deque - [peek, poll, offer] + (First, Last)
+
+### 589. N-ary Tree Preorder Traversal
+#### Deque is an interface
+All Known Implementing Classes:
+ArrayDeque, ConcurrentLinkedDeque, LinkedBlockingDeque, LinkedList
+
+Difference: insert, delete, search, time complexity, accept null or not. these are different
