@@ -623,3 +623,8 @@ public V getOrDefault(Object key,
 Description copied from interface: Map
 Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.
 
+### 590. N-ary Tree Postorder Traversal
+#### 1. public static void reverse(List<?> list)
+[Class Collections - reverse](https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html#reverse(java.util.List))  
+
+#### 2. Deque - [peek, poll, offer] + (First, Last)
