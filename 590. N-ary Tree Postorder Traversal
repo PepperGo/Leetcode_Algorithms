@@ -1,0 +1,32 @@
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val,List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+class Solution {
+    public List<Integer> postorder(Node root) {
+        List<Integer> result = new ArrayList<Integer>();
+        Deque<Node> pending = new LinkedList<Node>();
+        if(root == null) return result;
+        pending.offerFirst(root);
+        while(!pending.isEmpty()){
+            Node node = pending.pollLast();
+            if(node == null) continue;
+            result.add(node.val);
+            for(Node child : node.children){
+                pending.offerLast(child);
+            }
+        }
+        Collections.reverse(result);
+        return result;
+    }
+}
