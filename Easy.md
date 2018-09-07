@@ -635,3 +635,7 @@ All Known Implementing Classes:
 ArrayDeque, ConcurrentLinkedDeque, LinkedBlockingDeque, LinkedList
 
 Difference: insert, delete, search, time complexity, accept null or not. these are different
+
+
+### 572. Subtree of Another Tree
+#### sometimes you may need to create "helper" method
