@@ -1,0 +1,65 @@
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val,List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+class Solution {
+    Deque<Node> deque = new LinkedList<Node>();
+    
+    public int maxDepth(Node root) {
+        if(root == null) return 0;
+        int count = 0;
+        deque.offerLast(root);
+        while(!deque.isEmpty()){
+            int size = deque.size();
+            for(int i = 0; i< size; i++){
+                Node reNode = deque.pollFirst();
+                for(Node node : reNode.children){
+                    deque.offerLast(node);
+                }
+            }
+            count++;
+        }
+        return count;
+    } 
+}
+
+/*
+// Definition for a Node.
+class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val,List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+class Solution {
+    private int max = 0;
+    
+    public int maxDepth(Node root) {
+        maxDepth(root, 1);
+        return max;
+    }
+    
+    public void maxDepth(Node node, int depth){
+        if (node == null) return;
+        max = Math.max(max, depth);
+        for(Node child : node.children){
+            maxDepth(child, depth + 1);
+        }
+    }
+}
