@@ -639,3 +639,19 @@ Difference: insert, delete, search, time complexity, accept null or not. these a
 
 ### 572. Subtree of Another Tree
 #### sometimes you may need to create "helper" method
+
+### 557. Reverse Words in a String III
+#### String reverse
+```
+new StringBuilder("hi").reverse().toString()
+```
+
+#### How to split a String by space
+```
+str = "Hello I'm your String";
+String[] splited = str.split("\\s+");
+```
+
+#### Java - String trim() Method
+It returns a copy of this string with leading and trailing white space removed, or this string if it has no leading or trailing white space.
+
