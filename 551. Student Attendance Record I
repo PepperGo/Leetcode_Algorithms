@@ -1,0 +1,18 @@
+class Solution {
+    public boolean checkRecord(String s) {
+        int aNum = 0;
+        int lNumContinuous = 0;
+        for(int i = 0; i < s.length(); i++){
+            char attendance = s.charAt(i);
+            if(attendance == 'L')
+                lNumContinuous++;
+            else
+                lNumContinuous = 0;
+            if(attendance == 'A')
+                aNum++;
+            if(lNumContinuous > 2 || aNum > 1) return false;
+        }
+        return true;
+        
+    }
+}
