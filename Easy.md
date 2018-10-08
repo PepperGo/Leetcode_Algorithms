@@ -655,3 +655,12 @@ String[] splited = str.split("\\s+");
 #### Java - String trim() Method
 It returns a copy of this string with leading and trailing white space removed, or this string if it has no leading or trailing white space.
 
+### 541. Reverse String II
+#### String to Char Array
+```
+String testString = "This Is Test";
+char[] stringToCharArray = testString.toCharArray();
+```
+
+#### Char Array to String
+[How to convert a char array back to a string?](https://stackoverflow.com/questions/7655127/how-to-convert-a-char-array-back-to-a-string)
