@@ -1,0 +1,15 @@
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        return word.matches("[A-Z]+|[a-z]+|[A-Z][a-z]+");
+    }
+}
+
+class Solution {
+    public boolean detectCapitalUse(String word) {
+        int upperCount = 0;
+        for(char c : word.toCharArray())
+            if('Z' - c >= 0)
+                upperCount++;
+        return (upperCount == 0 || upperCount == word.length() || (upperCount == 1 && 'Z' - word.charAt(0) >= 0));
+    }
+}
