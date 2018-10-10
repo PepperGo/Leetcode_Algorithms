@@ -682,4 +682,16 @@ char[] stringToCharArray = testString.toCharArray();
 Java values of simple types such as int/long can't be null so they are initialized by 0.  
 
 
+### 520. Detect Capital
+#### ASCII Table
+A - Z: 65 - 90
+a - z: 97 - 122
+0 - 9: 48 - 57  
+
+#### String.matches()
+public boolean matches(String regex)
+Tells whether or not this string matches the given regular expression.
+
+
+
 
