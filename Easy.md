@@ -664,3 +664,22 @@ char[] stringToCharArray = testString.toCharArray();
 
 #### Char Array to String
 [How to convert a char array back to a string?](https://stackoverflow.com/questions/7655127/how-to-convert-a-char-array-back-to-a-string)
+
+
+### 530. Minimum Absolute Difference in BST
+#### Binary Search Tree
+[wiki - Binary search tree](https://en.wikipedia.org/wiki/Binary_search_tree)
+[Binary Search Tree & Related](https://www.geeksforgeeks.org/binary-search-tree-data-structure/)  
+
+#### TreeSet
+[TreeSet in Java](https://www.geeksforgeeks.org/treeset-in-java-with-examples/)    
+
+[TreeSet Class - Oracle Docs](https://docs.oracle.com/javase/7/docs/api/java/util/TreeSet.html)   
+
+
+#### Uninitialized int vs Integer
+[Uninitialized int vs Integer](https://stackoverflow.com/questions/3893563/uninitialized-int-vs-integer)  
+Java values of simple types such as int/long can't be null so they are initialized by 0.  
+
+
+
