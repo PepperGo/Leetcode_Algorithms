@@ -693,5 +693,8 @@ public boolean matches(String regex)
 Tells whether or not this string matches the given regular expression.
 
 
+### 507. Perfect Number
+#### Reduction Time Complexity
+we can get a significant reduction in the run-time by iterating only upto \sqrt{num}   
 
 
