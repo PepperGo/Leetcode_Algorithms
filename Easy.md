@@ -698,3 +698,8 @@ Tells whether or not this string matches the given regular expression.
 we can get a significant reduction in the run-time by iterating only upto \sqrt{num}   
 
 
+### 501. Find Mode in Binary Search Tree
+#### without using any extra space  
+[What does ‘Space Complexity’ mean?](https://www.geeksforgeeks.org/g-fact-86/)    
+
+
