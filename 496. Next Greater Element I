@@ -1,0 +1,15 @@
+class Solution {
+    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> hashMap = new HashMap<Integer, Integer>();
+        Deque<Integer> deque = new LinkedList<>();
+        for(int num : nums2){
+            while(!deque.isEmpty() && deque.peekLast() < num)
+                hashMap.put(deque.pollLast(), num);
+            deque.offerLast(num);
+        }
+        for(int i = 0; i < nums1.length; i++){
+            nums1[i] = hashMap.getOrDefault(nums1[i], -1);
+        }
+        return nums1;
+    }
+}
