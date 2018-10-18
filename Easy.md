@@ -703,3 +703,11 @@ we can get a significant reduction in the run-time by iterating only upto \sqrt{
 [What does ‘Space Complexity’ mean?](https://www.geeksforgeeks.org/g-fact-86/)    
 
 
+### 504. Base 7
+#### Base 2, Base 7, Base 10, Base n
+[Change a number from base 10 to any other base](https://mathbits.com/MathBits/CompSci/Introduction/frombase10.htm)   
+
+### 501. Find Mode in Binary Search Tree
+#### Integer List to int array(arraylist<Integer> -> int [])  
+[How to convert List<Integer> to int[] in Java?](https://stackoverflow.com/questions/960431/how-to-convert-listinteger-to-int-in-java)  
+No good way
