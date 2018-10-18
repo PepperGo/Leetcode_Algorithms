@@ -755,3 +755,14 @@ Returns the value to which the specified key is mapped, or defaultValue if this 
 special value: poll, peek, offer + First/Last  
 
 
+### 482. License Key Formatting  
+#### StringBuilder  
+[Java.lang.StringBuilder.insert() Method](https://www.tutorialspoint.com/java/lang/stringbuilder_insert_char.htm)   
+
+```
+public StringBuilder insert(int offset, char c)
+Inserts the string representation of the char argument into this sequence.
+
+The offset argument must be greater than or equal to 0, and less than or equal to the length of this sequence.
+```   
+
