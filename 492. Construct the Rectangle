@@ -1,0 +1,23 @@
+class Solution {
+    public int[] constructRectangle(int area) {
+        int[] result = new int[2];
+        int minDiff = Integer.MAX_VALUE;
+        int width = 0;
+        for(int i = 1; i * i <= area; i++){
+            if(area%i == 0) {
+                minDiff = Math.min(minDiff, area/i - i);
+                width = i;
+            }
+        }
+        result[1] = width;
+        result[0] = area/width;
+        return result;
+    }
+}
+
+public int[] constructRectangle(int area) {
+        int w = (int)Math.sqrt(area);
+	while (area%w!=0) w--;
+	return new int[]{area/w, w};
+}
+
