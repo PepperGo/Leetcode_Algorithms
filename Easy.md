@@ -711,3 +711,47 @@ we can get a significant reduction in the run-time by iterating only upto \sqrt{
 #### Integer List to int array(arraylist<Integer> -> int [])  
 [How to convert List<Integer> to int[] in Java?](https://stackoverflow.com/questions/960431/how-to-convert-listinteger-to-int-in-java)  
 No good way
+    
+### 496. Next Greater Element I  
+#### Stack
+The Java Stack class, java.util.Stack, is a classical stack data structure.  
+[Java Stack](http://tutorials.jenkov.com/java-collections/stack.html)   
+```
+Stack stack = new Stack();
+```   
+
+
+#### Queue  
+The Java Queue interface, java.util.Queue represents a data structure designed to have elements inserted at the end of the queue, and elements removed from the beginning of the queue.
+[Java Queue](http://tutorials.jenkov.com/java-collections/queue.html)   
+```
+Queue queueA = new LinkedList();
+Queue queueB = new PriorityQueue();
+```     
+
+#### Java Deque  
+[Java Deque](http://tutorials.jenkov.com/java-collections/deque.html)    
+Since Java Deque is an interface you need to instantiate a concrete implementation of the interface in order to use it.
+```
+Here is an example of creating a Java Deque instance by creating a LinkedList instance:
+Deque deque = new LinkedList();
+
+Here is another example of creating a Java Deque by creating an ArrayDeque instance:
+Deque deque = new ArrayDeque();
+```
+
+#### HashMap(Map)  
+```
+getOrDefault
+public V getOrDefault(Object key,
+                      V defaultValue)
+Description copied from interface: Map
+Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.
+
+```
+#### Deque  
+[Interface Deque](https://docs.oracle.com/javase/7/docs/api/java/util/Deque.html)   
+
+special value: poll, peek, offer + First/Last  
+
+
