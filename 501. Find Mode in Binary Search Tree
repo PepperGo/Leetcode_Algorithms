@@ -1,0 +1,44 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int maxCount = 0;
+    public List<Integer> list = new ArrayList<>();
+    public int curCount = 1;
+    public Integer pre;
+
+    public int[] findMode(TreeNode root) {
+        traverse(root);
+        int [] result = new int[list.size()];
+        for(int i = 0; i < list.size(); i++){
+            result[i] = list.get(i);
+        }
+        return result;
+    }
+    
+    public void traverse(TreeNode node){
+        if(node == null) return;
+        traverse(node.left);
+        if(pre != null){
+            if(node.val == pre) 
+                curCount++;
+            else
+                curCount = 1;
+        }
+        if(curCount > maxCount){
+            maxCount = curCount;
+            list.clear();
+            list.add(node.val);
+        }else if(curCount == maxCount){
+            list.add(node.val);
+        }
+        pre = node.val;
+        traverse(node.right);
+    }
+}
