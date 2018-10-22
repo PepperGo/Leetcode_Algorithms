@@ -1,0 +1,25 @@
+class Solution {
+    public int findComplement(int num) {
+        int min = 0;
+        int i = 0;
+        while(min < num){
+            min += Math.pow(2, i);
+            i++;
+        }
+        return min - num;
+    }
+}
+
+
+//Time Limit Exceeded 
+//The problem is when min is larger than Integer.MAX_VALUE.
+class Solution {
+    public int findComplement(int num) {
+        int min = 1;
+        while(min <= num){
+            min = min * 2;
+        }
+        return min - 1 - num;
+    }
+}
+
