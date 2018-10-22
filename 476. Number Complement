@@ -10,6 +10,16 @@ class Solution {
     }
 }
 
+class Solution {
+    public int findComplement(int num) {
+        long min = 1;
+        while(min <= num){
+            min = min * 2;
+        }
+        return (int) min - 1 - num;
+    }
+}
+
 
 //Time Limit Exceeded 
 //The problem is when min is larger than Integer.MAX_VALUE.
