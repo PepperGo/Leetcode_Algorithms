@@ -788,4 +788,46 @@ byte -> short -> int -> long -> float -> double
 #### Bit Manipulation
 [Basics of Bit Manipulation](https://www.hackerearth.com/practice/basic-programming/bit-manipulation/basics-of-bit-manipulation/tutorial/)   
 
+### 475. Heaters
+#### Code style
+```
+for(int i = houses.length - 1, j = heaters.length - 1; i > 0 && j > 0; ){
+}
+ 
+String one = "", two = "", three = "" ;
+
+String one, two, three;
+one = two = three = "";
+```
+
+#### Class Arrays  
+[java.util Class Arrays](https://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html)   
+
+```
+public static int binarySearch(Object[] a, Object key)
+public static int binarySearch(Object[] a, int fromIndex, int toIndex, Object key)  
+
+returns: index of the search key, if it is contained in the array; otherwise, (-(insertion point) - 1).
+```    
+
+```
+public static <T> T[] copyOf(T[] original, int newLength)  
+Copies the specified array, truncating or padding with nulls (if necessary) so the copy has the specified length. For all indices that are valid in both the original array and the copy, the two arrays will contain identical values. For any indices that are valid in the copy but not the original, the copy will contain null. Such indices will exist if and only if the specified length is greater than that of the original array. The resulting array is of exactly the same class as the original array.
+```    
+
+```
+public static <T> T[] copyOfRange(T[] original, int from, int to)  
+Copies the specified range of the specified array into a new array. The initial index of the range (from) must lie between zero and original.length, inclusive. The value at original[from] is placed into the initial element of the copy (unless from == original.length or from == to). Values from subsequent elements in the original array are placed into subsequent elements in the copy. The final index of the range (to), which must be greater than or equal to from, may be greater than original.length, in which case null is placed in all elements of the copy whose index is greater than or equal to original.length - from. The length of the returned array will be to - from.
+```  
+
+
+```  
+public static void fill(Object[] a, Object val)
+
+Assigns the specified Object reference to each element of the specified array of Objects.
+```  
+
+
+
+
 
