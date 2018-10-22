@@ -766,3 +766,26 @@ Inserts the string representation of the char argument into this sequence.
 The offset argument must be greater than or equal to 0, and less than or equal to the length of this sequence.
 ```   
 
+### 476. Number Complement  
+#### Math.pow()
+```
+public static double pow(double a, double b)
+
+a − the base.
+b − the exponent.
+```  
+
+#### Type Conversion
+[Type conversion in Java with Examples](https://www.geeksforgeeks.org/type-conversion-java-examples/)   
+
+1. Widening or Automatic Type Conversion  
+double -> float -> long -> int -> short -> byte
+
+2. Narrowing or Explicit Conversion
+byte -> short -> int -> long -> float -> double  
+
+
+#### Bit Manipulation
+[Basics of Bit Manipulation](https://www.hackerearth.com/practice/basic-programming/bit-manipulation/basics-of-bit-manipulation/tutorial/)   
+
+
