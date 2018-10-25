@@ -31,3 +31,7 @@ Returns the value to which the specified key is mapped, or defaultValue if this 
 ```
 throw new IllegalArgumentException("No two sum solution");
 ```
+
+### 169. Majority Element  
+#### HashMap Iterate
+[How to efficiently iterate over each entry in a Java Map?](https://stackoverflow.com/questions/46898/how-to-efficiently-iterate-over-each-entry-in-a-java-map)  
