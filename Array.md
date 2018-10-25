@@ -25,3 +25,9 @@ public V getOrDefault(Object key, V defaultValue)
 Returns the value to which the specified key is mapped, or defaultValue if this map contains no mapping for the key.
 ```
 
+### 167. Two Sum II - Input array is sorted  
+#### How to Throw an Exception in Java  
+
+```
+throw new IllegalArgumentException("No two sum solution");
+```
