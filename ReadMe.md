@@ -1,5 +1,6 @@
 # Leetcode
 
+## Difficulty
 ### [Easy](./Easy.md)
 
 
@@ -7,3 +8,6 @@
 
 
 ### Hard
+
+## Topics
+### [Array](./Array.md)
