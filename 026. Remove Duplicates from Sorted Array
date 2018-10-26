@@ -13,3 +13,17 @@ public class Solution {
     }
 }
 
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if(nums == null || nums.length == 0)
+            return 0;
+        int count = 1;
+        int prior = nums[0];
+        for(int num : nums){
+            if(prior != num) 
+                nums[count++] = num;
+            prior = num;
+        }
+        return count;
+    }
+}
