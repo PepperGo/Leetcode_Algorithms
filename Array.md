@@ -48,3 +48,23 @@ List<String> stooges = Arrays.asList("Larry", "Moe", "Curly");
 #### ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
 ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();  
     
+### 56. Merge Intervals  
+####  Comparator<T> Interface
+[Comparator Interface in Java with Examples](https://www.geeksforgeeks.org/comparator-interface-java/)     
+  
+```
+    Collections.sort(intervals, new IntervalComparator());  
+  
+    private class IntervalComparator implements Comparator<Interval> {
+        @Override
+        public int compare(Interval a, Interval b) {
+            return a.start < b.start ? -1 : a.start == b.start ? 0 : 1;
+        }
+    }
+
+```  
+To compare two elements, it asks “Which is greater?” Compare method returns -1, 0 or 1 to say if it is less than, equal, or greater to the other.  
+
+
+
+ 
