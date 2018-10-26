@@ -66,5 +66,9 @@ ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
 To compare two elements, it asks “Which is greater?” Compare method returns -1, 0 or 1 to say if it is less than, equal, or greater to the other.  
 
 
+### 118. Pascal's Triangle
+#### ArrayList<ArrayList<>> and List<List<>>
+[Incompatible types List of List and ArrayList of ArrayList](https://stackoverflow.com/questions/24796273/incompatible-types-list-of-list-and-arraylist-of-arraylist)   
+
 
  
