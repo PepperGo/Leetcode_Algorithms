@@ -1,0 +1,44 @@
+class Solution {
+    public int trap(int[] height) {
+        if(height == null || height.length == 0) return 0;
+        int[] leftMax = new int[height.length];
+        int[] rightMax = new int[height.length];
+        leftMax[0] = height[0];
+        for(int i = 1; i < leftMax.length; i++){
+            leftMax[i] = Math.max(leftMax[i - 1], height[i]);
+        }
+        rightMax[rightMax.length - 1] = height[height.length - 1];
+        for(int j = rightMax.length - 2; j >= 0; j--){
+            rightMax[j] = Math.max(rightMax[j + 1], height[j]);
+        }
+        int units = 0;
+        for(int i = 0; i < height.length; i++){
+            units += Math.min(leftMax[i], rightMax[i]) - height[i];
+        }
+        return units;
+    }
+}
+
+
+class Solution {
+    public int trap(int[] height) {
+        int i = 0, j = height.length - 1;
+        int units = 0, leftH = 0, rightH = 0;
+        while(i <= j){
+            if(height[i] < height[j]){
+                if(height[i] > leftH)
+                    leftH = height[i];
+                else
+                    units += leftH - height[i];
+                i++;
+            }else{
+                if(height[j] > rightH)
+                    rightH = height[j];
+                else
+                    units += rightH - height[j];
+                j--;
+            }
+        }
+        return units;
+    }
+}
