@@ -35,3 +35,16 @@ throw new IllegalArgumentException("No two sum solution");
 ### 169. Majority Element  
 #### HashMap Iterate
 [How to efficiently iterate over each entry in a Java Map?](https://stackoverflow.com/questions/46898/how-to-efficiently-iterate-over-each-entry-in-a-java-map)  
+
+
+### 15. 3Sum
+#### Arrays.asList
+```
+public static <T> List<T> asList(T... a)
+Returns a fixed-size list backed by the specified array. (Changes to the returned list "write through" to the array.) This method acts as bridge between array-based and collection-based APIs, in combination with Collection.toArray(). The returned list is serializable and implements RandomAccess.
+```
+List<String> stooges = Arrays.asList("Larry", "Moe", "Curly");
+  
+#### ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
+ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();  
+    
