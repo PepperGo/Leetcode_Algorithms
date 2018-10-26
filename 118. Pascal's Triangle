@@ -17,3 +17,27 @@ public class Solution {
         return result;
     }
 }
+
+
+class Solution {
+    List<List<Integer>> res = new ArrayList<List<Integer>>();
+    public List<List<Integer>> generate(int numRows) {
+        List<Integer> r = new ArrayList<Integer>();    
+        if(numRows == 0 || numRows == 1){   
+            if(numRows == 1){
+                r.add(1);
+                res.add(r);
+            }
+            return res;
+        }
+        List<List<Integer>> prior = generate(numRows - 1);
+        List<Integer> row = new ArrayList<Integer>();
+        List<Integer> lastRow = prior.get(numRows - 2);
+        for(int i = 0; i < numRows; i++){
+            if(i == 0 || i == numRows - 1) row.add(1);
+            else row.add(lastRow.get(i - 1) + lastRow.get(i));
+        }
+        res.add(row);
+        return res;
+    }
+}
