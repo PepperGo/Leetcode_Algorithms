@@ -16,3 +16,20 @@ public class Solution {
         return maxnow;
     }
 }
+
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        int maxSoFar = 1;
+        int minSoFar = 1;
+        int maxP = Integer.MIN_VALUE;
+        for(int i = 0; i < nums.length; i++){
+            int temp1 = maxSoFar * nums[i], temp2 = minSoFar * nums[i];
+            maxSoFar = Math.max(nums[i], Math.max(temp1, temp2));
+            minSoFar = Math.min(nums[i], Math.min(temp1, temp2));
+            maxP = Math.max(maxP, maxSoFar);
+        }
+        return maxP;
+        
+    }
+}
