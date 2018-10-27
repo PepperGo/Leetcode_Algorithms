@@ -71,4 +71,8 @@ To compare two elements, it asks “Which is greater?” Compare method returns 
 [Incompatible types List of List and ArrayList of ArrayList](https://stackoverflow.com/questions/24796273/incompatible-types-list-of-list-and-arraylist-of-arraylist)   
 
 
- 
+### 152. Maximum Product Subarray  
+#### kadane's algorithm  
+[Largest Sum Contiguous Subarray](https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/)  
+
+
