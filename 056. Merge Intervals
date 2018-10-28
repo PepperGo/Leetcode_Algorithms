@@ -97,3 +97,5 @@ class Solution {
         return result;
     }
 }
+
+  merged.getLast().end = Math.max(merged.getLast().end, interval.end);
