@@ -1,0 +1,65 @@
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        int maxArea = 0;
+        for(int i = 0; i < heights.length; i++){
+            int minH = Integer.MAX_VALUE;
+            for(int j = i; j < heights.length; j++){
+                minH = Math.min(minH, heights[j]);
+                maxArea = Math.max(maxArea, minH * (j - i + 1));
+            }
+        }
+        return maxArea;
+    }
+}
+
+Complexity Analysis
+Time complexity : O(n^2). Every possible pair is considered
+Space complexity : O(1). No extra space is used. 
+
+
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        return caculateMaxArea(heights, 0, heights.length - 1);
+    }
+    
+    public int caculateMaxArea(int[] heights, int start, int end){
+        if(start > end) return 0;
+        int minHIndex = start;
+        for(int i = start; i <= end; i++){
+            if(heights[minHIndex] > heights[i])
+                minHIndex = i;
+        }
+        return Math.max(heights[minHIndex] * (end - start + 1), Math.max(caculateMaxArea(heights, start, minHIndex - 1), caculateMaxArea(heights, minHIndex + 1, end)));
+    }
+}
+
+Complexity Analysis   
+Time complexity : Average Case: O(nlog(n)). Worst Case: O(n^2). If the numbers in the array are sorted, we don't gain the advantage of divide and conquer.    
+Space complexity : O(n). Recursion with worst case depth n.   
+
+
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        Stack<Integer> stack = new Stack<>();
+        int maxArea = 0;
+        for(int i = 0; i < heights.length; i++){
+            while(stack.size() > 0 && heights[stack.peek()] > heights[i]){
+                int height = heights[stack.pop()];
+                int width = stack.isEmpty() ? i : i - stack.peek() - 1;
+                maxArea = Math.max(maxArea, height * width);
+            }
+            stack.push(i);
+        }
+        
+        while(stack.size() > 0){
+            int height = heights[stack.pop()];
+            int width = stack.isEmpty() ? heights.length : heights.length - stack.peek() - 1;
+            maxArea = Math.max(maxArea, height * width);
+        }
+        return maxArea;
+    }
+}
+
+Complexity Analysis  
+Time complexity : O(n), n numbers are pushed and popped. 
+Space complexity : O(n). Stack is use
