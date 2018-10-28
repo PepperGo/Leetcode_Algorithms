@@ -76,3 +76,7 @@ To compare two elements, it asks “Which is greater?” Compare method returns 
 [Largest Sum Contiguous Subarray](https://www.geeksforgeeks.org/largest-sum-contiguous-subarray/)  
 
 
+### 153/154. Find Minimum in Rotated Sorted Array I, II
+#### mid = start + (end - start)/2; 
+mid = (start + end)/2: binary search bug: if the size of array are too large, equal or larger than the upper bound of int type, hi + lo may cause an overflow and become a negative number. mid = start + (end - start)/2;   
+
