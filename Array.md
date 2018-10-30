@@ -80,3 +80,9 @@ To compare two elements, it asks “Which is greater?” Compare method returns 
 #### mid = start + (end - start)/2; 
 mid = (start + end)/2: binary search bug: if the size of array are too large, equal or larger than the upper bound of int type, hi + lo may cause an overflow and become a negative number. mid = start + (end - start)/2;   
 
+
+### 142. Linked List Cycle II  
+#### Floyd's Tortoise and Hare
+Proof: [Solution](https://leetcode.com/problems/linked-list-cycle-ii/solution/)  
+
+
