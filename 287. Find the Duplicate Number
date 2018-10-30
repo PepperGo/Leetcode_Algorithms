@@ -1,0 +1,20 @@
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int slow = nums.length;
+        int fast = nums.length;
+        do{
+            slow = nums[slow - 1];
+            fast = nums[nums[fast - 1] - 1];
+        }while(slow != fast);
+        slow = nums.length;
+        while(slow != fast){
+            slow = nums[slow - 1];
+            fast = nums[fast - 1];
+        }
+        return slow;
+    }
+}
+
+idea: https://leetcode.com/problems/find-the-duplicate-number/discuss/72845/Java-O(n)-time-and-O(1)-space-solution.-Similar-to-find-loop-in-linkedlist.  
+
+only if we start from n - 1, we can promise nums[n] != n, which will lead to itself
