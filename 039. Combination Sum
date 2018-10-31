@@ -26,3 +26,28 @@ public class Solution {
     }
     
 }
+
+
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        Arrays.sort(candidates);
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(result, new ArrayList<Integer>(), candidates, target, 0);
+        return result;
+    }
+    
+    public void backtrack(List<List<Integer>> result, List<Integer> temp, int[] array, int remain, int index){
+        if(remain < 0) return;
+        if(remain == 0)
+            result.add(new ArrayList<Integer>(temp));
+        else{
+            for(int i = index; i < array.length; i++){
+                temp.add(array[i]);
+                backtrack(result, temp, array, remain - array[i], i);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+    
+    
+}
