@@ -123,4 +123,27 @@ Boolean (incorrect)
     }
 ```   
 
+### 120. Triangle
+#### List to Array  
+```  
+    List<Integer> sourceList = Arrays.asList(0, 1, 2, 3, 4, 5);
+    Integer[] targetArray = sourceList.toArray(new Integer[sourceList.size()]);
 
+```
+toArray <T> T[] toArray(T[] a)
+  
+Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array. If the list fits in the specified array, it is returned therein. Otherwise, a new array is allocated with the runtime type of the specified array and the size of this list.
+If the list fits in the specified array with room to spare (i.e., the array has more elements than the list), the element in the array immediately following the end of the list is set to null. (This is useful in determining the length of the list only if the caller knows that the list does not contain any null elements.)
+
+Like the toArray() method, this method acts as bridge between array-based and collection-based APIs. Further, this method allows precise control over the runtime type of the output array, and may, under certain circumstances, be used to save allocation costs.
+
+Suppose x is a list known to contain only strings. The following code can be used to dump the list into a newly allocated array of String:
+
+
+     String[] y = x.toArray(new String[0]);
+ 
+Note that toArray(new Object[0]) is identical in function to toArray().   
+
+[java.util Interface List<E>](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)  
+  
+  
