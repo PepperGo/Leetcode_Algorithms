@@ -9,3 +9,32 @@ public class Solution {
     
     }
 }
+
+
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        return minimumPath(triangle, 0, 0);
+    }
+    
+    public int minimumPath(List<List<Integer>> triangle, int layer, int index){
+        if(layer == triangle.size() - 1) return triangle.get(layer).get(index);
+        return triangle.get(layer).get(index) + Math.min(minimumPath(triangle, layer + 1, index), minimumPath(triangle, layer + 1, index + 1));
+    }
+}
+
+//Time Limit Exceeded
+
+
+class Solution {
+    public int minimumTotal(List<List<Integer>> triangle) {
+        int height = triangle.size();
+        int length = triangle.get(height - 1).size();
+        int[] min = new int[length + 1];
+        for(int i = height - 1; i >= 0; i--){
+            for(int j = 0; j < triangle.get(i).size(); j++){
+                min[j] = Math.min(min[j], min[j + 1]) + triangle.get(i).get(j);
+            }
+        }
+        return min[0];
+    }
+}
