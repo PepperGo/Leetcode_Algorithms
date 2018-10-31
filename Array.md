@@ -85,4 +85,8 @@ mid = (start + end)/2: binary search bug: if the size of array are too large, eq
 #### Floyd's Tortoise and Hare
 Proof: [Solution](https://leetcode.com/problems/linked-list-cycle-ii/solution/)  
 
+### 229. Majority Element II 
+#### Majority Voting Algorithm  
+[Majority Voting Algorithm](https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html)    
+
 
