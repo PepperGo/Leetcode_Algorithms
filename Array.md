@@ -102,6 +102,25 @@ boolean (correct)
 Boolean (incorrect)  
 
 
-### Subsets, Permutations, Combination Sum, Palindrome Partitioning
+### 39. Combination Sum
+#### Subsets, Permutations, Combination Sum, Palindrome Partitioning
 [Subsets, Permutations, Combination Sum, Palindrome Partitioning](https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning))   
+
+#### list.add(new ArrayList<>(tempList));
+
+### 189. Rotate Array
+#### Reverse array
+```
+    
+    public void reverse(int[] nums, int start, int end){
+        while(start < end){
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
+```   
+
 
