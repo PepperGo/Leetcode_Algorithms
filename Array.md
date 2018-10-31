@@ -101,3 +101,7 @@ List<String> stooges = Arrays.asList("Larry", "Moe", "Curly");
 boolean (correct)
 Boolean (incorrect)  
 
+
+### Subsets, Permutations, Combination Sum, Palindrome Partitioning
+[Subsets, Permutations, Combination Sum, Palindrome Partitioning](https://leetcode.com/problems/combination-sum/discuss/16502/A-general-approach-to-backtracking-questions-in-Java-(Subsets-Permutations-Combination-Sum-Palindrome-Partitioning))   
+
