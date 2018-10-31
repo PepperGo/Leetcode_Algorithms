@@ -96,3 +96,8 @@ Returns a fixed-size list backed by the specified array. (Changes to the returne
 This method also provides a convenient way to create a fixed-size list initialized to contain several elements:   
 List<String> stooges = Arrays.asList("Larry", "Moe", "Curly");
   
+### 79. Word Search  
+#### boolean
+boolean (correct)
+Boolean (incorrect)  
+
