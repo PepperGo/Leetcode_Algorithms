@@ -144,6 +144,9 @@ Suppose x is a list known to contain only strings. The following code can be use
  
 Note that toArray(new Object[0]) is identical in function to toArray().   
 
-[java.util Interface List<E>](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)  
+[java.util Interface List\<E\>](https://docs.oracle.com/javase/8/docs/api/java/util/List.html)  
   
   
+### 697. Degree of an Array
+#### HashMap, HashTable
+[彻底搞懂HashMap,HashTable,ConcurrentHashMap之关联](https://blog.csdn.net/cn_yaojin/article/details/78790221)  
