@@ -70,3 +70,27 @@ class Solution {
         }
         return res;
     }
+
+
+
+class Solution {
+    public int findShortestSubArray(int[] nums) {
+        HashMap<Integer, Integer> count = new HashMap<>(), right = new HashMap<>(), left = new HashMap<>();
+        
+        for(int i = 0; i < nums.length; i++){
+            if(!left.containsKey(nums[i])){
+                left.put(nums[i], i);
+            }
+            right.put(nums[i], i);
+            count.put(nums[i], count.getOrDefault(nums[i], 0) + 1);
+        }
+        int result = Integer.MAX_VALUE;
+        int degree = Collections.max(count.values());
+        for(int num : count.keySet()){
+            if(count.get(num) == degree){
+                result = Math.min(result, right.get(num) - left.get(num) + 1);
+            }
+        }
+        return result;
+    }
+}
