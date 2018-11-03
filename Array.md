@@ -150,3 +150,25 @@ Note that toArray(new Object[0]) is identical in function to toArray().
 ### 697. Degree of an Array
 #### HashMap, HashTable
 [彻底搞懂HashMap,HashTable,ConcurrentHashMap之关联](https://blog.csdn.net/cn_yaojin/article/details/78790221)  
+
+#### Collections.max
+```
+public static <T extends Object & Comparable<? super T>> T max(Collection<? extends T> coll)
+Returns the maximum element of the given collection, according to the natural ordering of its elements. All elements in the collection must implement the Comparable interface. Furthermore, all elements in the collection must be mutually comparable (that is, e1.compareTo(e2) must not throw a ClassCastException for any elements e1 and e2 in the collection).
+This method iterates over the entire collection, hence it requires time proportional to the size of the collection.
+
+Parameters:
+coll - the collection whose maximum element is to be determined.
+Returns:
+the maximum element of the given collection, according to the natural ordering of its elements.
+```
+#### Iterate through a HashMap?
+[Iterate through a HashMap](https://stackoverflow.com/questions/1066589/iterate-through-a-hashmap)
+ keySet(), values(), entrySet()
+ 
+ 
+#### iterate through Hashtable?
+[](http://www.java2novice.com/java-collections-and-util/hashtable/iterate/)
+
+
+
