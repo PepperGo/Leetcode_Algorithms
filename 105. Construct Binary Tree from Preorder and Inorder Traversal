@@ -26,3 +26,54 @@ public class Solution {
         return root;
     }
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int index = 0;
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        return buildTree(preorder, inorder, 0, preorder.length - 1);
+    }
+    
+    public TreeNode buildTree(int[] preorder, int[] inorder, int start, int end){
+        if(start > end) return null;
+        int rootValue = preorder[index++];
+        TreeNode root = new TreeNode(rootValue);
+        if(start == end) return root;
+        int pivot = search(inorder, rootValue, start, end);
+        root.left = buildTree(preorder, inorder, start, pivot - 1);
+        root.right = buildTree(preorder, inorder, pivot + 1, end);
+        return root;
+    }
+    
+    public int search(int[] array, int value, int start, int end){
+    
+        for(int i = start; i <= end; i++){
+            if(array[i] == value)
+                return i;
+        }
+        /* Cannot use binary search, since it's not sorted
+         *
+        while(start <= end){
+            int mid = start + (end - start)/2;
+            if(array[mid] == value)
+                return mid;
+            else if(array[mid] < value){
+                start = mid + 1;
+            }else{
+                end = mid - 1;
+            }
+        }
+        */
+        throw new IllegalArgumentException("Cannot find value in array");
+    }
+    
+}
