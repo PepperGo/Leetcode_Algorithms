@@ -172,3 +172,47 @@ the maximum element of the given collection, according to the natural ordering o
 
 
 
+### 105. Construct Binary Tree from Preorder and Inorder Traversal  
+#### [If you are given two traversal sequences, can you construct the binary tree?](https://www.geeksforgeeks.org/?p=657/)  
+
+
+#### [Construct Tree from given Inorder and Preorder traversals](https://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/)   
+```
+Algorithm: buildTree()
+1) Pick an element from Preorder. Increment a Preorder Index Variable (preIndex in below code) to pick next element in next recursive call.
+2) Create a new tree node tNode with the data as picked element.
+3) Find the picked element’s index in Inorder. Let the index be inIndex.
+4) Call buildTree for elements before inIndex and make the built tree as left subtree of tNode.
+5) Call buildTree for elements after inIndex and make the built tree as right subtree of tNode.
+6) return tNode.
+
+```   
+
+#### [Construct a Binary Tree from Postorder and Inorder](https://www.geeksforgeeks.org/construct-a-binary-tree-from-postorder-and-inorder/)   
+```
+Let us see the process of constructing tree from in[] = {4, 8, 2, 5, 1, 6, 3, 7} and post[] = {8, 4, 5, 2, 6, 7, 3, 1}
+1) We first find the last node in post[]. The last node is “1”, we know this value is root as root always appear in the end of postorder traversal.
+
+2) We search “1” in in[] to find left and right subtrees of root. Everything on left of “1” in in[] is in left subtree and everything on right is in right subtree.
+
+         1
+       /    \
+[4, 8, 2, 5]   [6, 3, 7] 
+3) We recur the above process for following two.
+….b) Recur for in[] = {6, 3, 7} and post[] = {6, 7, 3}
+…….Make the created tree as right child of root.
+….a) Recur for in[] = {4, 8, 2, 5} and post[] = {8, 4, 5, 2}.
+…….Make the created tree as left child of root.
+
+```
+
+#### [Construct Full Binary Tree from given preorder and postorder traversals](https://www.geeksforgeeks.org/full-and-complete-binary-tree-from-given-preorder-and-postorder-traversals/)  
+It is not possible to construct a general Binary Tree from preorder and postorder traversals.  
+
+But if know that the Binary Tree is Full, we can construct the tree without ambiguity.
+```
+Let us consider the two given arrays as pre[] = {1, 2, 4, 8, 9, 5, 3, 6, 7} and post[] = {8, 9, 4, 5, 2, 6, 7, 3, 1};
+In pre[], the leftmost element is root of tree. Since the tree is full and array size is more than 1. The value next to 1 in pre[], must be left child of root. So we know 1 is root and 2 is left child. How to find the all nodes in left subtree? We know 2 is root of all nodes in left subtree. All nodes before 2 in post[] must be in left subtree. Now we know 1 is root, elements {8, 9, 4, 5, 2} are in left subtree, and the elements {6, 7, 3} are in right subtree.
+
+```
+
