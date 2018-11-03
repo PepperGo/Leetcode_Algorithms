@@ -33,3 +33,37 @@ public class Solution {
         return matrix;
     }
 }
+
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int leftCol = 0, topRow = 0, rightCol = n - 1, botRow = n - 1;
+        int[][] result = new int[n][n];
+        int count = 1;
+        while(leftCol <= rightCol && topRow <= botRow){
+            for(int i = leftCol; i <= rightCol; i++, count++){
+                result[topRow][i] = count;
+            }
+            topRow++;
+            
+            for(int j = topRow; j <= botRow; j++, count++){
+                result[j][rightCol] = count;
+            }
+            rightCol--;
+            
+            if(topRow <= botRow){
+                for(int i = rightCol; i >= leftCol; i--, count++){
+                    result[botRow][i] = count;
+                }
+                botRow--;
+            }
+            
+            if(rightCol >= leftCol){
+                for(int j = botRow; j >= topRow; j--, count++){
+                    result[j][leftCol] = count;
+                }
+                leftCol++;
+            }   
+        }
+        return result;
+    }
+}
