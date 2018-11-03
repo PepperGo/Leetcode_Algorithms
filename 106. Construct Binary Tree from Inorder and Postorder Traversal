@@ -31,3 +31,36 @@ public class Solution {
 	
 	}
 }
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int index = 0;
+    
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        index = postorder.length - 1;
+        return buildTree(inorder, postorder, 0, postorder.length - 1);
+    }
+    
+    public TreeNode buildTree(int[] inorder, int[] postorder, int start, int end){
+        if(start > end) return null;
+        int rootValue = postorder[index--];
+        TreeNode root = new TreeNode(rootValue);
+        if(start == end) return root;
+        int pivot = start;
+        for(; pivot <= end; pivot++){
+            if(inorder[pivot] == rootValue)
+                break;
+        }
+        root.right = buildTree(inorder, postorder, pivot + 1, end);
+        root.left = buildTree(inorder, postorder, start, pivot - 1);
+        return root;
+    }
+}
