@@ -216,3 +216,29 @@ In pre[], the leftmost element is root of tree. Since the tree is full and array
 
 ```
 
+### 280. Wiggle Sort  
+#### [Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithSorting algorithmm)  
+[Sorting Algorithms Details](https://www.geeksforgeeks.org/sorting-algorithms/)
+
+##### Selection Sort
+[Selection Sort](https://www.geeksforgeeks.org/selection-sort/Selection Sort)  
+It has O(n^2) time complexity  
+
+##### Insertion sort  
+[Insertion sort](https://www.geeksforgeeks.org/insertion-sort/)  
+It has O(n^2) time complexity    
+
+
+##### Quicksort
+on average, the algorithm takes O(nlogn) comparisons to sort n items. 
+in the worst case, it makes O(n^2) comparisons  
+
+
+
+##### Merge sort  
+
+
+
+
+##### Heapsort
+
