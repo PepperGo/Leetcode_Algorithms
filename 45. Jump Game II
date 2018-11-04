@@ -1,0 +1,30 @@
+class Solution {
+    public int jump(int[] nums) {
+        int[] steps = new int[nums.length];
+        Arrays.fill(steps, Integer.MAX_VALUE);
+        steps[0] = 0;
+        for(int i = 0; i < nums.length; i++){
+            for(int j = 0; j <= nums[i] && i + j < nums.length; j++){
+                steps[i + j] = Math.min(steps[i + j], steps[i] + 1);
+            }
+        }
+        return steps[nums.length - 1];
+    }
+}
+//Your runtime beats 1.07 % of java submissions.
+
+
+
+class Solution {
+    public int jump(int[] nums) {
+        int curEnd = 0, curFar = 0, jump = 0;
+        for(int i = 0; i < nums.length - 1; i++){
+            curFar = Math.max(curFar, nums[i] + i);
+            if(i == curEnd){
+                jump++;
+                curEnd = curFar;
+            }
+        }
+        return jump;
+    }
+}
