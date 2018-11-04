@@ -217,7 +217,8 @@ In pre[], the leftmost element is root of tree. Since the tree is full and array
 ```
 
 ### 280. Wiggle Sort  
-#### [Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithSorting algorithmm)  
+#### [Sorting algorithm](https://en.wikipedia.org/wiki/Sorting_algorithm)    
+
 [Sorting Algorithms Details](https://www.geeksforgeeks.org/sorting-algorithms/)
 
 ##### Selection Sort
