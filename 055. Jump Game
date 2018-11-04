@@ -9,3 +9,13 @@ public class Solution {
         
     }
 }
+
+class Solution {
+    public boolean canJump(int[] nums) {
+        int maxDis = 0;
+        for(int i = 0; i <= maxDis && i < nums.length; i++){
+            maxDis = Math.max(maxDis, i + nums[i]);
+        }
+        return maxDis >= nums.length - 1;
+    }
+}
