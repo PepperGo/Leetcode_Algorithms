@@ -221,12 +221,10 @@ In pre[], the leftmost element is root of tree. Since the tree is full and array
 
 [Sorting Algorithms Details](https://www.geeksforgeeks.org/sorting-algorithms/)
 
-##### Selection Sort
-[Selection Sort](https://www.geeksforgeeks.org/selection-sort/Selection Sort)  
+##### [Selection Sort](https://www.geeksforgeeks.org/selection-sort/)  
 It has O(n^2) time complexity  
 
-##### Insertion sort  
-[Insertion sort](https://www.geeksforgeeks.org/insertion-sort/)  
+##### [Insertion sort](https://www.geeksforgeeks.org/insertion-sort/)  
 It has O(n^2) time complexity    
 
 
