@@ -229,7 +229,8 @@ It has O(n^2) time complexity
 
 
 ##### [Quicksort](https://www.geeksforgeeks.org/quick-sort/)
-on average, the algorithm takes O(nlogn) comparisons to sort n items. 
+on average, the algorithm takes O(nlogn) comparisons to sort n items.   
+
 in the worst case, it makes O(n^2) comparisons  
 
 
@@ -242,7 +243,8 @@ Average: nlogn
 nlogn  
 
 #### [Bubble Sort](https://www.geeksforgeeks.org/bubble-sort/) 
-on average, the algorithm takes O(n^2) comparisons to sort n items. 
+on average, the algorithm takes O(n^2) comparisons to sort n items.   
+
 in the best case, it makes O(n) comparisons    
 
 
