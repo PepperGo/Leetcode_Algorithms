@@ -1,0 +1,39 @@
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        int count = 0;
+        for(int start = 0; start < nums.length; start++){
+            int sum = 0;
+            for(int end = start; end < nums.length; end++){
+                sum += nums[end];
+                if(sum == k){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
+
+
+
+class Solution {
+    public int subarraySum(int[] nums, int k) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        hashMap.put(0, 1);
+        int count = 0;
+        int sum = 0;
+        for(int i = 0; i < nums.length; i++){
+            sum += nums[i];
+            if(hashMap.containsKey(sum - k))
+                count += hashMap.get(sum - k);
+            hashMap.put(sum, hashMap.getOrDefault(sum, 0) + 1);
+        }
+        return count;
+    }
+}
+
+If the same sum occurs again, we increment the count corresponding to that sum in the hashmap. 
+Further, for every sum encountered, we also determine the number of times the sum sum−k has occured already, since it will determine the number of times a subarray with sum k has occured upto the current index.
+We increment the countcount by the same amount.
+
+
