@@ -46,3 +46,48 @@ class Solution {
     }
            
 }
+
+
+
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int pivot = nums.length - 2;
+        while(pivot >= 0){
+            if(nums[pivot] < nums[pivot + 1])
+                break;
+            pivot--;
+        }
+        int start, end;
+        if(pivot >= 0){
+            int smallestL = smallestLarger(nums, pivot + 1, nums.length - 1, nums[pivot]);
+            swap(nums, pivot, smallestL);
+            start = pivot + 1;
+            end = nums.length - 1;
+        }else{
+            start = 0;
+            end = nums.length - 1;
+        }
+        while(start < end){
+            swap(nums, start++, end--);
+        }
+        
+    }
+    
+    public void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    
+    public int smallestLarger(int[] nums, int start, int end, int value){
+        int result = Integer.MAX_VALUE;
+        int index = -1;
+        for(int i = end; i >= start; i--){
+            if(nums[i] > value && result > nums[i]){
+                result = nums[i];
+                index = i;
+            }
+        }
+        return index;
+    }
+}
