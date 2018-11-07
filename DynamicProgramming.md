@@ -32,3 +32,11 @@ List list = new ArrayList(set);
 Throws exception, Returns special value
 add(e), offer(e)
 remove(), poll()
+
+
+#### Boolean, boolean
+[Boolean vs boolean in Java](https://stackoverflow.com/questions/3728616/boolean-vs-boolean-in-java)  
+
+The default value for the elements in a boolean[] is false. You don't need to do anything.
+The reason it's necessary for Boolean[] is because the default value is null.
+
