@@ -1,0 +1,86 @@
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        if(s.length() == 0) return true;
+        for(int i = 0; i < wordDict.size(); i++){
+            String pivot = wordDict.get(i);
+            if(s.indexOf(pivot) == 0){
+                String remain = s.substring(pivot.length());
+                if(wordBreak(remain, wordDict)) return true;
+            }
+            
+        }
+        return false;
+    }
+}
+
+// Time Limit Exceeded 
+//"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab"
+["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
+
+
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        return wordBreak(s, wordDict, 0, new Boolean[s.length()]);
+    }
+    
+    public boolean wordBreak(String s, List<String> words, int start, Boolean[] memo){
+        if(start == s.length()) return true;
+        if(memo[start] != null){
+            return memo[start];
+        }
+        for(int end = start + 1; end <= s.length(); end++){
+            if(words.contains(s.substring(start, end)) && wordBreak(s, words, end, memo))
+                return memo[start] = true;
+        }
+        return memo[start] = false;
+    }
+}
+Time complexity : O(n^2) Size of recursion tree can go up to n^2    
+Space complexity : O(n). The depth of recursion tree can go up to n.  
+
+
+
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        HashSet<String> words = new HashSet(wordDict);
+        Queue<Integer> queue = new LinkedList<>();
+        boolean[] isVisited = new boolean[s.length()];
+        queue.add(0);
+        while(!queue.isEmpty()){
+            int start = queue.remove();
+            if(!isVisited[start]){
+                for(int end = start + 1; end <= s.length(); end++){
+                    if(words.contains(s.substring(start, end))){
+                        queue.add(end);
+                        if(end == s.length()) return true;
+                    }  
+                }
+                isVisited[start] = true;
+            }
+        }
+        return false;
+    }
+}
+
+Time complexity : O(n^2). For every starting index, the search can continue till the end of the given string.   
+Space complexity : O(n). Queue of atmost nn size is needed.   
+
+
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        HashSet<String> words = new HashSet(wordDict);//Transfer List to HashSet, contains() method is faster
+        boolean[] dp = new boolean[s.length() + 1];
+        dp[0] = true;
+        for(int i = 1; i < s.length() + 1; i++){
+            for(int j = 0; j < i; j++){
+                if(dp[j] && words.contains(s.substring(j, i))){
+                    dp[i] = true;
+                    break;
+                }
+            }
+        }
+        return dp[s.length()];
+    
+    }
+}
+
