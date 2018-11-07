@@ -27,3 +27,8 @@ Set set = new HashSet(list);
 Convert Set to List
 List list = new ArrayList(set);
 ```  
+
+#### [Interface Queue](https://docs.oracle.com/javase/7/docs/api/java/util/Queue.html)
+Throws exception, Returns special value
+add(e), offer(e)
+remove(), poll()
