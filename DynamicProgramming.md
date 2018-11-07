@@ -17,6 +17,9 @@ endIndex : ending index is exclusive
 Contains for a HashSet is O(1) compared to O(n) for a list, therefore you should never use a list if you often need to run contains . 
 The ArrayList uses an array for storing the data. The ArrayList.contains will be of O(n) complexity.  
 
+
+Collection object has a constructor that accept a Collection object to initial the value.  
+Since both Set and List are extend the Collection, the conversion is quite straightforward. It’s just pass a List into Set constructor or vice verse.
 ```
 Convert List to Set
 Set set = new HashSet(list);
