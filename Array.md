@@ -253,4 +253,11 @@ in the best case, it makes O(n) comparisons
 [PriorityQueue (Java Platform SE 7 ) - Oracle Docs](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html)     
 [PriorityQueue in Java](https://www.geeksforgeeks.org/priority-queue-class-in-java-2/)   
 
+PriorityQueue<Integer> pq = new PriorityQueue<>(26, Collections.reverseOrder());  
+  
+  
+[Collections (Java Platform SE 7 ) - Oracle Docs](https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html)     
+
+
+
 
