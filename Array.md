@@ -248,3 +248,9 @@ on average, the algorithm takes O(n^2) comparisons to sort n items.
 in the best case, it makes O(n) comparisons    
 
 
+### 621. Task Scheduler
+#### PriorityQueue
+[PriorityQueue (Java Platform SE 7 ) - Oracle Docs](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html)     
+[PriorityQueue in Java](https://www.geeksforgeeks.org/priority-queue-class-in-java-2/)   
+
+
