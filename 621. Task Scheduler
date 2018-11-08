@@ -1,0 +1,76 @@
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        int[] taskCounts = new int[26];
+        for(char ch : tasks){
+            taskCounts[ch - 'A'] ++;
+        }
+        Arrays.sort(taskCounts);
+        int times = 0;
+        while(taskCounts[25] > 0){
+            int i = 0;
+            while(i <= n){
+                if(taskCounts[25] == 0) break;
+                if(i < 26 && taskCounts[25 - i] > 0)
+                    taskCounts[25 - i]--;
+                i++;
+                times++;
+            }
+            Arrays.sort(taskCounts);
+        }
+        return times;
+    }
+}
+
+
+
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(26, Collections.reverseOrder());
+        int[] tasksCount = new int[26];
+        for(char ch : tasks){
+            tasksCount[ch - 'A']++;
+        }
+        for(int num : tasksCount){
+            if(num > 0)
+                pq.add(num);
+        }
+        int times = 0;
+        while(!pq.isEmpty()){
+            List<Integer> temp = new ArrayList<>();
+            int count = 0;
+            while(count <= n){
+                if(!pq.isEmpty()){
+                    if(pq.peek() > 1)
+                        temp.add(pq.poll() - 1);
+                    else
+                        pq.poll();
+                }
+                count++;
+                times++;
+                if(pq.isEmpty() && temp.isEmpty())
+                    break;
+            }
+            for(int t : temp)
+                pq.add(t);
+        }
+        return times;
+        
+    }
+}
+
+
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        int[] tasksCount = new int[26];
+        for(char ch : tasks){
+            tasksCount[ch - 'A']++;
+        }
+        Arrays.sort(tasksCount);
+        int max = tasksCount[25], idle = (max - 1) * (n + 1);
+        for(int i = 25; i >= 0 && tasksCount[i] > 0; i--){
+            idle -= Math.min(tasksCount[i], max - 1);
+        }
+        return idle > 0 ? idle + tasks.length : tasks.length;
+    }
+}
+
