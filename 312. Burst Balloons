@@ -1,0 +1,24 @@
+class Solution {
+    public int maxCoins(int[] nums) {
+         //dp[i][j] means the maximal coins for range [i...j]. In this case, our final answer is dp[0][nums.length - 1].
+        int count = nums.length;
+        int[][] dp = new int[count + 2][count + 2];
+        int[] balloons = new int[count + 2];
+        for(int i = 0; i < balloons.length; i++){
+            if(i == 0 || i == balloons.length - 1) balloons[i] = 1;
+            else balloons[i] = nums[i - 1];
+        }
+        for(int l = 1; l <= count; l++){
+            for(int i = 1; i <= count - l + 1; i++){
+                int j = i + l - 1;
+                for(int k = i; k <= j; k++){
+                    dp[i][j] = Math.max(dp[i][j], dp[i][k - 1] + dp[k + 1][j] + balloons[k]*balloons[i - 1]*balloons[j + 1]);
+                }
+            }
+        }
+        return dp[1][balloons.length - 2];
+    }
+}
+
+//LeetCode 312. Burst Balloons: https://www.youtube.com/watch?v=z3hu2Be92UA 
+
