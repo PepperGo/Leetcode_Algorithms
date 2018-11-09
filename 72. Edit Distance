@@ -1,0 +1,29 @@
+class Solution {
+    public int minDistance(String word1, String word2) {
+        int[][] dp = new int[word1.length() + 1][word2.length() + 1];
+        for(int i = 0; i < word1.length() + 1; i++){
+            for(int j = 0; j < word2.length() + 1; j++){
+                if(i == 0) dp[i][j] = j;
+                else if(j == 0) dp[i][j] = i;
+                else{
+                    if(word1.charAt(i - 1) == word2.charAt(j - 1))
+                        dp[i][j] = dp[i - 1][j - 1];
+                    else
+                        dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i - 1][j - 1]), dp[i][j - 1]) + 1;
+                }
+            }
+        }
+        return dp[word1.length()][word2.length()];
+    }
+}
+
+Case 1: word1[i] == word2[j], i.e. the ith the jth character matches.
+f(i, j) = f(i - 1, j - 1)
+
+Case 2: word1[i] != word2[j], then we must either insert, delete or replace, whichever is cheaper
+
+f(i, j) = 1 + min { f(i, j - 1), f(i - 1, j), f(i - 1, j - 1) }
+
+f(i, j - 1) represents insert operation
+f(i - 1, j) represents delete operation
+f(i - 1, j - 1) represents replace operation
