@@ -21,3 +21,5 @@ class Solution {
         return dp[s.length()][t.length()];
     }
 }
+
+key: we will build an array mem where mem[i+1][j+1] means that S[0..j] contains T[0..i] that many times as distinct subsequences. Therefor the result will be mem[T.length()][S.length()].
