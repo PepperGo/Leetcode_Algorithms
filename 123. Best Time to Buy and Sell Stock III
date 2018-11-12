@@ -1,0 +1,63 @@
+Detail explanation of DP solution:
+
+Key: 
+It's not difficult to get the DP recursive formula:
+
+dp[k, i] = max(dp[k, i-1], prices[i] - prices[j] + dp[k-1, j-1]), j=[0..i-1]
+
+For k transactions, on i-th day,
+if we don't trade then the profit is same as previous day dp[k, i-1];
+and if we bought the share on j-th day where j=[0..i-1], then sell the share on i-th day then the profit is prices[i] - prices[j] + dp[k-1, j-1] .
+
+
+
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/discuss/135704/Detail-explanation-of-DP-solution
+
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        if(prices.length == 0) return 0;
+        int[][] dp = new int[3][prices.length];
+        for(int k = 1; k < 3; k++){
+            for(int i = 1; i < prices.length; i++){
+                int min = prices[0];
+                for(int j = 1; j <= i; j++){
+                    min = Math.min(min, prices[j] - dp[k - 1][j - 1]);
+                dp[k][i] = Math.max(dp[k][i - 1], prices[i] - min);
+                }         
+            }
+        }
+        return dp[2][prices.length - 1];
+    }
+}
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        if(prices.length == 0) return 0;
+        int[][] dp = new int[3][prices.length];
+        for(int k = 1; k < 3; k++){
+            int min = prices[0];
+            for(int i = 1; i < prices.length; i++){
+                min = Math.min(min, prices[i] - dp[k - 1][i - 1]);
+                dp[k][i] = Math.max(dp[k][i - 1], prices[i] - min);
+            }
+        }
+        return dp[2][prices.length - 1];
+    }
+}
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int buy1 = Integer.MAX_VALUE, buy2 = Integer.MAX_VALUE;
+        int sell1 = 0, sell2 = 0;
+        for(int i = 0; i < prices.length; i++){
+            buy1 = Math.min(buy1, prices[i]);
+            sell1 = Math.max(sell1, prices[i] - buy1);
+            buy2 = Math.min(buy2, prices[i] - sell1);
+            sell2 = Math.max(sell2, prices[i] - buy2);
+        }
+        return sell2;
+    }
+}
+
+
