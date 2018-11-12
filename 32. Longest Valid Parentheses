@@ -1,0 +1,56 @@
+class Solution {
+    public int longestValidParentheses(String s) {
+        Stack<Integer> stack = new Stack<Integer>();
+        int max = 0;
+        stack.push(-1);
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == '('){
+                stack.push(i);
+            }else{
+                stack.pop();
+                if(stack.isEmpty()){
+                    stack.push(i);
+                }else{
+                    max = Math.max(max, i - stack.peek());
+                }
+            }
+        }
+        return max;
+    }
+}
+
+
+class Solution {
+    public int longestValidParentheses(String s) {
+        int leftPCount = 0, rightPCount = 0, max = 0;
+        //Start from left to right
+        for(int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == '('){
+                leftPCount++;
+            }else{
+                rightPCount++;
+            }
+            if(leftPCount == rightPCount){
+                max = Math.max(max, 2 * rightPCount);
+            }else if(leftPCount < rightPCount){
+                leftPCount = rightPCount = 0;
+            }
+        }
+        leftPCount = rightPCount = 0;
+        
+        //start from right to left
+        for(int i = s.length() - 1; i >= 0; i--){
+            if(s.charAt(i) == ')'){
+                rightPCount++;
+            }else{
+                leftPCount++;
+            }
+            if(rightPCount == leftPCount){
+                max = Math.max(max, 2 * rightPCount);
+            }else if(leftPCount > rightPCount){
+                leftPCount = rightPCount = 0;
+            }
+        }
+        return max;
+    }
+}
