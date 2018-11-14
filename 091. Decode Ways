@@ -15,3 +15,24 @@ public class Solution {
         return result[0];
     }
 }
+
+
+class Solution {
+    public int numDecodings(String s) {
+        int[] dp = new int[s.length() + 1];
+        //dp[i] means the possible number of decodings at left of index i
+        dp[0] = 1;
+        dp[1] = (s.charAt(0) != '0' ? 1 : 0);
+        for(int i = 2; i < dp.length; i++){
+            char single = s.charAt(i - 1);
+            String doubleStr = s.substring(i - 2, i);
+            if(single > '0' && single <= '9'){
+                dp[i] += dp[i - 1];
+            }
+            if(Integer.parseInt(doubleStr) >= 10 && Integer.parseInt(doubleStr) <= 26){
+                dp[i] += dp[i - 2];
+            }
+        }
+        return dp[dp.length - 1];
+    }
+}
