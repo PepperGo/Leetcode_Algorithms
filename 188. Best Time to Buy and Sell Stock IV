@@ -1,0 +1,25 @@
+class Solution {
+    public int maxProfit(int k, int[] prices) {
+        if(prices.length == 0) return 0;
+        if(k >= prices.length/2) return quickSolve(k, prices);
+        //dp[i][j] means the profit at day j with i transactions
+        int[][] dp = new int[k + 1][prices.length];
+        for(int i = 1; i < k + 1; i++){
+            int min = prices[0];
+            for(int j = 1; j < prices.length; j++){                
+                min = Math.min(min, prices[j] - dp[i - 1][j - 1]);
+                dp[i][j] = Math.max(dp[i][j - 1], prices[j] - min);
+            }
+        }
+        return dp[k][prices.length - 1];
+    }
+    
+    public int quickSolve(int k, int[] prices){
+        int sum = 0;
+        for(int i = 1; i < prices.length; i++){
+            if(prices[i] > prices[i - 1])
+                sum += prices[i] - prices[i - 1];
+        }
+        return sum;
+    }
+}
