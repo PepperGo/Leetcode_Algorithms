@@ -1,0 +1,15 @@
+class Solution {
+    public int countNumbersWithUniqueDigits(int n) {
+        if(n == 0) return 1;
+        int choices = 9;
+        int availableDigits = 9;
+        int count = 10;
+        while(n > 1 && availableDigits > 0){
+            choices = choices * availableDigits;
+            count += choices;
+            availableDigits--;
+            n--;
+        }
+        return count;
+    }
+}
