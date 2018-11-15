@@ -11,3 +11,20 @@ class Solution {
         return sum;
     }
 }
+
+
+class Solution {
+    public int numberOfArithmeticSlices(int[] A) {
+       // int[] dp = new int[A.length]; //dp[i] means: the number of arithmetic slices ends at day i
+        int sum = 0;
+        int prev = 0;
+        for(int i = 2; i < A.length; i++){
+            if(A[i] - A[i - 1] == A[i - 1] - A[i - 2]){
+                prev = prev + 1;
+                sum += prev;
+            }else
+                prev = 0;
+        }
+        return sum;
+    }
+}
