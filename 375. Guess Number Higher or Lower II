@@ -1,0 +1,18 @@
+class Solution {
+    public int getMoneyAmount(int n) {
+        int[][] dp = new int[n + 1][n + 1];
+        //dp[i][j]: the max cost from i-th number to j-th number;
+        //dj[i][j] = k + Math.max(dj[i][k - 1], dj[k + 1][j]) k = 1...n
+        for(int l = 2; l <= n; l++){//
+            for(int i = 1; i <= n - l + 1; i++){
+                int min = Integer.MAX_VALUE;
+                for(int k = i; k < i + l - 1; k++){
+                    min = Math.min(min, k + Math.max(dp[i][k - 1], dp[k + 1][i + l - 1]));
+                }
+                dp[i][i + l - 1] = min;
+            }
+        }
+        return dp[1][n];
+    }
+}
+
