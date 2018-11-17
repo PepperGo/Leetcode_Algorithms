@@ -66,3 +66,22 @@ class Solution {
         return result;
     }
 }
+
+
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        backtrack(result, nums, new ArrayList<Integer>(), 0);
+        return result;
+    }
+    
+    public void backtrack(List<List<Integer>> result, int[] nums, List<Integer> subset, int start){
+        result.add(new ArrayList<Integer>(subset));
+        for(int i = start; i < nums.length; i++){
+            subset.add(nums[i]);
+            backtrack(result, nums, subset, i + 1);
+            subset.remove(subset.size() - 1);
+        }
+    }
+}
