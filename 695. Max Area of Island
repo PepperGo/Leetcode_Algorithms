@@ -41,3 +41,31 @@ class Solution {
         return 0;
     }
 }
+
+
+class Solution {
+    private boolean visited[][];//visited[i][j]: (i, j) is calculated already
+    public int maxAreaOfIsland(int[][] grid) {
+        if(grid.length == 0) return 0;
+        visited = new boolean[grid.length][grid[0].length];
+        int sum = 0;
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(!visited[i][j] && grid[i][j] == 1){
+                    sum = Math.max(sum, calculate(grid, i, j));
+                }
+            }
+        }
+        return sum;
+    }
+    
+    public int calculate(int[][] grid, int i, int j){
+        if(i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || visited[i][j] || grid[i][j] == 0)
+            return 0;
+        else{
+            visited[i][j] = true;
+            return 1 + calculate(grid, i + 1, j) + calculate(grid, i - 1, j) + calculate(grid, i, j - 1) + calculate(grid, i, j + 1);
+        }
+            
+    }
+}
