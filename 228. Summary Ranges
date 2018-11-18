@@ -41,3 +41,23 @@ class Solution {
         return result;
     }
 }
+
+
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+        List<String> result = new ArrayList<>();
+        if(nums.length == 0) return result;
+        for(int start = 0, cur = 0; cur < nums.length; cur++){
+            while(cur < nums.length - 1 && nums[cur] + 1 == nums[cur + 1]){
+                cur++;
+            }
+            if(start == cur){
+                result.add(nums[cur] + "");
+            }else{
+                result.add(nums[start] + "->" + nums[cur]);
+            }
+            start = cur + 1;
+        }
+        return result;
+    }
+}
