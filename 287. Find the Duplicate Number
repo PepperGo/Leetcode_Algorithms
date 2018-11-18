@@ -18,3 +18,21 @@ class Solution {
 idea: https://leetcode.com/problems/find-the-duplicate-number/discuss/72845/Java-O(n)-time-and-O(1)-space-solution.-Similar-to-find-loop-in-linkedlist.  
 
 only if we start from n - 1, we can promise nums[n] != n, which will lead to itself
+
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int slow = 0, fast = 0;
+        do{
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        }while(slow != fast);
+        int pivot = 0;
+        while(pivot != slow){
+            pivot = nums[pivot];
+            slow = nums[slow];
+        }
+        return pivot;
+        
+    }
+}
