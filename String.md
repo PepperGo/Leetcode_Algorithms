@@ -16,3 +16,24 @@ Datatype variable[]  = new Datatype[] { value1,value2.... }
  
 ```   
 
+### 3. Longest Substring Without Repeating Characters
+#### [How to check StringBuilder charcters to see if it contains same characters as new string request from array?](https://stackoverflow.com/questions/3202861/java-how-to-check-stringbuilder-charcters-to-see-if-it-contains-same-characters) 
+```
+public int indexOf(String str)
+Returns the index within this string of the first occurrence of the specified substring. The integer returned is the smallest value k such that: this.toString().startsWith(str, k) is true.
+Parameters:
+str - any string.
+Returns:
+if the string argument occurs as a substring within this object, then the index of the first character of the first such substring is returned; if it does not occur as a substring, -1 is returned.
+```   
+#### length()
+```
+public int length()
+Returns the length (character count).
+Specified by:
+length in interface CharSequence
+Returns:
+the length of the sequence of characters currently represented by this object
+```   
+
+
