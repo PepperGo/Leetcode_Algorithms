@@ -62,7 +62,7 @@ class Solution {
         for(int i = 0, j = 0; j < s.length(); j++){
             i = Math.max(i, indexes[s.charAt(j)]);
             max = Math.max(max, j - i + 1);
-            indexes[s.charAt(j)] = j + 1;
+            indexes[s.charAt(j)] = j + 1; //store the new front index if finding duplicate
         }
         return max;
     }
