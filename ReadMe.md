@@ -13,3 +13,5 @@
 ### [Array](./Array.md)
 
 ### [Dynamic Programming](./DynamicProgramming.md)
+
+### [String](./String.md)
