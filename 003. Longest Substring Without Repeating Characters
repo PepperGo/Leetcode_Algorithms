@@ -15,3 +15,56 @@ public class Solution {
         return length;
     }
 }
+
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if(s.length() < 2) return s.length();
+        int max = 0;
+        for(int i = 0; i < s.length(); i++){
+            StringBuilder str = new StringBuilder();
+            str.append(s.charAt(i));
+            for(int j = i + 1; j < s.length(); j++){
+                if(str.indexOf(s.charAt(j) + "") == -1)
+                    str.append(s.charAt(j));
+                else
+                    break;
+            }
+            max = Math.max(max, str.length());
+        }
+        return max;
+    }
+}
+//11%
+
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        HashSet<Character> hashSet = new HashSet<>();
+        int max = 0;
+        for(int i = 0, j = 0; i < s.length() && j < s.length();){
+            if(hashSet.contains(s.charAt(j))){
+                hashSet.remove(s.charAt(i++));
+            }else{
+                hashSet.add(s.charAt(j++));
+                max = Math.max(max, j - i);
+            }
+        }
+        return max;
+    }
+}
+//92%
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int[] indexes = new int[128];
+        int max = 0;
+        for(int i = 0, j = 0; j < s.length(); j++){
+            i = Math.max(i, indexes[s.charAt(j)]);
+            max = Math.max(max, j - i + 1);
+            indexes[s.charAt(j)] = j + 1;
+        }
+        return max;
+    }
+}
+//94%
