@@ -14,3 +14,25 @@ public class Solution {
         if(right < left) caculateResult(res, str + ")", left, right + 1, length);
     }
 }
+
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<List<String>> result = new ArrayList<>();
+        result.add(new ArrayList<String>(Arrays.asList("")));
+        for(int i = 1; i < n + 1; i++){
+            List<String> temp = new ArrayList<>();
+            for(int j = 0; j < i; j++){
+                for(String left : result.get(j)){
+                    for(String right : result.get(i - j - 1)){
+                        String str = "(" + left + ")" + right;
+                        temp.add(str);
+                    }
+                }
+            }
+            result.add(temp);
+        }
+        
+        return result.get(n);
+    }
+}
