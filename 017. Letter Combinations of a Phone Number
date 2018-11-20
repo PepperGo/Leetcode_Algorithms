@@ -24,3 +24,26 @@ class Solution {
 }
 
 
+class Solution {
+    String[] map = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    
+    public List<String> letterCombinations(String digits) {
+        List<String> result = new ArrayList<>();
+        if(digits.length() == 0) return result;
+        getCombinations(result, digits, "", 0);
+        return result;
+    }
+    
+    public void getCombinations(List<String> result, String digits, String temp, int start){
+        if(start == digits.length()) {
+            result.add(temp);
+            return;
+        }
+        int index = Character.getNumericValue(digits.charAt(start));
+        String candidates = map[index];
+        for(int i = 0; i < candidates.length(); i++){
+            getCombinations(result, digits, temp + candidates.charAt(i), start + 1);
+        }
+    }
+}
+
