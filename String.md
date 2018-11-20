@@ -36,4 +36,14 @@ Returns:
 the length of the sequence of characters currently represented by this object
 ```   
 
+### 17. Letter Combinations of a Phone Number
+#### Java Convert char to int
+```
+Character.getNumericValue()
+
+Get ASCII value
+
+Integer.parseInt(String.valueOf(c)); 
+
+```   
 
