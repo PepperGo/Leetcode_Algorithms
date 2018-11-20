@@ -51,5 +51,10 @@ Integer.parseInt(String.valueOf(c));
 #### StringBuilder vs String
 [StringBuilder vs String concatenation in toString() in Java](https://stackoverflow.com/questions/1532461/stringbuilder-vs-string-concatenation-in-tostring-in-java)    
 
+#### String.split()
+contain leading or trailing spaces, each word with more than one space
+```
+ String[] words = s.trim().split("\\s+");
+```  
 
 
