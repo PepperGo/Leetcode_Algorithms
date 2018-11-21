@@ -88,13 +88,13 @@ a: 97
 
 ### 125. Valid Palindrome
 #### alphanumeric characters
-isAlphabetic(int codePoint)   
+Character.isAlphabetic(char ch)   
 ```
 public static boolean isAlphabetic(int codePoint)
 Determines if the specified character (Unicode code point) is an alphabet.
 ```     
 
-isLetterOrDigit   
+Character.isLetterOrDigit(char ch)   
 ```
 public static boolean isLetterOrDigit(char ch)
 Determines if the specified character is a letter or digit.
