@@ -12,3 +12,23 @@ public class Solution {
         }
     }
 }
+
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if(needle.length() == 0) return 0; // "aaa" ""
+        if(needle.length() > haystack.length()) return -1; //"a" "aaa"
+        int index = 0;
+        //"aaa" "aa"
+        for(int i = 0; i < haystack.length() && i <= haystack.length() - needle.length(); i++){
+            index = i;
+            for(int j = 0; j < needle.length(); j++){
+                if(haystack.charAt(index++) != needle.charAt(j)){
+                    break;
+                }
+                if(j == needle.length() - 1) return i;
+            }
+        }
+        return -1;
+    }
+}
