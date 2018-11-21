@@ -58,3 +58,23 @@ contain leading or trailing spaces, each word with more than one space
 ```  
 
 
+### 49. Group Anagrams
+#### Iterate through a HashMap
+[Iterate through a HashMap](https://stackoverflow.com/questions/1066589/iterate-through-a-hashmap)   
+```
+Map<String, String> map = ...
+for (Map.Entry<String, String> entry : map.entrySet())
+{
+    System.out.println(entry.getKey() + "/" + entry.getValue());
+}
+```
+
+[Map.Entry : How to use it?](https://stackoverflow.com/questions/8689725/map-entry-how-to-use-it)     
+    
+    
+
+[Interface Map.Entry<K,V>](https://docs.oracle.com/javase/7/docs/api/java/util/Map.Entry.html)   
+
+
+
+
