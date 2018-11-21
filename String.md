@@ -86,3 +86,24 @@ for (Map.Entry<String, String> entry : map.entrySet())
 A: 65  
 a: 97
 
+### 125. Valid Palindrome
+#### alphanumeric characters
+isAlphabetic(int codePoint)   
+```
+public static boolean isAlphabetic(int codePoint)
+Determines if the specified character (Unicode code point) is an alphabet.
+```     
+
+isLetterOrDigit   
+```
+public static boolean isLetterOrDigit(char ch)
+Determines if the specified character is a letter or digit.
+A character is considered to be a letter or digit if either Character.isLetter(char ch) or Character.isDigit(char ch) returns true for the character.
+
+```   
+
+regular expression   
+```
+[^A-Za-z0-9]
+```   
+
