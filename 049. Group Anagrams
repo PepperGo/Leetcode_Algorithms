@@ -15,7 +15,7 @@ class Solution {
                 hashMap.put(key, temp);
             }
         }
-        List<List<String>> result = new ArrayList<>();
+        List<List<String>> result = new ArrayList<>();  //duplicate
         for(Map.Entry<String, List<String>> entry : hashMap.entrySet()){
             result.add(entry.getValue());
         }
