@@ -80,3 +80,9 @@ for (Map.Entry<String, String> entry : map.entrySet())
 [How to convert a Map to List in Java?](https://stackoverflow.com/questions/1026723/how-to-convert-a-map-to-list-in-java)   
 
 
+### 709. To Lower Case
+#### ASCII 
+128(0 - 127)   
+A: 65  
+a: 97
+
