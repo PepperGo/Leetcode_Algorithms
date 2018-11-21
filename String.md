@@ -76,5 +76,7 @@ for (Map.Entry<String, String> entry : map.entrySet())
 [Interface Map.Entry<K,V>](https://docs.oracle.com/javase/7/docs/api/java/util/Map.Entry.html)   
 
 
+#### How to convert a Map to List in Java?
+[How to convert a Map to List in Java?](https://stackoverflow.com/questions/1026723/how-to-convert-a-map-to-list-in-java)   
 
 
