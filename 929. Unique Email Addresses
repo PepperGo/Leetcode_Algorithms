@@ -1,0 +1,46 @@
+class Solution {
+    public int numUniqueEmails(String[] emails) {
+        HashSet<String> hashSet = new HashSet<>();
+        for(String email : emails){
+            hashSet.add(translateToSimpleAddress(email));
+        }
+        return hashSet.size();
+    }
+
+    public String translateToSimpleAddress(String email){
+        int atIndex = email.indexOf("@");
+        String localName = email.substring(0, atIndex);
+        String domainName = email.substring(atIndex);
+        while(localName.indexOf(".") != -1){
+            int dotIndex = localName.indexOf(".");
+            localName = localName.substring(0, dotIndex) + localName.substring(dotIndex + 1);
+        }
+        while(localName.indexOf("+") != -1){
+            int addIndex = localName.indexOf("+");
+            localName = localName.substring(0, addIndex);
+        }
+        return localName + domainName;
+    }
+}
+
+class Solution {
+    public int numUniqueEmails(String[] emails) {
+        HashSet<String> hashSet = new HashSet<>();
+        for(String email : emails){
+            hashSet.add(translateToSimpleAddress(email));
+        }
+        return hashSet.size();
+    }
+
+    public String translateToSimpleAddress(String email){
+        int atIndex = email.indexOf("@");
+        String localName = email.substring(0, atIndex);
+        String domainName = email.substring(atIndex);
+        localName = localName.replaceAll(".", "");
+        if(localName.indexOf("+") != -1){
+            int addIndex = localName.indexOf("+");
+            localName = localName.substring(0, addIndex);
+        }
+        return localName + domainName;
+    }
+}
