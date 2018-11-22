@@ -1,0 +1,35 @@
+class Solution {
+    public String minWindow(String s, String t) {
+        Map<Character, Integer> words = new HashMap<>();
+        for(int i = 0; i < t.length(); i++){
+            char ch = t.charAt(i);
+            words.put(ch, words.getOrDefault(ch, 0) + 1);
+        }
+        int start = 0, end = 0, count = 0, min = 0, max = 0, dis = Integer.MAX_VALUE;
+        while(end < s.length()){
+            char cur = s.charAt(end);
+            if(words.containsKey(cur)){
+                words.put(cur, words.get(cur) - 1);
+                if(words.get(cur) >= 0){
+                    count++;
+                }
+            }
+            while(count == t.length()){
+                if(dis > end - start + 1){
+                    dis = end - start + 1;
+                    min = start;
+                    max = end;
+                }
+                char front = s.charAt(start);
+                if(words.containsKey(front)){
+                    words.put(front, words.get(front) + 1);
+                    if(words.get(front) > 0)
+                        count--;
+                }
+                start++;
+            }
+            end++;
+        }
+        return dis == Integer.MAX_VALUE ? "" : s.substring(min, max + 1);
+    }
+}
