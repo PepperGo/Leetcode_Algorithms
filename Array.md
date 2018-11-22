@@ -259,5 +259,8 @@ PriorityQueue<Integer> pq = new PriorityQueue<>(26, Collections.reverseOrder());
 [Collections (Java Platform SE 7 ) - Oracle Docs](https://docs.oracle.com/javase/7/docs/api/java/util/Collections.html)     
 
 
+### Heaps and Priority Queues
+[Heaps and Priority Queues](https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/)    
+
 
 
