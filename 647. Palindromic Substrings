@@ -1,0 +1,19 @@
+class Solution {
+    int count = 0;
+    public int countSubstrings(String s) {
+        for(int i = 0; i < s.length(); i++){
+            extendPalindromic(s, i, i);
+            extendPalindromic(s, i, i + 1);
+        }
+        return count;
+    }
+    
+    public void extendPalindromic(String s, int i, int j){
+        int low = i, high = j;
+        while(low >= 0 && high < s.length() && s.charAt(low) == s.charAt(high)){
+            low--;
+            high++;
+            count++;
+        }
+    }
+}
