@@ -19,3 +19,65 @@ class Solution {
         return t1;
     }
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        TreeNode newNode = null;
+        if(t1 != null && t2 != null){
+            newNode = new TreeNode(t1.val + t2.val);
+        }else if(t1 != null){
+            newNode = new TreeNode(t1.val);
+            newNode.left = t1.left;
+            newNode.right = t1.right;
+            return newNode;
+        }else if(t2 != null){
+            newNode = new TreeNode(t2.val);
+            newNode.left = t2.left;
+            newNode.right = t2.right;
+            return newNode;
+        }else
+            return null;
+        newNode.left = mergeTrees(t1.left, t2.left);
+        newNode.right = mergeTrees(t1.right, t2.right);
+        return newNode;
+    }
+}//92%
+
+//we don't need to create a newNode
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        if(t1 == null){
+            return t2;
+        }
+        if(t2 == null){
+            return t1;
+        }
+        t1.val += t2.val;
+        t1.left = mergeTrees(t1.left, t2.left);
+        t1.right = mergeTrees(t1.right, t2.right);
+        return t1;
+        
+    }
+}
+//99%
