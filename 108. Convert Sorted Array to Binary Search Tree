@@ -22,3 +22,33 @@ public class Solution {
 		return root;
 	}
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        return helper(nums, 0, nums.length - 1);
+    }
+    
+    public TreeNode helper(int[] nums, int i, int j){//[i, j]
+        if(i > j) 
+            return null;
+        else if(i == j) 
+            return new TreeNode(nums[i]);
+        else{
+            int mid = j + (i - j)/2;
+            TreeNode node = new TreeNode(nums[mid]);
+            node.left = helper(nums, i, mid - 1);
+            node.right = helper(nums, mid + 1, j);
+            return node;
+        }
+    }
+}
