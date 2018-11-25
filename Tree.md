@@ -9,6 +9,7 @@
 [Convert a normal BST to Balanced BST](https://www.geeksforgeeks.org/convert-normal-bst-balanced-bst/Balanced BST)   
 
 ##### Does an balanced binary tree has an unique form?
+[Does an balanced binary tree has an unique form?](https://stackoverflow.com/questions/37608271/does-an-balanced-binary-tree-has-an-unique-form)   
 No. There isn't. A balanced tree may have different order based on the order of operations made in order to get to it. Also, there are multiple ways to do a self balancing tree (Red-Black, AVL, Splay) - all result (usually) in different trees.
 
 #### Self-balancing binary search tree
