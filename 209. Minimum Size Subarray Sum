@@ -13,3 +13,20 @@ public class Solution {
         return min == Integer.MAX_VALUE ? 0 : min;
     }
 }
+
+
+class Solution {
+    public int minSubArrayLen(int s, int[] nums) {
+        int min = Integer.MAX_VALUE;
+        int sum = 0;
+        for(int low = 0, high = 0; high < nums.length; high++){
+            sum += nums[high];
+            while(sum >= s){
+                min = Math.min(min, high - low + 1);
+                sum -= nums[low];
+                low++;
+            }
+        }
+        return min == Integer.MAX_VALUE ? 0 : min;
+    }
+}
