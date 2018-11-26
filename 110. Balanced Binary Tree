@@ -45,3 +45,33 @@ class Solution {
 //O(nlogn)
 
 
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isBalanced;
+    public boolean isBalanced(TreeNode root) {
+        isBalanced = true;
+        height(root);
+        return isBalanced;
+    }
+    
+    public int height(TreeNode node){
+        if(node == null) return -1;
+        int left = height(node.left);
+        int right = height(node.right);
+        if(Math.abs(left - right) > 1){
+            isBalanced = false;
+            return -1;
+        }
+        return Math.max(left, right) + 1;
+    }
+}
+
+//O(n)
