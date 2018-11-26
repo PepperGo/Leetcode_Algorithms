@@ -10,8 +10,12 @@
 public class Codec {
     
     private String splitSymbol = ",";
+    //private static final String splitSymbol = ",";
+    
     private String nullNodeSymbol = "#";
-
+    //private static final String nullNodeSymbol = "#";
+    
+    
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         StringBuilder sb = new StringBuilder();
