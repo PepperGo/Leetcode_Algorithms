@@ -29,5 +29,13 @@ AVL tree checks the height of the left and the right sub-trees and assures that 
 ##### Red-black tree  
 
 
+#### 110. Balanced Binary Tree
+##### height, size, and depth of a binary tree?
+[What is the height, size, and depth of a binary tree?](https://www.quora.com/What-is-the-height-size-and-depth-of-a-binary-tree)   
+
+An empty tree has height of -1;   
+Height of leaf is 0;   
+
+
 
 
