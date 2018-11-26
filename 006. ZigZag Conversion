@@ -19,3 +19,26 @@ class Solution {
         return sb[0].toString();
     }
 }
+
+class Solution {
+    public String convert(String s, int numRows) {
+        StringBuilder[] sb = new StringBuilder[numRows];
+        for(int i = 0; i < sb.length; i++){
+            sb[i] = new StringBuilder();
+        }
+        int count = 0;
+        while(count < s.length()){
+            for(int i = 0; i < numRows && count < s.length(); i++){
+                sb[i].append(s.charAt(count++));
+            }
+            for(int j = numRows - 2; j >= 1 && count < s.length(); j--){
+                sb[j].append(s.charAt(count++));
+            }
+        }
+        for(int i = 1; i < sb.length; i++){
+            sb[0].append(sb[i]);
+        }
+        return sb[0].toString();
+
+    }
+}
