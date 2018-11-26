@@ -1,0 +1,29 @@
+class Solution {
+    public int kthSmallest(int[][] matrix, int k) {
+        PriorityQueue<Node> queue = new PriorityQueue<>(new Comparator<Node>(){
+            public int compare(Node n1, Node n2){
+                return n1.val - n2.val;
+            }
+        });
+        for(int i = 0, j = 0; j < matrix[0].length; j++)
+            queue.offer(new Node(i, j, matrix[i][j]));
+        for(int i = 1; i < k; i++){
+            Node node = queue.poll();
+            if(node.row == matrix.length - 1) continue;
+            queue.offer(new Node(node.row + 1, node.col, matrix[node.row + 1][node.col]));
+        }
+        return queue.poll().val;
+    }
+    
+    class Node{
+        public int row;
+        public int col;
+        public int val;
+        
+        Node(int x, int y, int val){
+            row = x;
+            col = y;
+            this.val = val;
+        }
+    }
+}
