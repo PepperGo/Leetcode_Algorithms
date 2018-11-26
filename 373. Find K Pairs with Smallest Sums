@@ -1,0 +1,32 @@
+class Solution {
+    public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+        List<int[]> result = new ArrayList<>();
+        if(nums1.length == 0 || nums2.length == 0) return result;
+        PriorityQueue<Node> queue = new PriorityQueue<>(new Comparator<Node>(){
+            public int compare(Node n1, Node n2){
+                return (n2.u + n2.v) - (n1.u + n1.v);
+            }
+        });
+        
+        for(int i = 0; i < nums1.length; i++){
+            for(int j = 0; j < nums2.length; j++){
+                queue.offer(new Node(nums1[i], nums2[j]));
+                if(queue.size() > k)
+                    queue.poll();
+            }
+        }
+        for(Node node : queue){
+            result.add(new int[]{node.u, node.v});
+        }
+        return result;
+    }
+    
+    class Node{
+        int u;
+        int v;
+        public Node(int x, int y){
+            u = x;
+            v = y;
+        }
+    }
+}
