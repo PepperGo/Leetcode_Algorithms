@@ -18,3 +18,32 @@ public class Solution {
         prev = root;
     }
 }
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    Stack<TreeNode> stack = new Stack<>();
+    public void flatten(TreeNode root) {
+        push(root);
+        TreeNode pre = null;
+        while(!stack.isEmpty()){
+            TreeNode cur = stack.pop();
+            cur.right = pre;
+            cur.left = null;
+            pre = cur;
+        }
+    }
+    
+    public void push(TreeNode root){
+        if(root == null) return;
+        stack.add(root);
+        push(root.left);
+        push(root.right);
+    }
+}
