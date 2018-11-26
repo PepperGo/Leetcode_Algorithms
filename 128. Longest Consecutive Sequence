@@ -28,3 +28,26 @@ Although the time complexity appears to be quadratic due to the while loop neste
 
 Space complexity : O(n)
 In order to set up O(1) containment lookups, we allocate linear space for a hash table to store the O(n) numbers in nums. Other than that, the space complexity is identical to that of the brute force solution.
+
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        if(nums.length == 0) return 0;
+        HashSet<Integer> hashSet = new HashSet<>();
+        for(int num : nums){
+            hashSet.add(num);
+        }
+        int max = 0;
+        for(int num : nums){
+            if(!hashSet.contains(num - 1)){
+                int count = 0;
+                while(hashSet.contains(num)){
+                    num++;
+                    count++;
+                }
+                max = Math.max(max, count);
+            }
+        }
+        return max;
+    }
+}
