@@ -24,3 +24,30 @@ class Solution {
 
 //One special problem is: res.addAll(count[kCount]) would add all the numbers has the same frequency.
 //Leetcode compiler cannot detect that special problem.
+
+
+class Solution {
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        HashMap<Integer, Integer> counts = new HashMap<>();
+        for(int num : nums){
+            counts.put(num, counts.getOrDefault(num, 0) + 1);
+        }
+        
+        PriorityQueue<Map.Entry<Integer, Integer>> queue = new PriorityQueue<>(new Comparator<Map.Entry<Integer, Integer>>(){
+            public int compare(Map.Entry<Integer, Integer> a, Map.Entry<Integer, Integer> b){
+                return a.getValue() - b.getValue();
+            }
+        });
+        
+        for(Map.Entry<Integer, Integer> iterator : counts.entrySet()){
+            queue.add(iterator);
+            if(queue.size() > k)
+                queue.poll();
+        }
+        List<Integer> result = new ArrayList<>();
+        for(Map.Entry<Integer, Integer> mp : queue){
+            result.add(mp.getKey());
+        }
+        return result;
+    }
+}
