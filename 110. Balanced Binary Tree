@@ -42,3 +42,6 @@ class Solution {
         return Math.max(height(node.left), height(node.right)) + 1;
     }
 }
+//O(nlogn)
+
+
