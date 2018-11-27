@@ -44,4 +44,8 @@ Height of leaf is 0;
 [Basics of Bit Manipulation](https://www.hackerearth.com/practice/basic-programming/bit-manipulation/basics-of-bit-manipulation/tutorial/)   
 
 
+#### 230. Kth Smallest Element in a BST
+##### PriorityQueue through Comparator
+[Implement PriorityQueue through Comparator in Java](https://www.geeksforgeeks.org/implement-priorityqueue-comparator-java/)   
+
 
