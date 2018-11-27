@@ -37,5 +37,11 @@ An empty tree has height of -1;
 Height of leaf is 0;   
 
 
+#### 222. Count Complete Tree Nodes
+##### Bit Operators
+[Bitwise and Bit Shift Operators](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/op3.html)   
+
+[Basics of Bit Manipulation](https://www.hackerearth.com/practice/basic-programming/bit-manipulation/basics-of-bit-manipulation/tutorial/)   
+
 
 
