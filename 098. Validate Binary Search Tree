@@ -18,3 +18,28 @@ public class Solution {
 		return isVaildBST(root.left, min, root.val) && isVaildBST(root.right, root.val, max);
     }
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+        return checkIfValid(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+    
+    public boolean checkIfValid(TreeNode node, long low, long high){
+        if(node == null) return true;
+        if(node.val > low && node.val < high)
+            return checkIfValid(node.left, low, node.val) && checkIfValid(node.right, node.val, high);
+        else
+            return false;
+    }
+}
+
