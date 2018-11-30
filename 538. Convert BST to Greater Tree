@@ -20,3 +20,30 @@ class Solution {
     }
     
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    int sum = 0;
+    public TreeNode convertBST(TreeNode root) {
+        if(root == null) return root;
+        RightInOrder(root);
+        return root;
+    }
+    
+    public void RightInOrder(TreeNode node){
+        if(node == null) return;
+        RightInOrder(node.right);
+        sum += node.val;
+        node.val = sum;
+        RightInOrder(node.left);
+    }
+}
