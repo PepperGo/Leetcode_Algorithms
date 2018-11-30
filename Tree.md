@@ -49,3 +49,20 @@ Height of leaf is 0;
 [Implement PriorityQueue through Comparator in Java](https://www.geeksforgeeks.org/implement-priorityqueue-comparator-java/)   
 
 
+#### 98. Validate Binary Search Tree
+##### Inorder Tree Traversal without Recursion
+[Inorder Tree Traversal without Recursion](https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion/)   
+Stack
+
+##### Iterative Preorder Traversal
+[Iterative Preorder Traversal](https://www.geeksforgeeks.org/iterative-preorder-traversal/)   
+Stack
+
+##### Iterative Postorder Traversal
+[Iterative Postorder Traversal | Set 1 (Using Two Stacks)](https://www.geeksforgeeks.org/iterative-postorder-traversal/)  
+[Iterative Postorder Traversal | Set 2 (Using One Stack)](https://www.geeksforgeeks.org/iterative-postorder-traversal-using-stack/)  
+
+
+
+
+
