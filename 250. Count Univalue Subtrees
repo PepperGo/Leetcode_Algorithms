@@ -1,0 +1,34 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    private int sum = 0;
+    public int countUnivalSubtrees(TreeNode root) {
+        if(root == null) return 0;
+        traverseTree(root);
+        return sum;
+    }
+    
+    public boolean traverseTree(TreeNode node){
+        if(node == null) return true;
+        boolean isLeftUni = traverseTree(node.left);
+        boolean isRightUni = traverseTree(node.right);
+        if(isLeftUni && isRightUni){
+            if(node.left != null && node.left.val != node.val){
+                return false;
+            }
+            if(node.right != null && node.right.val != node.val){
+                return false;
+            }
+            sum++;
+            return true;
+        }
+        return false;
+    }
+}
