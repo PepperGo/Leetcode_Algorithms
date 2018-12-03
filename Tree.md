@@ -67,3 +67,10 @@ Stack
 ##### Integer division: How do you produce a double?
 [Integer division: How do you produce a double?](https://stackoverflow.com/questions/3144610/integer-division-how-do-you-produce-a-double)   
 
+
+#### 145. Binary Tree Postorder Traversal
+##### Preorder, Inorder, and Postorder Iteratively Summarization
+[Preorder, Inorder, and Postorder Iteratively Summarization](https://leetcode.com/problems/binary-tree-postorder-traversal/discuss/45551/Preorder-Inorder-and-Postorder-Iteratively-Summarization)    
+
+
+
