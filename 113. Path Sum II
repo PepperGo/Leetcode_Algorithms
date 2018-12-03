@@ -30,3 +30,36 @@ public class Solution {
 		item.remove(item.size()-1);
 	}
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> pathSum(TreeNode root, int sum) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null) return result;
+        backtrack(result, new ArrayList<>(), root, sum);
+        return result;
+        
+    }
+    
+    public void backtrack(List<List<Integer>> result, List<Integer> temp, TreeNode node, int remain){
+        if(node == null) return;
+        temp.add(node.val);
+        if(node.left == null && node.right == null && node.val == remain){
+            result.add(new ArrayList<>(temp));
+            temp.remove(temp.size() - 1);
+            return;
+        }
+        backtrack(result, temp, node.left, remain - node.val);
+        backtrack(result, temp, node.right, remain - node.val);
+        temp.remove(temp.size() - 1);
+    }
+}
