@@ -83,3 +83,7 @@ Stack
 public StringBuilder deleteCharAt(int index)
 Removes the char at the specified position in this sequence. This sequence is shortened by one char.   
 
+#### 450. Delete Node in a BST
+##### Binary Search Tree | Set 2 (Delete)
+[Binary Search Tree | Set 2 (Delete)](https://www.geeksforgeeks.org/binary-search-tree-set-2-delete/)    
+
