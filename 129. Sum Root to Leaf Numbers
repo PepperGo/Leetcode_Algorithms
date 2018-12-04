@@ -18,3 +18,58 @@ public class Solution {
         return getSum(root.left, root.val + sum*10) + getSum(root.right, root.val + sum*10);
     }
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    int sum = 0;
+    public int sumNumbers(TreeNode root) {
+        dfs(root, new StringBuilder());
+        return sum;
+    }
+    
+    public void dfs(TreeNode node, StringBuilder sb){
+        if(node == null){
+            return;
+        }
+        sb.append(node.val);
+        if(node.left == null && node.right == null){
+            sum += Integer.parseInt(sb.toString());
+            sb.deleteCharAt(sb.length() - 1);
+            return;
+        }
+        dfs(node.left, sb);
+        dfs(node.right, sb);
+        sb.deleteCharAt(sb.length() - 1);
+    }
+}
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public int sumNumbers(TreeNode root) {
+        return sum(root, 0);
+    }
+    
+    public int sum(TreeNode node, int sum){
+        if(node == null) return 0;//not leaves, return 0
+        if(node.left == null && node.right == null) return sum * 10 + node.val;
+        return sum(node.left, sum * 10 + node.val) + sum(node.right, sum * 10 + node.val);
+    }
+}
