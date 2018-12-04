@@ -87,3 +87,5 @@ Removes the char at the specified position in this sequence. This sequence is sh
 ##### Binary Search Tree | Set 2 (Delete)
 [Binary Search Tree | Set 2 (Delete)](https://www.geeksforgeeks.org/binary-search-tree-set-2-delete/)    
 
+[Binary search tree. Removing a node](http://www.algolist.net/Data_structures/Binary_search_tree/Removal)    
+
