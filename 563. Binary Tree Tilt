@@ -22,3 +22,29 @@ class Solution {
         return leftSum + rightSum + node.val; 
     }
 }
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    int tilt = 0;
+    public int findTilt(TreeNode root) {
+        traverse(root);
+        return tilt;
+    }
+    
+    public int traverse(TreeNode node){
+        if(node == null) return 0;
+        int left = traverse(node.left);
+        int right = traverse(node.right);
+        tilt += Math.abs(left - right);
+        return left + right + node.val;
+    }
+}
