@@ -1,0 +1,61 @@
+/**
+ * Definition for singly-linked list with a random pointer.
+ * class RandomListNode {
+ *     int label;
+ *     RandomListNode next, random;
+ *     RandomListNode(int x) { this.label = x; }
+ * };
+ */
+public class Solution {
+    //key: original node, value: copied node
+    HashMap<RandomListNode, RandomListNode> hashMap = new HashMap<>();
+    public RandomListNode copyRandomList(RandomListNode head) {
+        if(head == null) return null;
+        RandomListNode node = null;
+        if(hashMap.containsKey(head)){
+            return hashMap.get(head);
+        }else{
+            node = new RandomListNode(head.label);
+            hashMap.put(head, node);
+        }
+        node.next = copyRandomList(head.next);
+        node.random = copyRandomList(head.random);
+        return node;
+        
+    }
+}
+
+/**
+ * Definition for singly-linked list with a random pointer.
+ * class RandomListNode {
+ *     int label;
+ *     RandomListNode next, random;
+ *     RandomListNode(int x) { this.label = x; }
+ * };
+ */
+public class Solution {
+    HashMap<RandomListNode, RandomListNode> hashMap = new HashMap<>();
+    
+    public RandomListNode copyRandomList(RandomListNode head) {
+        if(head == null) return null;
+        RandomListNode current = head;
+        while(current != null){
+            RandomListNode copiedCurrent = getClonedNode(current);
+            copiedCurrent.next = getClonedNode(current.next);
+            copiedCurrent.random = getClonedNode(current.random);
+            current = current.next;
+        }
+        return getClonedNode(head);
+    }
+    
+    public RandomListNode getClonedNode(RandomListNode node){
+        if(node == null) return null;
+        if(hashMap.containsKey(node)){
+            return hashMap.get(node);
+        }else{
+            RandomListNode copiedNode = new RandomListNode(node.label);
+            hashMap.put(node, copiedNode);
+            return copiedNode;
+        }
+    }
+}
