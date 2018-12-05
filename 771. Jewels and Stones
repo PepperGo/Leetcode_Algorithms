@@ -16,3 +16,24 @@ class Solution {
 public int numJewelsInStones(String J, String S) {
     return S.replaceAll("[^" + J + "]", "").length();
 }
+
+
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        int[] jewels = new int[256];
+        for(char ch : J.toCharArray())
+            jewels[ch]++;
+        int count = 0;
+        for(char ch : S.toCharArray()){
+            if(jewels[ch] != 0)
+                count++;
+        }
+        return count;
+    }
+}
+
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        return S.replaceAll("[^" + J + "]", "").length();
+    }
+}
