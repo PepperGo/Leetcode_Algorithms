@@ -46,6 +46,7 @@ class Solution {
  * }
  */
 class Solution {
+//http://zxi.mytechroad.com/blog/tree/leetcode-652-find-duplicate-subtrees/
     public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
        
         //key: id for subtress, value: number of occur
