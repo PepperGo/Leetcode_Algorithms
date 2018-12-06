@@ -10,3 +10,13 @@ More formally, adds the specified element e to this set if this set contains no 
 If this set already contains the element, the call leaves the set unchanged and returns false.
 ```
 
+### 349. Intersection of Two Arrays
+#### List\<Integer\> to int[]
+[How to convert List<Integer> to int[] in Java?](https://stackoverflow.com/questions/960431/how-to-convert-listinteger-to-int-in-java)   
+
+No
+  
+#### List\<String\> to String[]
+[Converting 'ArrayList<String> to 'String[]' in Java](https://stackoverflow.com/questions/4042434/converting-arrayliststring-to-string-in-java)   
+ 
+ String[] array = list.toArray(new String[list.size()]);
