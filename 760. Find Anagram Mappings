@@ -1,0 +1,22 @@
+class Solution {
+    public int[] anagramMappings(int[] A, int[] B) {
+        HashMap<Integer, List<Integer>> mapping = new HashMap<>();
+        for(int i = 0; i < B.length; i++){
+            if(mapping.containsKey(B[i])){
+                mapping.get(B[i]).add(i);
+            }else{
+                List<Integer> duplicate = new ArrayList<>();
+                duplicate.add(i);
+                mapping.put(B[i], duplicate);
+            }
+        }
+        int[] result = new int[A.length];
+        for(int i = 0; i < A.length; i++){
+            int num = A[i];
+            int index = mapping.get(num).get(0);
+            result[i] = index;
+            mapping.get(num).remove(0);//remove the first index of duplicate list
+        }
+        return result;
+    }
+}
