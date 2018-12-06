@@ -20,3 +20,9 @@ No
 [Converting 'ArrayList<String> to 'String[]' in Java](https://stackoverflow.com/questions/4042434/converting-arrayliststring-to-string-in-java)   
  
  String[] array = list.toArray(new String[list.size()]);
+
+
+### 204. Count Primes
+#### [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)   
+
+
