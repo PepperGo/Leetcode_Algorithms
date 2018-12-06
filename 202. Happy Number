@@ -21,3 +21,26 @@ public class Solution {
         return result;
     }
 }
+
+class Solution {
+    public boolean isHappy(int n) {
+        int slow = n;
+        int fast = n;
+        do{
+            slow = getNextDigit(slow);
+            fast = getNextDigit(getNextDigit(fast));
+            if(slow == 1) return true;
+        }while(slow != fast);
+        return false;
+    }
+    
+    public int getNextDigit(int n){
+        int sum = 0;
+        while(n != 0){
+            int num = n % 10;
+            sum += num * num;
+            n = n/10;
+        }
+        return sum;
+    }
+}
