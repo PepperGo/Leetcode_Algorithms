@@ -12,3 +12,18 @@ public class Solution {
         return repeated;
     }
 }
+
+
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        Set<String> presented = new HashSet<>(); //all presented string
+        Set<String> result = new HashSet<>(); //the duplicated
+        for(int i = 0; i < s.length() - 9; i++){
+            String seq = s.substring(i, i + 10);
+            if(!presented.add(seq)){
+                result.add(seq);
+            }
+        }
+        return new ArrayList<>(result);
+    }
+}
