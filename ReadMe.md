@@ -18,4 +18,4 @@
 
 ### [Tree](./Tree.md)  
 
-### [HashTable](/.HashTable.md)
+### [HashTable](./HashTable.md)
