@@ -12,3 +12,17 @@ class Solution {
         return result;
     }
 }
+
+class Solution {
+    public String[] findWords(String[] words) {
+        List<String> result = new ArrayList<>();
+        for(String str : words){
+            String word = str.toLowerCase();
+            if(word.matches("[qwertyuiop]*") || 
+               word.matches("[asdfghjkl]*") ||
+               word.matches("[zxcvbnm]*"))
+                result.add(str);
+        }
+        return result.toArray(new String[result.size()]);
+    }
+}
