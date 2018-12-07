@@ -26,3 +26,9 @@ No
 #### [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)   
 
 
+### 535. Encode and Decode TinyURL
+#### [HashCode and hashCode()]
+[Equals() and hashCode() methods in Java](https://www.geeksforgeeks.org/equals-hashcode-methods-java/)    
+
+[Why do I need to override the equals and hashCode methods in Java?](https://stackoverflow.com/questions/2265503/why-do-i-need-to-override-the-equals-and-hashcode-methods-in-java)  
+
