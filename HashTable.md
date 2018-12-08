@@ -35,3 +35,5 @@ No
 #### Random Number
 [How to generate random integers within a specific range in Java?](https://stackoverflow.com/questions/363681/how-to-generate-random-integers-within-a-specific-range-in-java)    
 
+[Getting random numbers in Java](https://stackoverflow.com/questions/5887709/getting-random-numbers-in-java)    
+
