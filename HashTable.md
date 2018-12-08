@@ -32,3 +32,6 @@ No
 
 [Why do I need to override the equals and hashCode methods in Java?](https://stackoverflow.com/questions/2265503/why-do-i-need-to-override-the-equals-and-hashcode-methods-in-java)  
 
+#### Random Number
+[How to generate random integers within a specific range in Java?](https://stackoverflow.com/questions/363681/how-to-generate-random-integers-within-a-specific-range-in-java)    
+
