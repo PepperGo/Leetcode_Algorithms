@@ -22,7 +22,8 @@
   Exception in thread "main" java.lang.NumberFormatException: For input string: "10A"
 ```    
 
-
+#### character is a letter or number
+[What is the best way to tell if a character is a letter or number in Java without using regexes?](https://stackoverflow.com/questions/4047808/what-is-the-best-way-to-tell-if-a-character-is-a-letter-or-number-in-java-withou)   
 
 
 
