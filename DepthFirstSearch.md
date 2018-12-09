@@ -25,6 +25,23 @@
 #### character is a letter or number
 [What is the best way to tell if a character is a letter or number in Java without using regexes?](https://stackoverflow.com/questions/4047808/what-is-the-best-way-to-tell-if-a-character-is-a-letter-or-number-in-java-withou)   
 
+### 109. Convert Sorted List to Binary Search Tree
+#### Setting LinkedList nodes to null
+[Setting LinkedList nodes to null](https://stackoverflow.com/questions/33878718/setting-linkedlist-nodes-to-null)   
+
+```
+               n
+               |
+               v
+A -> B -> C -> D 
+
+If you set n to null, the end result is this:
+
+               n---> null
+
+
+A -> B -> C -> D
+```    
 
 
 
