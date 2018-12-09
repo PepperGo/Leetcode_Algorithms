@@ -1,0 +1,37 @@
+class Solution {
+    public String decodeString(String s) {
+        StringBuilder sb = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+        for(int i = 0; i < s.length(); i++){
+            char ch = s.charAt(i);
+            if(ch == ']'){
+                StringBuilder temp = new StringBuilder();
+                while(!stack.isEmpty() && stack.peek() != '['){
+                    temp.append(stack.pop());
+                }
+                stack.pop(); //pop '['
+                StringBuilder num = new StringBuilder();
+                while(!stack.isEmpty() && Character.isDigit(stack.peek())){
+                    num.append(stack.pop());
+                }
+                String newStr = "";
+                String si = temp.reverse().toString();
+                int count = Integer.parseInt(num.reverse().toString());
+                for(int j = 0; j < count; j++){
+                    newStr += si;
+                }
+                for(char c : newStr.toCharArray()){
+                    stack.push(c);
+                }
+            }else{
+                stack.push(ch);
+            }
+        }
+        while(!stack.isEmpty()){
+            sb.append(stack.pop());
+        }
+        return sb.reverse().toString();
+    }
+}
+
+
