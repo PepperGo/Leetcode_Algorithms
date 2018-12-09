@@ -19,3 +19,5 @@
 ### [Tree](./Tree.md)  
 
 ### [HashTable](./HashTable.md)
+
+### [Depth-first Search](./DepthFirstSearch.md)
