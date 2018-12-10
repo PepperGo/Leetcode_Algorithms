@@ -1,0 +1,24 @@
+class Solution {
+    public int findCircleNum(int[][] M) {
+        if(M == null && M.length != 0) return 0;
+        int count = 0;
+        boolean[] isVisited = new boolean[M.length];
+        for(int i = 0; i < isVisited.length; i++){
+            if(!isVisited[i]){
+                dfs(i, isVisited, M);
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    public void dfs(int i, boolean[] isVisited, int[][] M){
+        for(int j = 0; j < isVisited.length; j++){
+            if(!isVisited[j] && M[i][j] == 1){
+                isVisited[j] = true;
+                dfs(j, isVisited, M);
+            }
+        }
+    }
+    
+}
