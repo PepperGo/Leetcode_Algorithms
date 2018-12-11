@@ -44,4 +44,14 @@ A -> B -> C -> D
 ```    
 
 
+### 207. Course Schedule
+#### Topological sort
+[Topological Sorting](https://www.geeksforgeeks.org/topological-sorting/)  
+
+[Topological sorting From Wikipedia](https://en.wikipedia.org/wiki/Topological_sorting)  
+
+#### Topological sort DFS
+
+#### Topological sort  BFS
+
 
