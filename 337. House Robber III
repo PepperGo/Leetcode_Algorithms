@@ -1,0 +1,28 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    HashMap<TreeNode, Integer> hashMap = new HashMap<>();
+    
+    public int rob(TreeNode root) {
+        if(root == null) return 0;
+        if(hashMap.containsKey(root))
+            return hashMap.get(root);
+        int val = 0;
+        if(root.left != null){
+            val += rob(root.left.left) + rob(root.left.right);
+        }
+        if(root.right != null){
+            val += rob(root.right.left) + rob(root.right.right);
+        }
+        val = Math.max(root.val + val, rob(root.left) + rob(root.right));
+        hashMap.put(root, val);
+        return val;
+    }
+}
