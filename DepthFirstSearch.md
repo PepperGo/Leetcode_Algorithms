@@ -51,6 +51,8 @@ A -> B -> C -> D
 [Topological sorting From Wikipedia](https://en.wikipedia.org/wiki/Topological_sorting)  
 
 #### Topological sort DFS
+[Topological Sorting](https://en.wikipedia.org/wiki/Topological_sorting#Algorithms)   
+
 
 #### Topological sort  BFS
 [Kahn's algorithm](https://en.wikipedia.org/wiki/Topological_sorting#Algorithms)   
