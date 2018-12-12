@@ -60,5 +60,8 @@ A -> B -> C -> D
 [Topo-Sort](https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf)
 
 #### Array of ArrayList in Java
-[Array of ArrayList in Java](https://www.geeksforgeeks.org/array-of-arraylist-in-java/)   
+[Array of ArrayList in Java](https://www.geeksforgeeks.org/array-of-arraylist-in-java/)     
+
+[Create an Array of Arraylists](https://stackoverflow.com/questions/8559092/create-an-array-of-arraylists)    
+
 
