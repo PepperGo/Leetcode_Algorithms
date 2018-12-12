@@ -91,3 +91,39 @@ public class Solution {
     }
 }
 */
+
+
+class Solution {
+    ArrayList<Integer>[] graph;
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        graph = new ArrayList[numCourses];
+        for(int i = 0; i < numCourses; i++){
+            graph[i] = new ArrayList<>();
+        }
+        //graph[i].get(j): i is the prerequisite
+        for(int i = 0; i < prerequisites.length; i++){
+            graph[prerequisites[i][1]].add(prerequisites[i][0]);
+        }
+        //0: not visited, 1: visiting, 2: visited
+        int[] visited = new int[numCourses];
+        for(int i = 0; i < numCourses; i++){
+            if(!dfs(i, visited))
+                return false;
+        }
+        return true;
+    }
+    
+    //false: find a circle; true: not find circle yet
+    public boolean dfs(int cur, int[] visited){
+        if(visited[cur] == 1) return false;
+        if(visited[cur] == 2) return true;
+        visited[cur] = 1;
+        for(int i : graph[cur]){
+            if(!dfs(i, visited))
+                return false;
+        }
+        visited[cur] = 2;
+        return true;
+    }
+    
+}
