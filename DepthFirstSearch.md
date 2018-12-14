@@ -65,3 +65,13 @@ A -> B -> C -> D
 [Create an Array of Arraylists](https://stackoverflow.com/questions/8559092/create-an-array-of-arraylists)    
 
 
+### 743. Network Delay Time
+#### Shortest Paths(from textbook)
+##### Bellman-Ford algorithm
+
+
+##### Dijkstra algorithm
+
+
+##### Floyd-Warshall algorithm(All-Pairs Shortest Paths)
+
