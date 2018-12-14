@@ -65,7 +65,7 @@ A -> B -> C -> D
 [Create an Array of Arraylists](https://stackoverflow.com/questions/8559092/create-an-array-of-arraylists)    
 
 
-### 743. Network Delay Time
+### 743. Network Delay Time 
 #### Shortest Paths(from textbook)
 ##### Bellman-Ford algorithm
 ```
@@ -79,7 +79,7 @@ A -> B -> C -> D
 7       return false 
 8   return true
 ```   
-
+[4.4 Shortest Paths - codes](https://algs4.cs.princeton.edu/44sp/BellmanFordSP.java.html)
 
 ##### Dijkstra algorithm
 
