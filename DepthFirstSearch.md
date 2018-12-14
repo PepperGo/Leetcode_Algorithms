@@ -1,4 +1,10 @@
 ## Depth First Search
+[DirectedEdge.java](https://algs4.cs.princeton.edu/44sp/DirectedEdge.java.html)    
+
+[EdgeWeightedDigraph.java](https://algs4.cs.princeton.edu/44sp/EdgeWeightedDigraph.java.html)    
+
+[EdgeWeightedDirectedCycle.java](https://algs4.cs.princeton.edu/44sp/EdgeWeightedDirectedCycle.java.html)   
+
 
 ### 394. Decode String
 #### Convert String to int
