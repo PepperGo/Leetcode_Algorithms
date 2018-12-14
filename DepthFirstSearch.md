@@ -68,6 +68,17 @@ A -> B -> C -> D
 ### 743. Network Delay Time
 #### Shortest Paths(from textbook)
 ##### Bellman-Ford algorithm
+```
+   Bellman-Ford (G, w, s)
+1   Initialization (G, s) 
+2   for i = 1 to n - 1
+3     for each edge (u, v) belongs to E 
+4       Relax (u, v)
+5   for every edge (u, v)
+6     if v.dist > u.dist + w(u, v)
+7       return false 
+8   return true
+```   
 
 
 ##### Dijkstra algorithm
