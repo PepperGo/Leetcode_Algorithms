@@ -91,4 +91,17 @@ A -> B -> C -> D
 
 
 ##### Floyd-Warshall algorithm(All-Pairs Shortest Paths)
+```
+Floyd-Warshall (W, n)
+// Input: n ⇥ n matrix W
+// Output: matrix D of shortest-path weights
+1  D=W
+2  for k = 1 to n
+3    for i = 1 to n 
+4      for j = 1 to n
+5         if D[i][j] > D[i][k] + D[k][j] 
+6            D[i][j] = D[i][k] + D[k][j]
+7  return D
+
+```
 
