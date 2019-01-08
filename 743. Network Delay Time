@@ -1,0 +1,23 @@
+//Bellman-Ford algorithm
+class Solution {
+    public int networkDelayTime(int[][] times, int N, int K) {        
+        int[] disTo = new int[N + 1];
+        Arrays.fill(disTo, Integer.MAX_VALUE);
+        disTo[K] = 0;
+        for(int i = 1; i < N; i++){//n - 1 times
+            for(int[] edge : times){
+                int u = edge[0];
+                int v = edge[1];
+                int dis = edge[2];
+                if(disTo[u] != Integer.MAX_VALUE && disTo[v] > disTo[u] + dis)
+                    disTo[v] = Math.min(disTo[v], disTo[u] + dis);
+            }
+        }
+        int result = 0;
+        for(int i = 1; i < N + 1; i++){
+            result = Math.max(result, disTo[i]);
+        }
+        return result == Integer.MAX_VALUE ? -1 : result;
+    }
+}
+
