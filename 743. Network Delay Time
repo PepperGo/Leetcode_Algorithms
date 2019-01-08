@@ -21,3 +21,42 @@ class Solution {
     }
 }
 
+//Floyd-Warshall algorithm
+//All-Pairs Shortest Paths
+
+class Solution {
+    public int networkDelayTime(int[][] times, int N, int K) {
+        int[][] dis = new int[N][N];
+        for(int i = 0; i < N; i++){
+            for(int j = 0; j < N; j++){
+                if(i == j) 
+                    dis[i][j] = 0;
+                else
+                    dis[i][j] = Integer.MAX_VALUE;
+            }
+        }
+        for(int[] edge : times){
+            int u = edge[0] - 1;
+            int v = edge[1] - 1;
+            int weight = edge[2];
+            dis[u][v] = weight;
+        }
+        
+        for(int k = 0; k < N; k++){
+            for(int i = 0; i < N; i++){
+                for(int j = 0; j < N; j++){
+                    if(dis[i][k] != Integer.MAX_VALUE && 
+                       dis[k][j] != Integer.MAX_VALUE &&
+                       dis[i][j] > dis[i][k] + dis[k][j]){
+                        dis[i][j] = dis[i][k] + dis[k][j];
+                    }
+                }
+            }
+        }
+        int result = 0;
+        for(int distance : dis[K - 1]){
+            result = Math.max(result, distance);
+        }
+        return result == Integer.MAX_VALUE ? -1 : result;
+    }
+}
