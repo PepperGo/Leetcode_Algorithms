@@ -105,3 +105,35 @@ Floyd-Warshall (W, n)
 
 ```
 
+### 332. Reconstruct Itinerary
+#### PriorityQueue in Java
+[PriorityQueue in Java](https://www.geeksforgeeks.org/priority-queue-class-in-java-2/)   
+[Class PriorityQueue\<E\>](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html)  
+[Priority queue ordering of elements](https://stackoverflow.com/questions/30072077/priority-queue-ordering-of-elements)   
+```
+Actually internal data structure of PriorityQueue is not ordered, it is a heap.  
+
+An unbounded priority queue based on a priority heap. The elements of the priority queue are ordered according to their natural ordering, or by a Comparator provided at queue construction time, depending on which constructor is used. A priority queue does not permit null elements.  
+
+A priority queue relying on natural ordering also does not permit insertion of non-comparable objects (doing so may result in ClassCastException).
+```  
+#### putIfAbsent
+public V putIfAbsent(K key, V value)   
+Description copied from interface: Map  
+
+If the specified key is not already associated with a value (or is mapped to null) associates it with the given value and returns null, else returns the current value.
+
+Specified by:
+putIfAbsent in interface Map<K,V>
+
+#### PriorityQueue offer(), add()
+[What is the difference between the add and offer methods in a Queue in Java?](https://stackoverflow.com/questions/2703984/what-is-the-difference-between-the-add-and-offer-methods-in-a-queue-in-java)  
+
+
+
+
+
+
+
+
+
