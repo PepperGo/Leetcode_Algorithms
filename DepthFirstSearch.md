@@ -88,6 +88,16 @@ A -> B -> C -> D
 [4.4 Shortest Paths - codes](https://algs4.cs.princeton.edu/44sp/BellmanFordSP.java.html)
 
 ##### Dijkstra algorithm
+```
+Dijkstra (G, w, s)
+1   Initialization (G, s) 
+2   S= {};
+3   for i = 1 to n
+4      find v {- V - S with minimum v.dist
+5      S = S U {v}
+6      for each vertex u {- v.Adj // u is a neighbor of v
+7          Relax (v, u)
+```  
 
 
 ##### Floyd-Warshall algorithm(All-Pairs Shortest Paths)
