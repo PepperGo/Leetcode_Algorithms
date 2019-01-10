@@ -1,0 +1,29 @@
+class Solution {
+    public int[] findRedundantConnection(int[][] edges) {
+        HashMap<Integer, ArrayList<Integer>> graph = new HashMap<>();
+        for(int[] edge : edges){
+            HashSet<Integer> visited = new HashSet<>();
+            int u = edge[0];
+            int v = edge[1];
+            if(hasPath(graph, visited, u, v))
+                return edge;
+            graph.putIfAbsent(u, new ArrayList<Integer>());
+            graph.get(u).add(v);
+            graph.putIfAbsent(v, new ArrayList<Integer>());
+            graph.get(v).add(u);
+        }
+        throw new IllegalArgumentException("No Circle");
+    }
+    
+    public boolean hasPath(HashMap<Integer, ArrayList<Integer>> graph, HashSet<Integer> visited, int u, int v){
+        if(u == v) return true;
+        visited.add(u);
+        if(!graph.containsKey(u) || !graph.containsKey(v)) return false;
+        for(int next : graph.get(u)){
+            if(visited.contains(next)) continue;
+            if(hasPath(graph, visited, next, v))
+                return true;
+        }
+        return false;
+    }
+}
