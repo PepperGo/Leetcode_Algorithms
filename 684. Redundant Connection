@@ -57,7 +57,14 @@ class DisjointUnionSet{
             return find(parent[x]);
         }else
             return x;
+        /*** Better one **
+        if (parent[x] != x) 
+           parent[x] = find(parent[x]);
+        return parent[x];
+        */
     }
+    
+    
     
     public boolean union(int x, int y){
         int xp = find(x);
