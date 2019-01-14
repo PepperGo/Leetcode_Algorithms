@@ -140,10 +140,17 @@ putIfAbsent in interface Map<K,V>
 [What is the difference between the add and offer methods in a Queue in Java?](https://stackoverflow.com/questions/2703984/what-is-the-difference-between-the-add-and-offer-methods-in-a-queue-in-java)  
 
 
+### 684. Redundant Connection
+#### Disjoint-set data structure(union–find data structure, merge–find set)
+[Disjoint-set data structure - wiki](https://en.wikipedia.org/wiki/Disjoint-set_data_structure)   
 
+A disjoint-set forest consists of a number of elements each of which stores an id, a parent pointer, and, in efficient algorithms, either a size or a "rank" value.
 
+The parent pointers of elements are arranged to form one or more trees, each representing a set. If an element's parent pointer points to no other element, then the element is the root of a tree and is the representative member of its set. A set may consist of only a single element. However, if the element has a parent, the element is part of whatever set is identified by following the chain of parents upwards until a representative element (one without a parent) is reached at the root of the tree.   
 
+[Disjoint Set Data Structures (Java Implementation)](https://www.geeksforgeeks.org/disjoint-set-data-structures-java-implementation/)   
 
+[Approach #2: Union-Find](https://leetcode.com/problems/redundant-connection/solution/)    
 
 
 
