@@ -27,3 +27,52 @@ class Solution {
         return false;
     }
 }
+
+
+class Solution {
+    public int[] findRedundantConnection(int[][] edges) {
+        DisjointUnionSet djs = new DisjointUnionSet(edges.length);
+        for(int[] edge : edges){
+            if(!djs.union(edge[0], edge[1]))
+                return edge;
+        }
+        throw new AssertionError();
+    }
+}
+
+class DisjointUnionSet{
+    private int[] parent;
+    private int[] rank;
+    
+    public DisjointUnionSet(int n){
+        parent = new int[n + 1];
+        rank = new int[n + 1];
+        for(int i = 0; i < n + 1; i++){
+            parent[i] = i;
+        }
+    }
+    
+    public int find(int x){
+        if(parent[x] != x){
+            return find(parent[x]);
+        }else
+            return x;
+    }
+    
+    public boolean union(int x, int y){
+        int xp = find(x);
+        int yp = find(y);
+        
+        if(xp == yp)
+            return false;
+        if(rank[xp] < rank[yp])
+            parent[xp] = yp;
+        else if(rank[xp] > rank[yp])
+            parent[yp] = xp;
+        else{
+            parent[xp] = yp;
+            rank[yp]++;
+        }
+        return true;
+    }
+}
