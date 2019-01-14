@@ -1,0 +1,59 @@
+class Solution {
+    public int removeStones(int[][] stones) {
+        int N = stones.length;
+        DisjointUnionSet dsu = new DisjointUnionSet(20000);
+
+        for (int[] stone: stones)
+            dsu.union(stone[0], stone[1] + 10000);
+
+        Set<Integer> seen = new HashSet();
+        for (int[] stone: stones)
+            seen.add(dsu.find(stone[0]));
+
+        return N - seen.size();
+    }
+}
+
+class DisjointUnionSet{
+    private int[] parent;
+    private int[] rank;
+    
+    public DisjointUnionSet(int n){
+        parent = new int[n + 1];
+        rank = new int[n + 1];
+        for(int i = 0; i < n + 1; i++){
+            parent[i] = i;
+        }
+    }
+    
+    public int find(int x){
+        if(parent[x] != x){
+            return find(parent[x]);
+        }else
+            return x;
+        /*** Better one **
+        if (parent[x] != x) 
+           parent[x] = find(parent[x]);
+        return parent[x];
+        */
+    }
+    
+    
+    
+    public boolean union(int x, int y){
+        int xp = find(x);
+        int yp = find(y);
+        
+        if(xp == yp)
+            return false;
+        if(rank[xp] < rank[yp])
+            parent[xp] = yp;
+        else if(rank[xp] > rank[yp])
+            parent[yp] = xp;
+        else{
+            parent[xp] = yp;
+            rank[yp]++;
+        }
+        return true;
+    }
+}
