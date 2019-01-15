@@ -23,3 +23,6 @@
 ### [HashTable](./HashTable.md)
 
 ### [Depth-first Search](./DepthFirstSearch.md)
+
+### [Binary Search](./BinarySearch.md)   
+
