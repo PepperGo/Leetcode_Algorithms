@@ -1,0 +1,20 @@
+class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        HashMap<Integer, Integer> numCounts = new HashMap<>();
+        List<Integer> result = new ArrayList<>();
+        for(int num : nums1){
+            numCounts.put(num, numCounts.getOrDefault(num, 0) + 1);
+        }
+        for(int num : nums2){
+            if(numCounts.getOrDefault(num, 0) > 0){
+                result.add(num);
+                numCounts.put(num, numCounts.get(num) - 1);
+            }
+        }
+        int[] intersection = new int[result.size()];
+        for(int i = 0; i < intersection.length; i++){
+            intersection[i] = result.get(i);
+        }
+        return intersection;
+    }
+}
