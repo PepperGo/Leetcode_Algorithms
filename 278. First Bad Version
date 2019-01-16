@@ -22,6 +22,7 @@ public class Solution extends VersionControl {
 public class Solution extends VersionControl {
     public int firstBadVersion(int n) {
         return firstBadVersionInRange(1, n);  //[0, n + 1)
+	//return firstBadVersionInRange(1, n + 1);  这个有错的原因是当n为2147483647时，n+1为-2147483648
     }
     
     public int firstBadVersionInRange(int start, int end){
@@ -34,5 +35,26 @@ public class Solution extends VersionControl {
             }
         }
         return start;
+    }
+}
+
+/* The isBadVersion API is defined in the parent class VersionControl.
+      boolean isBadVersion(int version); */
+
+public class Solution extends VersionControl {
+    public int firstBadVersion(int n) {
+        return firstBadVersionInRange(0, n);  //[0, n + 1)
+    }
+    
+    public int firstBadVersionInRange(int start, int end){
+        while(start < end){
+            int mid = start + (end - start)/2;
+            if(isBadVersion(mid + 1)){
+                end = mid;
+            }else{
+                start = mid + 1;
+            }
+        }
+        return start + 1;
     }
 }
