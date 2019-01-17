@@ -1,0 +1,54 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int start = getFirstGreaterEqual(0, nums.length, nums, target);
+        if(start == nums.length || nums[start] != target) return new int[] {-1, -1};
+        return new int[]{start, getFirstGreaterEqual(start + 1, nums.length, nums, target + 1) - 1};
+    }
+    
+    public int getFirstGreaterEqual(int lo, int hi, int[] nums, int target){
+        while(lo < hi){
+            int mid = lo + (hi - lo)/2;
+            if(nums[mid] < target)
+                lo = mid + 1;
+            else 
+                hi = mid;
+        }
+        return lo;
+    }
+}
+
+
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        if(nums.length == 0) return new int[]{-1, -1}; 
+        return new int[]{findFirstTarget(nums, target), findLastTarget(nums, target)};
+    }
+    
+    public int findFirstTarget(int[] nums, int target){
+        //[a, b)
+        int low = 0, high = nums.length;
+        while(low < high){
+            int mid = low + (high - low)/2;
+            if(nums[mid] < target){
+                low = mid + 1;
+            }else{
+                high = mid;
+            }
+        }
+        return (low != nums.length && nums[low] == target) ? low : -1;
+    }
+    
+    public int findLastTarget(int[] nums, int target){
+        // (a, b]
+        int low = -1, high = nums.length - 1;
+        while(low < high){
+            int mid = high - (high - low)/2;
+            if(nums[mid] > target){
+                high = mid - 1;
+            }else{
+                low = mid;
+            }
+        }
+        return (low != -1 && nums[low] == target) ? low : -1;
+    }
+}
