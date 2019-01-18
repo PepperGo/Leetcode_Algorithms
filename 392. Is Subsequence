@@ -1,0 +1,57 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        if(s.length() == 0) return true;
+        int indexS = 0, indexT = 0;
+        while(indexT < t.length()){
+            if(s.charAt(indexS) == t.charAt(indexT)){
+                indexS++;
+                if(indexS == s.length()) return true;
+            }
+            indexT++;
+        }
+        return false;
+    }
+}
+
+
+//follow up
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        //process String t
+        HashMap<Character, List<Integer>> hashMap = new HashMap<>();
+        for(int i = 0; i < t.length(); i++){
+            char charT = t.charAt(i);
+            if(!hashMap.containsKey(charT)){
+                hashMap.put(charT, new ArrayList<Integer>());
+            }
+            hashMap.get(charT).add(i);
+        }
+        
+        int prev = -1;
+        for(int i = 0; i < s.length(); i++){
+            char charS = s.charAt(i);
+            if(!hashMap.containsKey(charS)){
+                return false;
+            } 
+            List<Integer> list = hashMap.get(charS);
+            prev = getNextIndex(list, prev, 0, list.size());
+            if(prev == -1)
+                return false;       
+            prev++;
+        }
+        return true;
+    }
+    
+    public int getNextIndex(List<Integer> list, int prevIndex, int start, int end){
+        int low = start, high = end;
+        while(low < high){
+            int mid = low + (high - low)/2;
+            if(list.get(mid) < prevIndex){
+                low = mid + 1;
+            }else{
+                high = mid;
+            }
+        }
+        return low == list.size() ? -1 : list.get(low);
+    }
+}
