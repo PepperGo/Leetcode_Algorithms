@@ -23,4 +23,14 @@ n is a 32-bit signed integer as stated in the note. If n = INT_MIN, -n will over
 ### 528. Random Pick with Weight
 #### Generate Random Number
 [How do I generate random integers within a specific range in Java?](https://stackoverflow.com/questions/5887709/getting-random-numbers-in-java)   
+```
+ Random rand;
+ // nextInt is normally exclusive of the top value,
+ // so add 1 to make it inclusive
+ int randomNum = rand.nextInt((max - min) + 1) + min;
+ 
+ //The Sun documentation explicitly says that you should better use Random() if you need an int instead of Math.random() which produces a double.   
+ 
+```   
+
 
