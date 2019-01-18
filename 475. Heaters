@@ -29,3 +29,33 @@ class Solution {
         
     }
 }
+
+
+class Solution {
+    public int findRadius(int[] houses, int[] heaters) {
+        int min = Integer.MIN_VALUE;
+        Arrays.sort(heaters);
+        for(int house : houses){
+            int index = binarySearch(heaters, house);
+            int dis1 = index <= 0 ? Integer.MAX_VALUE : house - heaters[index - 1];
+            int dis2 = index >= heaters.length ? Integer.MAX_VALUE : heaters[index] - house;
+            min = Math.max(min, Math.min(dis1, dis2));
+        }
+        return min;
+    }
+    
+    //return the index in the sorted nums array
+    public int binarySearch(int[] nums, int target){
+        //[low, high)
+        int low = 0, high = nums.length;
+        while(low < high){
+            int mid = low + (high - low)/2;
+            if(nums[mid] < target){
+                low = mid + 1;
+            }else{
+                high = mid;
+            }
+        }
+        return low;
+    }
+}
