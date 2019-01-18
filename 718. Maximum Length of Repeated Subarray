@@ -1,0 +1,21 @@
+class Solution {
+    public int findLength(int[] A, int[] B) {
+        if(A == null || B == null || A.length == 0 || B.length == 0) return 0;
+        int[][] max = new int[A.length + 1][B.length + 1];
+        //max[i][j] means maximum length of repeated subarray ending with A[i] and B[j]
+        int max_length = 0;
+        for(int i = 0; i < max.length; i++){
+            for(int j = 0; j < max[0].length; j++){
+                if(i == 0 || j == 0){
+                    max[i][j] = 0;
+                }else{
+                    if(A[i - 1] == B[j - 1]){
+                        max[i][j] = max[i - 1][j - 1] + 1;
+                        max_length = Math.max(max_length, max[i][j]);
+                    }
+                }
+            }
+        }
+        return max_length;
+    }
+}
