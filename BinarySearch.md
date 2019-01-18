@@ -33,4 +33,10 @@ n is a 32-bit signed integer as stated in the note. If n = INT_MIN, -n will over
  
 ```   
 
+### 367. Valid Perfect Square
+#### Integer square root
+[Integer square root](https://en.wikipedia.org/wiki/Integer_square_root#Using_only_integer_division)   
+
+
+
 
