@@ -26,3 +26,6 @@
 
 ### [Binary Search](./BinarySearch.md)   
 
+### [Two Pointers](./TwoPointers.md)
+
+
