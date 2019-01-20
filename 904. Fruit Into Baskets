@@ -1,0 +1,35 @@
+class Solution {
+    public int totalFruit(int[] tree) {
+        int max = 0;
+        for(int i = 0; i < tree.length; i++){
+            HashSet<Integer> fruits = new HashSet<>();
+            for(int j = i; j < tree.length; j++){    
+                fruits.add(tree[j]);
+                if(fruits.size() > 2){
+                    break;
+                }
+                max = Math.max(max, j - i + 1);
+            }
+        }
+        return max;
+    }
+}
+//Time Limit Exceeded
+
+class Solution {
+    public int totalFruit(int[] tree) {
+        HashMap<Integer, Integer> fruits = new HashMap<>();
+        int max = 0, low = 0;
+        for(int i = 0; i < tree.length; i++){
+            fruits.put(tree[i], fruits.getOrDefault(tree[i], 0) + 1);
+            while(fruits.size() > 2){
+                fruits.put(tree[low], fruits.get(tree[low]) - 1);
+                if(fruits.get(tree[low]) == 0)
+                    fruits.remove(tree[low]);
+                low++;
+            }
+            max = Math.max(max, i - low + 1);
+        }
+        return max;
+    }
+}
