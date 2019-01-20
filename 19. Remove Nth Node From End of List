@@ -1,0 +1,59 @@
+//Two pass
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int len = getListLength(head);
+        if(len < n)
+            throw new IllegalArgumentException("n is too large");
+        int target = len - n;
+        ListNode cur = head;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode prev = dummy;
+        
+        while(target-- > 0){
+            prev = prev.next;
+            cur = cur.next;
+        }
+        prev.next = cur.next;
+        return dummy.next;
+    }
+    
+    public int getListLength(ListNode node){
+        int len = 0;
+        while(node != null){
+            node = node.next;
+            len++;
+        }
+        return len;
+    }
+    
+}
+
+//One pass
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        ListNode cur = dummy;
+        ListNode tail = dummy;
+        int interval = n + 1;
+        while(interval-- > 0){
+            tail = tail.next;
+        }
+        
+        while(tail != null){
+            cur = cur.next;
+            tail = tail.next;
+        }
+        cur.next = cur.next.next;
+        return dummy.next;
+    }
+}
