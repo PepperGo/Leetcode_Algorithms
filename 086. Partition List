@@ -60,3 +60,33 @@ public ListNode partition(ListNode head, int x) {
 
 
 */
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        ListNode left = new ListNode(0);
+        ListNode right = new ListNode(0);
+        ListNode cur = head, leftCur = left, rightCur = right;
+        while(cur != null){
+            if(cur.val < x){
+                leftCur.next = cur;
+                leftCur = leftCur.next;
+            }else{
+                rightCur.next = cur;
+                rightCur = rightCur.next;
+            }
+            cur = cur.next;
+        }
+        leftCur.next = right.next;
+        rightCur.next = null;
+        return left.next;
+    }
+}
