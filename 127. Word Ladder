@@ -1,0 +1,37 @@
+//When we build adjacency list graph, we don't use two loops to check every pair of string to see if they are 1 character apart. 
+//Instead, we make changes to current string to obtain all the strings we can reach from current node, and see if it is in the wordList.
+//Thus, there are currentString.length() * 25 case we need to check for every node. This is faster when the wordList set is large, since the check-every-pair method need wordList.size() * currentString.length() for each node. 
+//Otherwise, your may exceed the running time limit.
+
+class Solution {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if(!wordList.contains(endWord)) return 0;
+        Queue<String> queue = new LinkedList<>();
+        queue.add(beginWord);
+        //wordList.add(endWord);
+        int path = 1;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            while(size-- > 0){
+                String word = queue.poll();
+                for(int i = 0; i < word.length(); i++){
+                    char[] wordChar = word.toCharArray();
+                    for(char ch = 'a'; ch <= 'z'; ch++){
+                        wordChar[i] = ch;
+                        String transformedWord = new String(wordChar);
+                        if(transformedWord.equals(endWord))
+                            return path + 1;
+                        if(wordList.contains(transformedWord)){
+                            queue.add(transformedWord);
+                            wordList.remove(transformedWord);
+                        }
+                    }
+                }
+            }
+            path++;
+        }
+        return 0;
+    }
+}
+//2%
+
