@@ -45,3 +45,46 @@ public class Solution {
             return new int[0];
     }
 }
+
+
+
+class Solution {
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        int[] degrees = new int[numCourses];
+        List<List<Integer>> paths = new ArrayList<>();
+        for(int i = 0; i < numCourses; i++){
+            paths.add(new ArrayList<Integer>());
+        }
+        initialize(prerequisites, degrees, paths);
+        return solveByBFS(degrees, paths);
+    }
+    
+    public void initialize(int[][] prerequisites, int[] degrees, List<List<Integer>> paths){
+        for(int[] prerequisite : prerequisites){
+            int start = prerequisite[1];
+            int end = prerequisite[0];
+            degrees[end]++;
+            paths.get(start).add(end);
+        }
+    } 
+    
+    public int[] solveByBFS(int[] degrees, List<List<Integer>> paths){
+        Queue<Integer> toVisit = new LinkedList<>();
+        for(int i = 0; i < degrees.length; i++){
+            if(degrees[i] == 0)
+                toVisit.offer(i);
+        }
+        int index = 0;
+        int[] result = new int[degrees.length];
+        while(!toVisit.isEmpty()){
+            int cur = toVisit.poll();
+            result[index++] = cur;
+            for(int adj : paths.get(cur)){
+                degrees[adj]--;
+                if(degrees[adj] == 0)
+                    toVisit.offer(adj);
+            }
+        }
+        return index == degrees.length ? result : new int[0];
+    }
+}
