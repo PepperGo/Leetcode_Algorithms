@@ -17,4 +17,9 @@ DFS - Stack, Recursive
 #### List to Set
 [Easiest way to convert a List to a Set in Java](https://stackoverflow.com/questions/1429860/easiest-way-to-convert-a-list-to-a-set-in-java)    
 
+#### Set to List
+[Convert Set to List without creating new List](https://stackoverflow.com/questions/8892360/convert-set-to-list-without-creating-new-list)    
+
+
+
 
