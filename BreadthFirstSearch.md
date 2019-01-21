@@ -1,7 +1,7 @@
 ## Breadth First Search
 
 ### 127. Word Ladder
-#### BFS
+#### BFS && DFS
 BFS - Use Queue
 DFS - Stack, Recursive   
 
@@ -14,5 +14,7 @@ DFS - Stack, Recursive
 
 [Stack Overflow](https://stackoverflow.com/questions/49971932/java-util-concurrentmodificationexception-thrown-when-adding-to-list/49971962)   
 
+#### List to Set
+[Easiest way to convert a List to a Set in Java](https://stackoverflow.com/questions/1429860/easiest-way-to-convert-a-list-to-a-set-in-java)    
 
 
