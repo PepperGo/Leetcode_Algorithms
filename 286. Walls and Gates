@@ -1,0 +1,22 @@
+class Solution {
+    private int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    public void wallsAndGates(int[][] rooms) {
+        for(int i = 0; i < rooms.length; i++){
+            for(int j = 0; j < rooms[0].length; j++){
+                if(rooms[i][j] == 0){
+                    dfs(rooms, i, j, 0);
+                }  
+            }
+        }
+    }
+    
+    public void dfs(int[][] rooms, int x, int y, int distance){
+        if(x < 0 || x >= rooms.length || y < 0 || y >= rooms[0].length || rooms[x][y] == -1
+          || rooms[x][y] < distance)
+            return;
+        rooms[x][y] = distance;
+        for(int[] dir : dirs){
+            dfs(rooms, x + dir[0], y + dir[1], distance + 1);
+        }
+    }
+}
