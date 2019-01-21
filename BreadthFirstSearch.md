@@ -33,4 +33,6 @@ Topological-Sort (G)
 3   return L
 ```  
 
+Using BFS
+[Kahn's algorithm](https://en.wikipedia.org/wiki/Topological_sorting)  
 
