@@ -25,10 +25,12 @@ DFS - Stack, Recursive
 ### 210. Course Schedule II
 #### Topological sort
 Using DFS
-
+```
 Topological-Sort (G)
 1   make an empty list L
 2   call DFS with the modification:
        when v is finished, add it as the head of list L
 3   return L
+```  
+
 
