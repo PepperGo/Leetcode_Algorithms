@@ -1,0 +1,43 @@
+class Solution {
+    public List<Integer> findMinHeightTrees(int n, int[][] edges) {
+        List<Integer> result = new ArrayList<>();
+        if(n == 1){
+            result.add(0);
+            return result;
+        }
+        List<List<Integer>> graph = new ArrayList<>();
+        int[] degrees = new int[n];
+        for(int i = 0; i < n; i++){
+            graph.add(new ArrayList<Integer>());
+        }
+        for(int[] edge : edges){
+            int v1 = edge[0];
+            int v2 = edge[1];
+            graph.get(v1).add(v2);
+            graph.get(v2).add(v1);
+            degrees[v1]++;
+            degrees[v2]++;
+        }
+        
+        Queue<Integer> toVisit = new LinkedList<>();
+        for(int i = 0; i < degrees.length; i++){
+            if(degrees[i] == 1)
+                toVisit.offer(i);
+        }
+        while(n > 2){
+            int size = toVisit.size();
+            n -= size;
+            while(size-- > 0){
+                int v = toVisit.poll();
+                for(int w : graph.get(v)){
+                    degrees[w]--;
+                    if(degrees[w] == 1){
+                        toVisit.offer(w);
+                    }
+                }
+            }
+        }
+        result.addAll(toVisit);
+        return result;
+    }
+}
