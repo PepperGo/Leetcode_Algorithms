@@ -9,3 +9,10 @@ DFS - Stack, Recursive
 
 [Breadth First Search Algorithm Tutorial with Java](https://tutorialedge.net/artificial-intelligence/breadth-first-search-java/)    
 
+#### java concurrentmodificationexception
+[java.util Class ConcurrentModificationException](https://docs.oracle.com/javase/7/docs/api/java/util/ConcurrentModificationException.html)   
+
+[Stack Overflow](https://stackoverflow.com/questions/49971932/java-util-concurrentmodificationexception-thrown-when-adding-to-list/49971962)   
+
+
+
