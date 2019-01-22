@@ -1,0 +1,51 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    Map<TreeNode, List<TreeNode>> graph = new HashMap<>();
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
+        List<Integer> result = new ArrayList<>();
+        buildGraph(root, null);
+        Queue<TreeNode> toVisit = new LinkedList<>();
+        Set<TreeNode> isVisited = new HashSet<>();
+        toVisit.offer(target);
+        isVisited.add(target);
+        while(!toVisit.isEmpty()){
+            int size = toVisit.size();
+            if(K == 0){
+                for(TreeNode node : toVisit){
+                    result.add(node.val);
+                }
+            }
+            while(size-- > 0){
+                TreeNode cur = toVisit.poll();
+                for(TreeNode node : graph.get(cur)){
+                    if(isVisited.contains(node)) continue;
+                    isVisited.add(node);
+                    toVisit.offer(node);
+                }
+            }
+            K--;
+        }
+        return result;
+    }
+    
+    public void buildGraph(TreeNode node, TreeNode parent){
+        if(node == null) return;
+        if(!graph.containsKey(node)){
+            graph.put(node, new ArrayList<TreeNode>());
+            if(parent != null){
+                graph.get(node).add(parent);
+                graph.get(parent).add(node);
+            }
+            buildGraph(node.left, node);
+            buildGraph(node.right, node);
+        }
+    }
+}
