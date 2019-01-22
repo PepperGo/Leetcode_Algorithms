@@ -34,4 +34,10 @@ if( data[i].compareTo(data[j]) > 0 ){
 #### <T> T[] toArray(T[] a)
 [java.util Interface List\<E\>](https://docs.oracle.com/javase/8/docs/api/java/util/List.html#toArray-T:A-)   
    
+[How to convert List<Integer> to int[] in Java?](https://stackoverflow.com/questions/960431/how-to-convert-listinteger-to-int-in-java)     
+   
+[Converting 'ArrayList<String> to 'String[]' in Java](https://stackoverflow.com/questions/4042434/converting-arrayliststring-to-string-in-java)    
+
+
+
 
