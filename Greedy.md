@@ -31,6 +31,7 @@ if( data[i].compareTo(data[j]) > 0 ){
 
 ```  
 
-
-
+#### <T> T[] toArray(T[] a)
+[java.util Interface List\<E\>](https://docs.oracle.com/javase/8/docs/api/java/util/List.html#toArray-T:A-)   
+   
 
