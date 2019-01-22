@@ -30,4 +30,5 @@
 
 ### [Breadth-first Search](./BreadthFirstSearch.md)   
 
+### [Greedy](./Greedy.md)   
 
