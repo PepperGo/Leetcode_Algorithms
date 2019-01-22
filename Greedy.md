@@ -24,6 +24,13 @@ It uses this result to then determine if they should be swapped for its sort.
 
 
 [What determines ascending or descending order in Comparator / Comparable collection class?](https://stackoverflow.com/questions/26107921/what-determines-ascending-or-descending-order-in-comparator-comparable-collect)   
+```
+if( data[i].compareTo(data[j]) > 0 ){
+   // swap data[i] and  data[j]
+}
+
+```  
+
 
 
 
