@@ -1,0 +1,46 @@
+class Solution {
+    public int snakesAndLadders(int[][] board) {
+        if(board == null || board.length == 0 || board[0].length == 0) return 0;
+        int n = board.length;
+        int[] newBoard = convertTo1DArray(board);
+        int target = n * n - 1;
+        int steps = 0;
+        Queue<Integer> toVisit = new LinkedList<>();
+        boolean[] isVisited = new boolean[n * n];
+        int start = newBoard[0] == -1 ? 0 : newBoard[0] - 1;
+        toVisit.offer(start);
+        isVisited[start] = true;
+        while(!toVisit.isEmpty()){
+            int size = toVisit.size();
+            while(size-- > 0){
+                int cur = toVisit.poll();
+                if(cur == target) return steps;
+                for(int nextIndex = cur + 1; nextIndex <= Math.min(target, cur + 6); nextIndex++){
+                    int destination = newBoard[nextIndex] == -1 ? nextIndex : newBoard[nextIndex] - 1;
+                    if(isVisited[destination]) continue;
+                    toVisit.offer(destination);
+                    isVisited[nextIndex] = true;
+                }
+            }
+            steps++;
+        }
+        return -1;
+    }
+    
+    public int[] convertTo1DArray(int[][] board){
+        int n = board.length;
+        int[] newArray = new int[n * n];
+        int idx = 0;
+        boolean leftToRight = true;
+        for(int i = n - 1; i >= 0; i--){
+            for(int j = 0; j < n; j++){
+                if(leftToRight)
+                    newArray[idx++] = board[i][j];
+                else
+                    newArray[idx++] = board[i][n - j - 1];
+            }
+            leftToRight = !leftToRight;
+        }
+        return newArray;
+    }
+}
