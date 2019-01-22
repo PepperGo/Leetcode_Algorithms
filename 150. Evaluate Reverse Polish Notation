@@ -22,3 +22,32 @@ public class Solution {
         return result.pop();
     }
 }
+
+class Solution {
+    public int evalRPN(String[] tokens) {
+        Stack<Integer> numbers = new Stack<>();
+        for(String str : tokens){
+            int n1, n2;
+            if(str.equals("+")){
+                n1 = numbers.pop();
+                n2 = numbers.pop();
+                numbers.push(n1 + n2);
+            }else if(str.equals("-")){   
+                n1 = numbers.pop();
+                n2 = numbers.pop();
+                numbers.push(n2 - n1);
+            }else if(str.equals("*")){
+                n1 = numbers.pop();
+                n2 = numbers.pop();
+                numbers.push(n1 * n2);
+            }else if(str.equals("/")){
+                n1 = numbers.pop();
+                n2 = numbers.pop();
+                numbers.push(n2/n1);
+            }else{
+                numbers.push(Integer.parseInt(str));
+            }
+        }
+        return numbers.pop();
+    }
+}
