@@ -12,5 +12,8 @@ It returns a positive value if obj1 is greater than obj2.
 Otherwise, a negative value if obj1 is smaller than obj2.
 ```  
 
+[Interface Comparator\<T\>](https://docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#compare-T-T-)   
+
+
 
 
