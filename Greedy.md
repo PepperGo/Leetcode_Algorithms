@@ -49,4 +49,55 @@ peek(), poll()
 ### 714. Best Time to Buy and Sell Stock with Transaction Fee
 #### [Most consistent ways of dealing with the series of stock problems](https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108870/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems)   
 
+### 767. Reorganize String
+#### Traverse through a HashSet in Java
+[Traverse through a HashSet in Java](https://www.geeksforgeeks.org/traverse-through-a-hashset-in-java/)   
+
+```
+1. Using an Iterator 
+HashSet<String> h = new HashSet<String>();
+// Iterating over hash set items 
+Iterator<String> i = h.iterator(); 
+while (i.hasNext()) 
+  System.out.println(i.next()); 
+   
+2. Using for-each loop
+for (String i : h)  
+  System.out.println(i); 
+  
+3. Using forEach() method
+h.forEach(i -> System.out.println(i));
+
+```      
+
+
+#### Traverse through a HashMap in Java
+[Traverse through a HashMap in Java](https://www.geeksforgeeks.org/traverse-through-a-hashmap-in-java/)   
+```   
+1. Using an Iterator
+
+HashMap<String, Integer> hm = new HashMap<String, Integer>(); 
+Iterator hmIterator = hm.entrySet().iterator();   
+while (hmIterator.hasNext()) { 
+   Map.Entry mapElement = (Map.Entry)hmIterator.next(); 
+   int marks = ((int)mapElement.getValue() + 10); 
+   System.out.println(mapElement.getKey() + " : " + marks); 
+} 
+
+2. Using for-each loop
+HashMap<String, Integer> hm = new HashMap<String, Integer>(); 
+// Using for-each loop 
+for (Map.Entry mapElement : hm.entrySet()) { 
+   String key = (String)mapElement.getKey(); 
+   int value = ((int)mapElement.getValue() + 10); 
+   System.out.println(key + " : " + value); 
+} 
+
+3. Using forEach() method
+hm.forEach((k, v) -> System.out.println(k + " : " + (v + 10)));
+```     
+
+
+
+
 
