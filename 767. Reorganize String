@@ -1,0 +1,46 @@
+class Solution {
+    public String reorganizeString(String S) {
+        //store characters and count into a map
+        Map<Character, Integer> charCounts = new HashMap<>();
+        for(int i = 0; i < S.length(); i++){
+            char ch = S.charAt(i);
+            int sum = charCounts.getOrDefault(ch, 0) + 1;
+            if(sum > (S.length() + 1)/2) return "";
+            charCounts.put(ch, sum);
+        }
+        //create a PriorityQueue to store the element
+        //element[0]: character, element[1]: count
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>(){
+            public int compare(int[] a, int[] b){
+                return b[1] - a[1];
+            }
+        });
+        //store all the elements into the PriorityQueue
+        for(Map.Entry<Character, Integer> entry : charCounts.entrySet()){
+            char ch = entry.getKey();
+            int count = entry.getValue();
+            pq.offer(new int[]{ch, count});
+        }
+        StringBuilder sb = new StringBuilder();
+        while(!pq.isEmpty()){
+            int[] first = pq.poll();
+            if(sb.length() == 0 || first[0] != sb.charAt(sb.length() - 1)){
+                first[1]--;
+                sb.append((char) first[0]);
+            }else{
+                int[] second = pq.poll();
+                second[1]--;
+                sb.append((char) second[0]);
+                if(second[1] > 0){
+                    pq.offer(second);
+                }
+            }
+            if(first[1] > 0)
+                pq.offer(first);
+        }
+        return sb.toString();
+        
+    }
+}
+
+
