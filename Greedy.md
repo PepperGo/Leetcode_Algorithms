@@ -20,6 +20,10 @@ Otherwise, a negative value if obj1 is smaller than obj2.
 To compare two elements, it asks “Which is greater?” 
 Compare method returns -1, 0 or 1 to say if it is less than, equal, or greater to the other. 
 It uses this result to then determine if they should be swapped for its sort.
-```
+```   
+
+
+[What determines ascending or descending order in Comparator / Comparable collection class?](https://stackoverflow.com/questions/26107921/what-determines-ascending-or-descending-order-in-comparator-comparable-collect)   
+
 
 
