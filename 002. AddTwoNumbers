@@ -38,3 +38,34 @@ public class Solution {
         return result.next;
     }
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode p1 = l1, p2 = l2;
+        ListNode dummy = new ListNode(0);
+        ListNode cur = dummy;
+        int increment = 0;
+        while(p1 != null || p2 != null || increment != 0){
+            int p1_val = p1 == null ? 0 : p1.val;
+            int p2_val = p2 == null ? 0 : p2.val;
+            int digit = (p1_val + p2_val + increment) % 10;
+            increment = (p1_val + p2_val + increment) / 10;
+            ListNode nextNode = new ListNode(digit);
+            cur.next = nextNode;
+            cur = cur.next;
+            p1 = p1 == null ? null : p1.next;
+            p2 = p2 == null ? null : p2.next;
+        }
+    
+        return dummy.next;
+    }
+}
