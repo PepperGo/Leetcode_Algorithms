@@ -7,3 +7,8 @@ In order to remove the node, you have to let the next pointer of its previous no
 Thus double-linked list solves this problem.
 ```
 
+#### HashMap detele element
+```
+Hash_Map.remove(Object key)
+```  
+
