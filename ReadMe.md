@@ -36,3 +36,6 @@
 ### [Design](./Design.md)
 
 ### [Linked List](./LinkedList.md)
+
+### [Heap](./Heap.md)   
+
