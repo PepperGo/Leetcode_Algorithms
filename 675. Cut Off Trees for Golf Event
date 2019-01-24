@@ -1,0 +1,75 @@
+class Solution {
+    private int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    private PriorityQueue<Tree> pq = new PriorityQueue<>(new Comparator<Tree>(){
+        public int compare(Tree t1, Tree t2){
+            return t1.height - t2.height;
+        }
+    });
+    private int R;
+    private int C;
+    
+    public int cutOffTree(List<List<Integer>> forest) {  
+        Tree first = new Tree(0, 0, forest.get(0).get(0));
+        if(first.height == 0) return -1;
+        //the total number of trees
+        R = forest.size();
+        C = forest.get(0).size();
+        for(int i = 0; i < R; i++){
+            for(int j = 0; j < C; j++){
+                if(forest.get(i).get(j) > 1)
+                    pq.offer(new Tree(i, j, forest.get(i).get(j)));
+            }
+        }
+        //the total steps need to take
+        int steps = 0;
+        int[] start = new int[2];
+        while(!pq.isEmpty()){
+            Tree cur = pq.poll();
+            int step = minStep(forest, start, cur);
+            if(step == -1) return -1;
+            steps += step;
+            start[0] = cur.x;
+            start[1] = cur.y;
+        }
+        return steps;
+        
+    }
+    
+    public int minStep(List<List<Integer>> forest, int[] start, Tree tree){
+        int step = 0;
+        boolean[][] isVisited = new boolean[R][C];
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(start);
+        isVisited[start[0]][start[1]] = true;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            while(size-- > 0){
+                int[] cur = queue.poll();
+                if(cur[0] == tree.x && cur[1] == tree.y) return step;
+                for(int[] dir : dirs){
+                    int nr = cur[0] + dir[0];
+                    int nc = cur[1] + dir[1];
+                    if(nr < 0 || nr >= R || nc < 0 || nc >= C
+                          || forest.get(nr).get(nc) == 0 || isVisited[nr][nc])
+                        continue;
+                    queue.offer(new int[] {nr, nc});
+                    isVisited[nr][nc] = true;
+                }
+            }
+            step++;
+        }
+        return -1;
+    }
+}
+
+class Tree {
+    int x;
+    int y;
+    int height;
+    
+    Tree(int x, int y, int h){
+        this.x = x;
+        this.y = y;
+        this.height = h;
+    }
+}
