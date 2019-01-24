@@ -27,3 +27,30 @@ class Solution {
         
     }
 }
+
+
+class Solution {
+    public String mostCommonWord(String paragraph, String[] banned) {
+        HashMap<String, Integer> candidates = new HashMap<>();
+        HashSet<String> bans = new HashSet<>();
+        String[] words = paragraph.replaceAll("[!?',;.]"," ").toLowerCase().split("\\s+");
+        for(String word : banned){
+            bans.add(word);
+        }
+        for(String word : words){
+            if(bans.contains(word))
+                continue;
+            candidates.put(word, candidates.getOrDefault(word, 0) + 1);
+        }
+        int max = 0;
+        String result = "";
+        for(Map.Entry<String, Integer> me : candidates.entrySet()){
+            int count = me.getValue();
+            if(max < count){
+                result = me.getKey();
+                max = count;
+            }
+        }
+        return result;
+    }
+}
