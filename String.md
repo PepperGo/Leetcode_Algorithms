@@ -127,6 +127,12 @@ String.split(\\s+) correct!
 
 String.split(//s+) wrong!    
 
+#### String.replaceAll()
+```
+public String replaceAll(String regex, String replacement)
 
+String[] words = paragraph.replaceAll("[!?',;.]"," ").toLowerCase().split("\\s+");
+```   
 
+#### str.toLowerCase(), str.toUpperCase()   
 
