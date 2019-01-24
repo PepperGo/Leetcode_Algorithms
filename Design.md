@@ -12,3 +12,22 @@ Thus double-linked list solves this problem.
 Hash_Map.remove(Object key)
 ```  
 
+### 642. Design Search Autocomplete System
+#### String compare
+[Comparing two string and sorting them in alphabetical order](https://stackoverflow.com/questions/20445900/comparing-two-string-and-sorting-them-in-alphabetical-order)    
+
+```
+String a="LetterA";
+String b="ALetterB";
+int compare = a.compareTo(b);
+if (compare < 0){
+    System.out.println(a+" is before "+b);
+}
+else if (compare > 0) {
+    System.out.println(b+" is before "+a);
+}
+else {
+    System.out.println(b+" is same as "+a);
+}
+```   
+
