@@ -68,4 +68,28 @@ class Solution {
     }
 }
 
-
+class Solution {
+    public int trap(int[] height) {
+        int leftMax = 0, rightMax = 0;
+        int leftIndex = 0, rightIndex = height.length-1;
+        int sum = 0;
+        while(leftIndex <= rightIndex){
+            if(leftMax < rightMax){
+                if(leftMax > height[leftIndex]){
+                    sum += leftMax - height[leftIndex];
+                }else{
+                    leftMax = height[leftIndex];
+                }
+                leftIndex++;
+            }else{
+                if(rightMax > height[rightIndex]){
+                    sum += rightMax - height[rightIndex];
+                }else{
+                    rightMax = height[rightIndex];
+                }
+                rightIndex--;
+            }
+        }
+        return sum;
+    }
+}
