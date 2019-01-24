@@ -121,3 +121,12 @@ String (or any object)  	null
 boolean	false
 ```
 
+### 819. Most Common Word
+#### String.split()
+String.split(\\s+) correct!
+
+String.split(//s+) wrong!    
+
+
+
+
