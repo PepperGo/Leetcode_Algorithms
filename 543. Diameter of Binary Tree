@@ -47,3 +47,28 @@ class Solution {
         return Math.max(l, r) + 1;
     }
 }
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    int max = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        longestPathToNode(root);
+        return max;
+    }
+    
+    public int longestPathToNode(TreeNode node){
+        if(node == null) return 0;
+        int leftPath = longestPathToNode(node.left);
+        int rightPath = longestPathToNode(node.right);
+        max = Math.max(max, leftPath + rightPath);
+        return Math.max(leftPath, rightPath) + 1;
+    }
+}
