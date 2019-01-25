@@ -59,3 +59,59 @@ public class Codec {
 
 
 //https://www.youtube.com/watch?v=GDqVCQcmxgU
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Codec {
+    
+    private String splitChar = ",";
+    //5 [1 2 3 4][6 7 8 9]
+    //private int pos = 0;
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        //inorder
+        StringBuilder sb = new StringBuilder();
+        inorder(sb, root);
+        return sb.toString();
+    }
+    
+    public void inorder(StringBuilder sb, TreeNode node){
+        if(node == null) return;
+        sb.append(node.val).append(splitChar);
+        inorder(sb, node.left);
+        inorder(sb, node.right);
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        if(data.length() == 0) return null;
+        String[] nodes = data.split(splitChar);
+        int[] pos = new int[1];
+        pos[0] = 0;
+        return deserialize(nodes, pos, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+    
+    public TreeNode deserialize(String[] nodes, int[] pos, int min, int max){
+        if(pos[0] >= nodes.length) return null;
+        int val = Integer.parseInt(nodes[pos[0]]);
+        if(val < min || val > max) return null;
+        pos[0]++;
+        TreeNode curNode = new TreeNode(val);
+        curNode.left = deserialize(nodes, pos, min, val);
+        curNode.right = deserialize(nodes, pos, val, max);
+        return curNode;
+    }
+    
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.deserialize(codec.serialize(root));
