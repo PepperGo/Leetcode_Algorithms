@@ -89,3 +89,13 @@ Removes the char at the specified position in this sequence. This sequence is sh
 
 [Binary search tree. Removing a node](http://www.algolist.net/Data_structures/Binary_search_tree/Removal)    
 
+### 449. Serialize and Deserialize BST
+#### Java, sometimes use array to pass by reference
+```  
+Everything in Java is pass by value.
+
+If you use an int variable, the function you are passing will only copy its value. So that everything changes in this level will not affect other levels.
+
+However, using an int array will pass the copy of its reference to other function/method. In this way, any changes to the int array will affect the original array.
+```   
+
