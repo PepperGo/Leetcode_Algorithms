@@ -94,8 +94,10 @@ Removes the char at the specified position in this sequence. This sequence is sh
 ```  
 Everything in Java is pass by value.
 
-If you use an int variable, the function you are passing will only copy its value. So that everything changes in this level will not affect other levels.
+If you use an int variable, the function you are passing will only copy its value. 
+So that everything changes in this level will not affect other levels.
 
-However, using an int array will pass the copy of its reference to other function/method. In this way, any changes to the int array will affect the original array.
+However, using an int array will pass the copy of its reference to other function/method. 
+In this way, any changes to the int array will affect the original array.
 ```   
 
