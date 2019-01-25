@@ -38,5 +38,13 @@ n is a 32-bit signed integer as stated in the note. If n = INT_MIN, -n will over
 [Integer square root](https://en.wikipedia.org/wiki/Integer_square_root#Using_only_integer_division)   
 
 
+### 658. Find K Closest Elements
+#### Arrays.sort
+[Arrays.sort a List\<E\>   Wrong!!!!](https://stackoverflow.com/questions/19318026/arrays-sort-a-liste)   
+```
+You need to use Collections.sort(list). Arrays.sort() is for sorting Arrays and not  List (or) ArrayList.   
+
+
+```
 
 
