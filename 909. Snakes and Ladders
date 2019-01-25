@@ -44,3 +44,52 @@ class Solution {
         return newArray;
     }
 }
+
+
+
+class Solution {
+    public int snakesAndLadders(int[][] board) {
+        if(board == null || board.length == 0 || board[0].length == 0) return 0;
+        int m = board.length, n = board[0].length;
+        int[] array = convertTo1DArray(board, m, n);
+        int target = m * n;
+        int steps = 0;
+        int start = array[1] == -1 ? 1 : array[1];
+        Queue<Integer> toVisit = new LinkedList<>();
+        toVisit.offer(start);
+        boolean[] isVisited = new boolean[m*n + 1];
+
+        while(!toVisit.isEmpty()){
+            int size = toVisit.size();
+            while(size-- > 0){
+                int cur = toVisit.poll();
+                if(cur == target) return steps;
+                for(int i = cur + 1; i <= Math.min(cur + 6, target); i++){
+                    int next = array[i] == -1 ? i : array[i];
+                    if(isVisited[next]) continue;
+                    toVisit.offer(next);
+                    isVisited[next] = true;
+                }
+            }
+            steps++;
+        }
+        return -1;
+    }
+    
+    public int[] convertTo1DArray(int[][] board, int m, int n){
+        int[] result = new int[m *n + 1];
+        int index = 1;
+        boolean leftToRight = true;
+        for(int i = m - 1; i>= 0; i--){
+            for(int j = 0; j < n; j++){
+                if(leftToRight){
+                    result[index++] = board[i][j];
+                }else{
+                    result[index++] = board[i][n - j - 1];
+                }
+            }
+            leftToRight = !leftToRight;
+        }
+        return result;
+    }
+}
