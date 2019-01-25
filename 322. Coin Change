@@ -28,3 +28,8 @@ class Solution {
         return dp[amount] > amount ? -1 : dp[amount];
     }
 }
+
+
+//dp[i][j]: min coins to make amount j using first i types of coins
+dp[i][j] = Math.min(dp[i][j], dp[i - 1][j - k*coin_i] + k)
+         = Math.min(dp[i][j], dp[i][j-1]+1)
