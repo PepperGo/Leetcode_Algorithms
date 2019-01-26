@@ -35,3 +35,34 @@ class Solution {
 }
 //2%
 
+
+class Solution {
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        if(!wordList.contains(endWord)) return 0;
+        Queue<String> toVisit = new LinkedList<>();
+        toVisit.offer(beginWord);
+        int steps = 0;
+        while(!toVisit.isEmpty()){
+            int size = toVisit.size();
+            while(size-- > 0){
+                String cur = toVisit.poll();
+                if(cur.equals(endWord)) return steps+1;
+                for(int i = 0; i < cur.length(); i++){
+                    //this loop first, then we don't need to reset char[] array
+                    char[] array = cur.toCharArray();
+                    for(char ch = 'a'; ch <= 'z'; ch++){
+                        //this loop ensure each time, change the same position,
+                        array[i] = ch;
+                        String newS = new String(array);
+                        if(wordList.contains(newS)){
+                            toVisit.offer(newS);
+                            wordList.remove(newS);
+                        }
+                    }
+                }
+            }
+            steps++;
+        }
+        return 0;
+    }
+}
