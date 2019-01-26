@@ -25,6 +25,7 @@ class Solution {
             }else{
                 Interval earliest = queue.poll();
                 if(earliest.end > intervals[i].start){
+                //If the new event collides with A, then it must collide with all events in the heap. So a new room must be created.
                     queue.offer(intervals[i]);
                 }else{
                     earliest.end = intervals[i].end;
@@ -33,5 +34,59 @@ class Solution {
             }
         }
         return queue.size();
+    }
+}
+
+
+/**
+ * Definition for an interval.
+ * public class Interval {
+ *     int start;
+ *     int end;
+ *     Interval() { start = 0; end = 0; }
+ *     Interval(int s, int e) { start = s; end = e; }
+ * }
+ */
+class Solution {
+    public int minMeetingRooms(Interval[] intervals) {
+        PriorityQueue<Interval> pq = new PriorityQueue<>(new Comparator<Interval>(){
+            public int compare(Interval i1, Interval i2){
+                return i1.end - i2.end;
+            }
+            //min-heap: early end
+        });
+        
+        Arrays.sort(intervals, new Comparator<Interval>(){
+            public int compare(Interval i1, Interval i2){
+                return i1.start - i2.start;
+                //min-heap: earlier start, in the front
+            }
+        });
+        
+        for(Interval in : intervals){
+            if(pq.size() == 0){
+                pq.offer(in);
+            }else{
+            //this is not necessary
+                Queue<Interval> temp = new LinkedList<>();
+                while(!pq.isEmpty()){
+                    Interval cur = pq.poll();
+                    if(in.start >= cur.end){
+                        cur.end = in.end;
+                        pq.offer(cur);
+                        break;
+                    }else{
+                        temp.offer(cur);
+                    }
+                }
+                if(pq.size() == 0){
+                    pq.offer(in);
+                }
+                while(!temp.isEmpty()){
+                    pq.offer(temp.poll());
+                }
+            }
+        }
+        return pq.size();
     }
 }
