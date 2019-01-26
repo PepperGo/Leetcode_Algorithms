@@ -7,6 +7,44 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        Queue<TreeNode> toVisit = new LinkedList<>();
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null) return result;
+        toVisit.offer(root);
+        boolean isLeftToRight = true;
+        while(!toVisit.isEmpty()){
+            int size = toVisit.size();
+            List<Integer> level = new ArrayList<>();
+            while(size-- > 0){
+                TreeNode cur = toVisit.poll();
+                if(isLeftToRight){
+                    level.add(cur.val);
+                }else{
+                    level.add(0, cur.val);
+                }
+                if(cur.left != null)
+                    toVisit.offer(cur.left);
+                if(cur.right != null)
+                    toVisit.offer(cur.right);
+            }
+            isLeftToRight = !isLeftToRight;
+            result.add(level);
+        }
+        return result;
+    }
+}
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
 public class Solution {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
