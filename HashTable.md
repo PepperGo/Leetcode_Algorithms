@@ -37,3 +37,20 @@ No
 
 [Getting random numbers in Java](https://stackoverflow.com/questions/5887709/getting-random-numbers-in-java)    
 
+
+### 957. Prison Cells After N Days
+#### Array Equals, Copy
+[java.util Class Arrays](https://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html) 
+```
+Arrays.copyOfRange(T[] original, int from, int to)
+Arrays.copyOf(T[] original, int newLength)
+
+Arrays.equals(Object[] a, Object[] a2)
+
+```  
+
+
+
+#### Array Clone
+clone(): Methods inherited from class java.lang.Object
+
