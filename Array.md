@@ -263,4 +263,16 @@ PriorityQueue<Integer> pq = new PriorityQueue<>(26, Collections.reverseOrder());
 [Heaps and Priority Queues](https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/)    
 
 
+### 380. Insert Delete GetRandom O(1)
+#### get random int
+[How do I generate random integers within a specific range in Java?](https://stackoverflow.com/questions/363681/how-do-i-generate-random-integers-within-a-specific-range-in-java)     
+
+```
+Random ran = new Random();
+int x = ran.nextInt(6) + 5;
+
+5 ~ 10
+```
+
+
 
