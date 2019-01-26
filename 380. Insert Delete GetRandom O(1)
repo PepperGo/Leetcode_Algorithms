@@ -1,0 +1,97 @@
+class RandomizedSet {
+    
+    HashMap<Integer, Integer> freq;
+    List<Integer> list;
+    /** Initialize your data structure here. */
+    public RandomizedSet() {
+        freq = new HashMap<>();
+        list = new ArrayList<>();
+    }
+    
+    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+    public boolean insert(int val) {
+        if(freq.containsKey(val)){
+            return false;
+        }else{
+            //first update hashmap, then insert into list
+            freq.put(val, list.size());
+            list.add(val);
+            return true;
+        }
+    }
+    
+    /** Removes a value from the set. Returns true if the set contained the specified element. */
+    public boolean remove(int val) {
+        if(!freq.containsKey(val)){
+            return false;
+        }else{
+            int pos = freq.get(val);
+            if(pos < list.size() - 1){
+                int lastOne = list.get(list.size() - 1);
+                list.set(pos, lastOne);
+                freq.put(lastOne, pos);
+            }
+            list.remove(list.size() - 1);
+            freq.remove(val);
+            return true;
+        }
+    }
+    
+    /** Get a random element from the set. */
+    public int getRandom() {
+        int target = new Random().nextInt(list.size());
+        return list.get(target);
+    }
+}
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet obj = new RandomizedSet();
+ * boolean param_1 = obj.insert(val);
+ * boolean param_2 = obj.remove(val);
+ * int param_3 = obj.getRandom();
+ */
+ 
+ 
+ Follow Up -  If with duplicates
+ public class RandomizedSet {
+	    ArrayList<Integer> nums;
+	    HashMap<Integer, Set<Integer>> locs;
+	    java.util.Random rand = new java.util.Random();
+	    /** Initialize your data structure here. */
+	    public RandomizedSet() {
+	        nums = new ArrayList<Integer>();
+	        locs = new HashMap<Integer, Set<Integer>>();
+	    }
+	    
+	    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+	    public boolean insert(int val) {
+	        boolean contain = locs.containsKey(val);
+	        if ( ! contain ) locs.put( val, new HashSet<Integer>() ); 
+	        locs.get(val).add(nums.size());        
+	        nums.add(val);
+	        return ! contain ;
+	    }
+	    
+	    /** Removes a value from the set. Returns true if the set contained the specified element. */
+	    public boolean remove(int val) {
+	        boolean contain = locs.containsKey(val);
+	        if ( ! contain ) return false;
+	        int loc = locs.get(val).iterator().next();
+                locs.get(val).remove(loc);
+	        if (loc < nums.size() - 1 ) {
+	            int lastone = nums.get(nums.size() - 1 );
+	            nums.set( loc , lastone );
+	            locs.get(lastone).remove(nums.size() - 1);
+	            locs.get(lastone).add(loc);
+	        }
+	        nums.remove(nums.size() - 1);
+	        if (locs.get(val).isEmpty()) locs.remove(val);
+	        return true;
+	    }
+	    
+	    /** Get a random element from the set. */
+	    public int getRandom() {
+	        return nums.get( rand.nextInt(nums.size()) );
+	    }
+	}
