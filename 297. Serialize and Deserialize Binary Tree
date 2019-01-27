@@ -8,6 +8,64 @@
  * }
  */
 public class Codec {
+    private String seperator = ",";
+    private String nullSymbol = "#";
+    
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        StringBuilder sb = new StringBuilder();
+        inorder(root, sb);
+        return sb.toString();
+    }
+    
+    public void inorder(TreeNode node, StringBuilder sb){
+        if(node == null){
+            sb.append(nullSymbol).append(seperator);
+            return;
+        }
+        sb.append(node.val).append(seperator);
+        inorder(node.left, sb);
+        inorder(node.right, sb);
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        String[] nodes = data.split(seperator);
+        int[] pos = new int[1];
+        pos[0] = 0;
+        return buildTree(nodes, pos);
+    }
+    
+    public TreeNode buildTree(String[] nodes, int[] pos){
+        if(pos[0] == nodes.length) return null;
+        if(nodes[pos[0]].equals(nullSymbol)){
+            pos[0]++;
+            return null;
+        }
+        int value = Integer.parseInt(nodes[pos[0]]);
+        TreeNode node = new TreeNode(value);
+        pos[0]++;
+        node.left = buildTree(nodes, pos);
+        node.right = buildTree(nodes, pos);
+        return node;
+    }
+    
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.deserialize(codec.serialize(root));
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Codec {
     
     private String splitSymbol = ",";
     //private static final String splitSymbol = ",";
