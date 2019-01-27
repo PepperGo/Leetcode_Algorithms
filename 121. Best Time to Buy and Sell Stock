@@ -1,4 +1,17 @@
 class Solution {
+    //T[i][k][0]
+    //T[i][k][1]
+    public int maxProfit(int[] prices) {
+        int t_ik0 = 0, t_ik1 = Integer.MIN_VALUE;
+        for(int price : prices){
+            t_ik0 = Math.max(t_ik0, t_ik1 + price);
+            t_ik1 = Math.max(t_ik1, -price);
+        }
+        return t_ik0;
+    }
+}
+
+class Solution {
     public int maxProfit(int[] prices) {
         int[] profits = new int[prices.length];
         int profit = 0, max = 0;
