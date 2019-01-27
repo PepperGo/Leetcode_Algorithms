@@ -41,11 +41,21 @@ the length of the sequence of characters currently represented by this object
 ```
 Character.getNumericValue()
 
-Get ASCII value
-
 Integer.parseInt(String.valueOf(c)); 
 
 ```   
+#### Integer valueOf()
+[Integer valueOf() Method in Java](https://www.geeksforgeeks.org/integer-valueof-method-in-java/)   
+```
+Integer.valueOf(char) returning ASCII value
+```    
+
+
+
+#### Character.getNumericValue()
+[Java.lang.Character.getNumericValue() Method](https://www.tutorialspoint.com/java/lang/character_getnumericvalue.htm)   
+
+
 
 ### 151. Reverse Words in a String
 #### StringBuilder vs String
