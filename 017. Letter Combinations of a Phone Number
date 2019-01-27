@@ -1,4 +1,36 @@
 class Solution {
+    String[] buttons = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+    public List<String> letterCombinations(String digits) {
+        List<String> result = new ArrayList<>();
+        char[] digitArray = digits.toCharArray();
+        Queue<String> queue = new LinkedList<>();
+        queue.offer("");
+        for(char digit : digitArray){
+            int index = Character.getNumericValue(digit);
+            String candidates = buttons[index];
+            int size = queue.size();
+            while(size-- > 0){
+                String cur = queue.poll();
+                for(int i = 0; i < candidates.length(); i++){
+                    String newS = cur + candidates.charAt(i);
+                    queue.offer(newS);
+                }
+            }
+        }
+        while(!queue.isEmpty()){
+            String str = queue.poll();
+            if(str != "")
+                result.add(str);
+        }
+        return result;
+    }
+}
+
+
+
+
+
+class Solution {
     //private HashMap<Charactor, String> hashMap = new HashMap<Charactor, String>();
     String digitletter[] = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     
