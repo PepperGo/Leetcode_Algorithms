@@ -1,3 +1,18 @@
+class Solution {
+    public int uniquePaths(int m, int n) {
+        if(n > m) return uniquePaths(n, m);
+        int[]dp = new int[m];
+        Arrays.fill(dp, 1);
+        for(int i = 1; i < n; i++){
+            //line by line
+            for(int j = 1; j < m; j++){
+               dp[j] = dp[j-1] + dp[j];
+            }
+        }
+        return dp[m-1];
+    }
+}
+
 public class Solution {
     public int uniquePaths(int m, int n) {
         int[][] result = new int[m][n];
