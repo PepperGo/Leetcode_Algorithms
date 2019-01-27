@@ -1,0 +1,28 @@
+class Solution {
+
+    public int numDistinctIslands(int[][] grid) {
+        HashSet<String> set = new HashSet<>();
+        for(int i = 0; i < grid.length; i++){
+            for(int j = 0; j < grid[0].length; j++){
+                if(grid[i][j] == 1){
+                    StringBuilder sb = new StringBuilder();
+                    getIsland(grid, i, j, sb, "m");
+                    set.add(sb.toString());
+                }
+            }
+        }
+        return set.size();
+    }
+    
+    public void getIsland(int[][] grid, int x, int y, StringBuilder sb, String pos){
+        if(x < 0 || x >= grid.length || y < 0 || y >= grid[0].length || grid[x][y] == 0)
+            return;
+        grid[x][y] = 0;
+        sb.append(pos);
+        getIsland(grid, x+1, y, sb, "r");
+        getIsland(grid, x-1, y, sb, "l");
+        getIsland(grid, x, y+1, sb, "t");
+        getIsland(grid, x, y-1, sb, "d");
+        sb.append("b"); //back
+    }
+}
