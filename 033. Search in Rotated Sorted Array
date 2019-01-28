@@ -1,5 +1,34 @@
 class Solution {
     public int search(int[] nums, int target) {
+        int low = 0, high = nums.length; // [low, high)
+        while(low < high){
+            int mid = low+(high-low)/2;
+            //we treat smallest node as pivot
+            if(nums[mid] < nums[low]){
+                //pivot is in the left half(exclusive)
+                if(nums[low] > target && nums[mid] < target){
+                    //target is in sorted part
+                    low = mid+1;
+                }else{
+                    high = mid;
+                }
+            }else{
+                //nums[mid] >= nums[low](inclusive)
+                //pivot is in the right half
+                if(nums[low] <= target && nums[mid] >= target){
+                    //target is in sorted part
+                    high = mid;
+                }else{
+                    low = mid+1;
+                }
+            }
+        }
+        return low < nums.length && nums[low] == target ? low : -1;
+    }
+}
+
+class Solution {
+    public int search(int[] nums, int target) {
         // we treat 7 as pivot
         int start = 0, end = nums.length - 1;
         while(start <= end){
