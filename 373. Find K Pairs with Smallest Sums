@@ -1,6 +1,58 @@
 class Solution {
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         List<int[]> result = new ArrayList<>();
+        if(nums1.length == 0 || nums2.length == 0 || k == 0) return result;
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>(){
+            public int compare(int[] a, int[] b){
+                return a[0] + a[1] - b[0] - b[1];//max-heap
+            }       
+        });
+        for(int i = 0; i < Math.min(nums1.length, k); i++){
+            pq.offer(new int[]{nums1[i], nums2[0], 0});
+            //num in nums1, first num in nums2, current index in nums2
+        }
+        
+        while(k-- > 0 && !pq.isEmpty()){
+            int[] cur = pq.poll();
+            result.add(new int[]{cur[0], cur[1]});
+            if(cur[2] == nums2.length - 1) continue;
+            int curNum1Val = cur[0];
+            int nextNum2Index = cur[2]+1;
+            int nextNum2Val = nums2[nextNum2Index];
+            pq.offer(new int[]{curNum1Val, nextNum2Val, nextNum2Index});
+        }
+        return result;
+    }
+}
+//klogk
+
+class Solution {
+    public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>(){
+            public int compare(int[] a, int[] b){
+                return b[0] + b[1] - a[0] - a[1];//max-heap
+            }       
+        });
+        
+        for(int i = 0; i < nums1.length; i++){
+            for(int j = 0; j < nums2.length; j++){
+                pq.offer(new int[]{nums1[i], nums2[j]});
+                if(pq.size() > k){
+                    pq.poll();
+                }
+            }
+        }
+        List<int[]> result = new ArrayList<>();
+        while(!pq.isEmpty()){
+            result.add(0, pq.poll());
+        }
+        return result;
+    }
+}
+
+class Solution {
+    public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+        List<int[]> result = new ArrayList<>();
         if(nums1.length == 0 || nums2.length == 0) return result;
         PriorityQueue<Node> queue = new PriorityQueue<>(new Comparator<Node>(){
             public int compare(Node n1, Node n2){
