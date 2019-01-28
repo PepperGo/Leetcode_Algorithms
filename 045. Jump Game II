@@ -1,5 +1,46 @@
 class Solution {
     public int jump(int[] nums) {
+        int farthest = 0, curFarthest = 0, jumps = 0;
+        for(int i = 0; i < nums.length - 1; i++){
+            farthest = Math.max(farthest, i + nums[i]);
+            if(i == curFarthest){
+                jumps++;
+                curFarthest = farthest;
+            }
+        }
+        return jumps;
+    }
+}
+
+
+Solution {
+    public int jump(int[] nums) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(0);
+        boolean[] isVisited = new boolean[nums.length];
+        int steps = 0;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            while(size-- > 0){
+                int cur = queue.poll();
+                if(cur >= nums.length - 1) return steps;
+                int end = cur + nums[cur];
+                if(end >= nums.length - 1) return steps + 1;
+                for(int i = cur; i <= end; i++){
+                    if(!isVisited[i]){
+                        queue.offer(i);
+                        isVisited[i] = true;
+                    }
+                }
+            }
+            steps++;
+        }
+        return -1;
+    }
+}
+
+class Solution {
+    public int jump(int[] nums) {
         int[] steps = new int[nums.length];
         Arrays.fill(steps, Integer.MAX_VALUE);
         steps[0] = 0;
