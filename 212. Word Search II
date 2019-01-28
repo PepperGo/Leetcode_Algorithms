@@ -1,0 +1,57 @@
+class Solution {
+    private int[][] dirs = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+    private TrieNode root = new TrieNode();
+    public List<String> findWords(char[][] board, String[] words) {
+        List<String> result = new ArrayList<>();
+        buildTrie(words);
+        for(int i = 0; i < board.length; i++){
+            for(int j = 0; j < board[0].length; j++){
+                dfs(board, i, j, root, result);
+            }
+        }
+        return result;
+    }
+    
+    public void dfs(char[][] board, int x, int y, TrieNode node, List<String> result){
+        TrieNode cur = node;
+        if(x < 0 || x >= board.length || y < 0 || y >= board[0].length || board[x][y] == '#')
+            return;
+        char ch = board[x][y];
+        if(cur.next[ch-'a'] == null) return;
+        cur = cur.next[ch-'a'];
+        if(cur.word != null){
+            result.add(cur.word);
+            cur.word = null;//delete duplicate
+        }
+        board[x][y] = '#';
+        for(int[] dir : dirs){
+            dfs(board, x + dir[0], y + dir[1], cur, result);
+        }
+        board[x][y] = ch;
+    }
+    
+    public void buildTrie(String[] words){
+        for(String str : words){
+            char[] array = str.toCharArray();
+            TrieNode cur = root;
+            for(int i = 0; i < array.length; i++){
+                char ch = array[i];
+                if(cur.next[ch-'a'] == null){
+                    cur.next[ch-'a'] = new TrieNode();
+                }
+                cur = cur.next[ch - 'a'];
+            }
+            cur.word = str;
+        }
+    }
+
+}
+
+class TrieNode{
+    TrieNode[] next;
+    String word;
+    
+    public TrieNode(){
+        next = new TrieNode[26];
+    }
+}
