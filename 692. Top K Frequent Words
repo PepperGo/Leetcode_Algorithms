@@ -1,0 +1,38 @@
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        PriorityQueue<Word> pq = new PriorityQueue<>(new Comparator<Word>(){
+            //min - heap;
+            public int compare(Word w1, Word w2){
+                return w1.times == w2.times ? w2.value.compareTo(w1.value) : w1.times - w2.times;
+            }
+        }); 
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        for(String str : words){
+            hashMap.put(str, hashMap.getOrDefault(str, 0) + 1);
+        }
+        
+        for(Map.Entry<String, Integer> entry : hashMap.entrySet()){
+            Word word = new Word(entry.getKey(), entry.getValue());
+            pq.offer(word);
+            if(pq.size() > k){
+                pq.poll();
+            }
+        }
+        
+        List<String> result = new ArrayList<>();
+        while(!pq.isEmpty()){
+            result.add(0, pq.poll().value);
+        }
+        return result;
+    }
+}
+
+class Word{
+    String value;
+    int times;
+    
+    Word(String value, int times){
+        this.value = value;
+        this.times = times;
+    }
+}
