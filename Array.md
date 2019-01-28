@@ -276,6 +276,11 @@ int x = ran.nextInt(6) + 5;
 
 
 ### 215. Kth Largest Element in an Array
-#### Arrays.sort(arr, Collections.reverseOrder());
-
+#### int[] and Integer[]
+```
+Arrays.sort(arr, Collections.reverseOrder());
+Arrays.sort(arr, new Comparator<Integer>(){
+  ...});
+Can't use for int[]
+```   
 
