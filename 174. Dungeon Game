@@ -1,0 +1,19 @@
+class Solution {
+    public int calculateMinimumHP(int[][] dungeon) {
+        int R = dungeon.length;
+        int L = dungeon[0].length;
+        int[][] hp = new int[R+1][L+1];
+        for(int[] row : hp){
+            Arrays.fill(row, Integer.MAX_VALUE);
+        }
+        hp[R-1][L] = 1;
+        hp[R][L-1] = 1;
+        for(int x = R-1; x >= 0; x--){
+            for(int y = L-1; y>= 0; y--){
+                int need = Math.min(hp[x+1][y], hp[x][y+1]) - dungeon[x][y];
+                hp[x][y] = need <= 0 ? 1 : need;
+            }  
+        }
+        return hp[0][0];
+    }
+}
