@@ -1,0 +1,49 @@
+class Solution {
+    public String alienOrder(String[] words) {
+        Map<Character, Set<Character>> graph = new HashMap<>();
+        Map<Character, Integer> inDegree = new HashMap<>();
+        for(String word : words){
+            for(int i = 0; i < word.length(); i++){
+                char ch = word.charAt(i);
+                graph.putIfAbsent(ch, new HashSet<Character>());
+                inDegree.putIfAbsent(ch, 0);
+            }
+        }
+        
+        //build graph, and indegree
+        for(int level = 0; level < words.length-1; level++){
+            String str1 = words[level];
+            String str2 = words[level+1];
+            for(int i = 0; i < Math.min(str1.length(), str2.length()); i++){
+                char ch1 = str1.charAt(i);
+                char ch2 = str2.charAt(i);
+                if(ch1 != ch2){
+                    Set set = graph.get(ch1);
+                    if(!set.contains(ch2)){
+                        set.add(ch2);
+                        inDegree.put(ch2, inDegree.get(ch2)+1);
+                    }
+                    break;
+                }
+            }
+        }
+        Queue<Character> queue = new LinkedList<>();
+        for(Map.Entry<Character, Integer> entry : inDegree.entrySet()){
+            if(entry.getValue() == 0)
+                queue.offer(entry.getKey());
+        }
+        StringBuilder sb = new StringBuilder();
+        while(!queue.isEmpty()){
+            char cur = queue.poll();
+            sb.append(cur);
+            for(char ch : graph.get(cur)){
+                int count = inDegree.get(ch)-1;
+                inDegree.put(ch, inDegree.get(ch)-1);
+                if(count == 0)
+                    queue.offer(ch);
+            }
+        }
+        return sb.toString().length() == graph.size() ? sb.toString() : "";
+        
+    }
+}
