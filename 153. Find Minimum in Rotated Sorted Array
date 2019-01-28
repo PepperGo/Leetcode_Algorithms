@@ -103,3 +103,21 @@ class Solution {
         return nums[start];
     }
 }
+class Solution {
+    public int findMin(int[] nums) {
+        int low = 0, high = nums.length-1;//[low, high)
+        while(low < high){
+            int mid = low+(high-low)/2;
+            if(nums[high] > nums[mid]){
+                //pivot is in the right half(exclusive), so should >=
+                high = mid;
+                
+            }else{
+                //nums[low] > nums[mid]
+                //pivot is in the left half(inclusive), so shoud >
+                low = mid+1;
+            }
+        }
+        return nums[low];
+    }
+}
