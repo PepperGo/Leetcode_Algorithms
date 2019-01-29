@@ -1,3 +1,40 @@
+
+class BSTIterator {
+    Stack<TreeNode> nodes;
+
+    public BSTIterator(TreeNode root) {
+        nodes = new Stack<>();
+        pushAll(root);
+    }
+    
+    /** @return the next smallest number */
+    public int next() {
+        TreeNode smallest = nodes.pop();
+        pushAll(smallest.right);
+        return smallest.val;
+    }
+    
+    /** @return whether we have a next smallest number */
+    public boolean hasNext() {
+        return !nodes.isEmpty();
+    }
+    
+    public void pushAll(TreeNode node){
+        while(node != null){
+            nodes.push(node);
+            node = node.left;
+        }
+    }
+}
+
+/**
+ * Your BSTIterator object will be instantiated and called as such:
+ * BSTIterator obj = new BSTIterator(root);
+ * int param_1 = obj.next();
+ * boolean param_2 = obj.hasNext();
+ */
+
+
 /**
  * Definition for binary tree
  * public class TreeNode {
