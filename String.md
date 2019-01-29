@@ -146,3 +146,13 @@ String[] words = paragraph.replaceAll("[!?',;.]"," ").toLowerCase().split("\\s+"
 
 #### str.toLowerCase(), str.toUpperCase()   
 
+
+### 937. Reorder Log Files
+#### Check a string is a number
+```
+public static boolean isNumeric(String strNum) {
+    return strNum.matches("-?\\d+(\\.\\d+)?");
+}
+```   
+
+
