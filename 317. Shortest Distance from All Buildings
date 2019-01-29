@@ -1,0 +1,58 @@
+class Solution {
+    private int[][] reachable;
+    private int totalBuildings;
+    private int[][] distance;
+    private int R, L;
+    private int[][] dirs = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+    public int shortestDistance(int[][] grid) {
+        R = grid.length;
+        L = grid[0].length;
+        reachable = new int[R][L];
+        distance = new int[R][L];
+        totalBuildings = 0;
+        for(int i = 0; i < R; i++){
+            for(int j = 0; j < L; j++){
+                if(grid[i][j] == 1){
+                    totalBuildings++;
+                    bfs(grid, i, j);
+                }
+            }
+        }
+        int min = Integer.MAX_VALUE;
+        for(int i = 0; i < R; i++){
+            for(int j = 0; j < L; j++){
+                if(grid[i][j] == 0 && reachable[i][j] == totalBuildings){
+                    min = Math.min(min, distance[i][j]);
+                }
+            }
+        }
+        return min == Integer.MAX_VALUE ? -1 : min;
+        
+    }
+    
+    public void bfs(int[][] grid, int x, int y){
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{x, y});
+        boolean[][] visited = new boolean[R][L];
+        int steps = 1;
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            while(size-- > 0){
+                int[] cur = queue.poll();
+                for(int[] dir : dirs){
+                    int newX = cur[0]+dir[0];
+                    int newY = cur[1]+dir[1];
+                    if(newX < 0 || newX >= R || newY < 0 || newY >= L || visited[newX][newY] ||
+                      grid[newX][newY] != 0)
+                        continue;
+                    reachable[newX][newY]++;
+                    distance[newX][newY] += steps;
+                    visited[newX][newY] = true;
+                    queue.offer(new int[]{newX, newY});
+                }
+            }
+            steps++;
+        }
+        
+    }
+}
