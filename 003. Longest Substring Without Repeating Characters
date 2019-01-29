@@ -16,6 +16,26 @@ public class Solution {
     }
 }
 
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        HashMap<Character, Integer> freq = new HashMap<>();
+        int low = 0, max = 0;
+        for(int high = 0; high < s.length(); high++){
+            char ch = s.charAt(high);
+            int count = freq.getOrDefault(ch, 0)+1;
+            freq.put(ch, count);
+            while(count > 1){
+                char head = s.charAt(low++);
+                if(freq.get(head) == 2){
+                    count--;
+                }
+                freq.put(head, freq.get(head)-1);
+            }
+            max = Math.max(max, high-low+1);
+        }
+        return max;
+    }
+}
 
 class Solution {
     public int lengthOfLongestSubstring(String s) {
