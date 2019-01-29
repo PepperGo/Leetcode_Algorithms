@@ -1,3 +1,24 @@
+class Solution {
+    private int R, L;
+    public int minPathSum(int[][] grid) {
+        R = grid.length;
+        L = grid[0].length;
+        int[][] distance = new int[R+1][L+1];
+        for(int[] dis : distance){
+            Arrays.fill(dis, Integer.MAX_VALUE);
+        }
+        distance[R-1][L] = 0;
+        distance[R][L-1] = 0;
+        for(int i = R-1; i >= 0; i--){
+            for(int j = L-1; j >= 0; j--){
+                distance[i][j] = Math.min(distance[i+1][j], distance[i][j+1]) + grid[i][j];
+            }
+        }
+        return distance[0][0];
+    }
+}
+
+
 public class Solution {
     public int minPathSum(int[][] grid) {
         int m = grid.length;
