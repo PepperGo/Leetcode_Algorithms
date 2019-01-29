@@ -54,6 +54,36 @@ class Solution {
 }
 
 class Solution {
+    private int R, L;
+    private boolean[][] isVisited;
+    public boolean exist(char[][] board, String word) {
+        R = board.length;
+        L = board[0].length;
+        isVisited = new boolean[R][L];
+        char[] array = word.toCharArray();
+        for(int i = 0; i < R; i++){
+            for(int j = 0; j < L; j++){
+                if(isExist(board, i, j, array, 0))
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean isExist(char[][] board, int x, int y, char[] array, int pos){
+        if(pos == array.length) return true;
+        if(x < 0 || y < 0 || x >= R || y >= L || isVisited[x][y] || board[x][y] != array[pos]) return false;
+        isVisited[x][y] = true;
+        if(isExist(board, x+1, y, array, pos+1) || isExist(board, x-1, y, array, pos+1)
+            || isExist(board, x, y-1, array, pos+1) || isExist(board, x, y+1, array, pos+1)){
+            return true;
+        }
+        isVisited[x][y] = false;
+        return false;
+    }
+}
+
+class Solution {
     public boolean[][] visited;
     public boolean exist(char[][] board, String word) {
         if(board.length == 0 && word.length() != 0) return false;
