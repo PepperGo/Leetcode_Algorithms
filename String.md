@@ -153,6 +153,16 @@ String[] words = paragraph.replaceAll("[!?',;.]"," ").toLowerCase().split("\\s+"
 public static boolean isNumeric(String strNum) {
     return strNum.matches("-?\\d+(\\.\\d+)?");
 }
+
+
+String regex = "[0-9]+";
+
+String regex = "\\d+";
+As per Java regular expressions, the  + means "one or more times" and \d means "a digit".
+
+Note: the "double backslash" is an escape sequence to get a single backslash - therefore, \\d in a java String gives you the actual result: \d  
+
+
 ```   
 
 
