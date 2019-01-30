@@ -22,3 +22,27 @@ public int compare(Student s1, Student s2) {
 } 
 
 ```  
+
+#### Use Way 2 may case overflow
+[Example](https://github.com/PepperGo/Leetcode_Algorithms/blob/master/480.%20Sliding%20Window%20Median)
+```
+[-2147483648,2147483647,2147483647]
+
+        PriorityQueue<Integer> minQ = new PriorityQueue<Integer>(new Comparator<Integer>(){
+            public int compare(Integer i1, Integer i2){
+                if(i1 < i2){
+                    return 1;
+                }else if(i1 > i2){
+                    return -1;
+                }else
+                    return 0;
+            }
+        }); //max-heap
+        
+        But this can't work
+        PriorityQueue<Integer> minQ = new PriorityQueue<Integer>(new Comparator<Integer>(){
+            public int compare(Integer i1, Integer i2){
+                return i2 - i1;
+            }
+        }); //max-heap
+```
