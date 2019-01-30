@@ -1,6 +1,51 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if(nums1.length > nums2.length) return findMedianSortedArrays(nums2, nums1);
+        int mid = (nums1.length+nums2.length+1)/2; 
+        //C[mid-1] is the median or (C[mid-1] + C[mid])/2 is the median
+        int low = 0, high = nums1.length; //[low, high)
+        while(low < high){
+            int m1 = low+(high-low)/2; //nums1[m1-1] is end
+            int m2 = mid-m1; //nums2[m2-1] is end
+            if(nums2[m2-1] > nums1[m1]){
+                //m1 is too small
+                low = m1+1;
+            }else{
+                high = m1;
+            }
+        }
+        int m1 = low;
+        int m2 = mid-low;
+        double midLeftValue = 0;
+        if(m1 == 0){
+            midLeftValue = nums2[m2-1];
+        }else if(m2 == 0){
+            midLeftValue = nums1[m1-1];
+        }else{
+            midLeftValue = Math.max(nums1[m1-1], nums2[m2-1]);
+        }
+        if((nums1.length + nums2.length)%2 == 1){
+            return midLeftValue;
+        }
+        
+        double midRightValue = 0;
+        if(m1 == nums1.length){
+            midRightValue = nums2[m2];
+        }else if(m2 == nums2.length){
+            midRightValue = nums1[m1];
+        }else{
+            midRightValue = Math.min(nums1[m1], nums2[m2]);
+        }
+        return (midLeftValue+midRightValue)/2;
+        
+        
+    }
+}
+
+
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if(nums1.length > nums2.length) return findMedianSortedArrays(nums2, nums1);
         int l = 0, r = nums1.length, k = (nums1.length + nums2.length + 1)/2;
         int m = 0, n = 0;
         while(l <= r){
