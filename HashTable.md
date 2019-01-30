@@ -54,3 +54,16 @@ Arrays.equals(Object[] a, Object[] a2)
 #### Array Clone
 clone(): Methods inherited from class java.lang.Object
 
+
+### 353. Design Snake Game
+#### HashSet<int[]> !!!! Wrong!
+[HashSet usage with int arrays](https://stackoverflow.com/questions/28344312/hashset-usage-with-int-arrays)   
+```
+That's because HashSet uses .equals() to see if a new object is duplicated (and .hashCode() to determine the "bucket").
+
+When you work with arrays, please be aware that new int[]{1,2,3} is NOT "equal to" new int[]{1,2,3}.
+
+The proper way to "deep compare" arrays is via Arrays.equals(a, b) method
+```   
+
+
