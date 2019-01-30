@@ -43,10 +43,13 @@ The reason it's necessary for Boolean[] is because the default value is null.
 
 ### 140. Word Break II  
 #### Array
+```
 ArrayList<String>[] dp = new ArrayList[n];
 LinkedList<String>[] dp = new LinkedList[n];
 
 ArrayList<String>[] dp = new ArrayList<String>[n] (X, wrong)
+```  
+
 
 #### ArrayList with values
 [How to declare ArrayList with values in Java?](http://www.java67.com/2015/10/how-to-declare-arraylist-with-values-in-java.html)  
