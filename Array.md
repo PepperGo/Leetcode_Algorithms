@@ -304,5 +304,7 @@ Heap just guarantees that elements on higher levels are greater (for max-heap) o
 
 Heap is better at findMin/findMax (O(1)), while BST is good at all finds (O(logN)). Insert is O(logN) for both structures. If you only care about findMin/findMax (e.g. priority-related), go with heap. If you want everything sorted, go with BST.   
 
+#### TreeSet
+[Class TreeSet\<E\>](https://docs.oracle.com/javase/7/docs/api/java/util/TreeSet.html)   
 
 
