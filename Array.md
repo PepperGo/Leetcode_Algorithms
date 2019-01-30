@@ -296,4 +296,8 @@ linear time for the remove(Object) and contains(Object) methods;
 constant time for the retrieval methods (peek, element, and size).   
 
 
+#### Heap vs Binary Search Tree (BST)
+[Heap vs Binary Search Tree (BST)](https://stackoverflow.com/questions/6147242/heap-vs-binary-search-tree-bst)   
+
+
 
