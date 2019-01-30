@@ -299,5 +299,10 @@ constant time for the retrieval methods (peek, element, and size).
 #### Heap vs Binary Search Tree (BST)
 [Heap vs Binary Search Tree (BST)](https://stackoverflow.com/questions/6147242/heap-vs-binary-search-tree-bst)   
 
+Heap just guarantees that elements on higher levels are greater (for max-heap) or smaller (for min-heap) than elements on lower levels, whereas BST guarantees order (from "left" to "right"). If you want sorted elements, go with BST.  
+
+
+Heap is better at findMin/findMax (O(1)), while BST is good at all finds (O(logN)). Insert is O(logN) for both structures. If you only care about findMin/findMax (e.g. priority-related), go with heap. If you want everything sorted, go with BST.   
+
 
 
