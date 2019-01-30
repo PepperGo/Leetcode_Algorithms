@@ -1,12 +1,22 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+
+class Solution {
+    HashSet<Integer> set = new HashSet<>();
+    public boolean findTarget(TreeNode root, int k) {
+        return dfs(root, k);
+    }
+    
+    public boolean dfs(TreeNode node, int target){
+        if(node == null) return false;
+        if(set.contains(node.val)){
+            return true;
+        }
+        set.add(target - node.val);
+        return dfs(node.left, target) || dfs(node.right, target);
+    }
+    
+}
+
+
 class Solution {
     HashSet<Integer> hashSet = new HashSet<>();
     boolean isFound = false;
