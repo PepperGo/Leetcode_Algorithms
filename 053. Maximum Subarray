@@ -1,3 +1,18 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        if(nums.length == 0) return 0;
+        int[] dp = new int[nums.length]; //dp[i]: the max sum end at index i
+        dp[0] = nums[0];
+        int max = dp[0];
+        for(int i = 0; i < nums.length-1; i++){
+            dp[i+1] = nums[i+1] + (dp[i] > 0 ? dp[i] : 0);
+            max = Math.max(max, dp[i+1]);
+        }
+        return max;
+    }
+}
+
+
 public class Solution {
     public int maxSubArray(int[] nums) {
         int[] maxnums = new int[nums.length];
