@@ -1,0 +1,15 @@
+class Solution {
+    public int countDigitOne(int n) {
+        if(n <= 0) return 0;
+        int num = n, pos = 1, ans = 0;
+        do{
+            int digit = num%10;
+            num = num/10;
+            ans += num*pos; 
+            if(digit == 1) ans += n % pos + 1;
+            if(digit > 1) ans += pos;
+            pos *= 10;
+        }while(num > 0);
+        return ans;
+    }
+}
