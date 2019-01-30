@@ -1,0 +1,39 @@
+class Solution {
+    public double[] medianSlidingWindow(int[] nums, int k) {
+        PriorityQueue<Integer> minQ = new PriorityQueue<Integer>(new Comparator<Integer>(){
+            public int compare(Integer i1, Integer i2){
+                if(i1 < i2){
+                    return 1;
+                }else if(i1 > i2){
+                    return -1;
+                }else
+                    return 0;
+            }
+        }); //max-heap
+        PriorityQueue<Integer> maxQ = new PriorityQueue<Integer>(); //min-heap
+        double[] medians = new double[nums.length-k+1];
+        int start = 0;
+        for(int i = 0; i < nums.length; i++){
+            minQ.offer(nums[i]);
+            maxQ.offer(minQ.poll());
+            if(minQ.size() < maxQ.size()){
+                minQ.offer(maxQ.poll());
+            }
+            if(minQ.size() + maxQ.size() == k){
+                long left = minQ.peek();
+                if(k % 2 == 0){
+                    long right = maxQ.peek();
+                    medians[start] = (double) (left+right)/2;
+                }else{
+                    medians[start] = (double) left;
+                }
+                int head = nums[start++];
+                if(!minQ.remove(head)){
+                    maxQ.remove(head);
+                }
+            }
+            
+        }
+        return medians;
+    }
+}
