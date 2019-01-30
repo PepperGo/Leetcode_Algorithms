@@ -284,3 +284,16 @@ Arrays.sort(arr, new Comparator<Integer>(){
 Can't use for int[]
 ```   
 
+### 480. Sliding Window Median
+#### PriorityQueue
+[PriorityQueue](https://docs.oracle.com/javase/8/docs/api/java/util/PriorityQueue.html)    
+Implementation note: this implementation provides:   
+
+O(log(n)) time for the enqueuing and dequeuing methods (offer, poll, remove() and add);    
+
+linear time for the remove(Object) and contains(Object) methods;    
+
+constant time for the retrieval methods (peek, element, and size).   
+
+
+
