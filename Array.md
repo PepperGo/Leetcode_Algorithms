@@ -65,6 +65,19 @@ ArrayList<ArrayList<String>> listOLists = new ArrayList<ArrayList<String>>();
 ```  
 To compare two elements, it asks “Which is greater?” Compare method returns -1, 0 or 1 to say if it is less than, equal, or greater to the other.  
 
+#### Deque, Queue to List
+[Convert from Queue to ArrayList](https://stackoverflow.com/questions/20708358/convert-from-queue-to-arraylist)   
+```
+The fastest is to use a LinkedList in the first place which can be used as a List or a Queue.
+
+Queue q = new LinkedList();
+List l = (List) q;
+Otherwise you need to take a copy
+
+List l = new ArrayList(q);
+
+```
+
 
 ### 118. Pascal's Triangle
 #### ArrayList<ArrayList<>> and List<List<>>
