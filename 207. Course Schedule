@@ -1,3 +1,35 @@
+class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        List<Set<Integer>> nextCourse = new ArrayList<>(numCourses);
+        for(int i = 0; i < numCourses; i++){
+            nextCourse.add(new HashSet<Integer>());
+        }
+        int[] indegree = new int[numCourses];
+        for(int[] prereq : prerequisites){
+            int start = prereq[1];
+            int end = prereq[0];
+            nextCourse.get(start).add(end);
+            indegree[end]++;
+        }
+        Queue<Integer> toVisit = new LinkedList<>();
+        for(int i = 0; i < numCourses; i++){
+            if(indegree[i] == 0)
+                toVisit.offer(i);
+        }
+        int count = 0;
+        while(!toVisit.isEmpty()){
+            int cur = toVisit.poll();
+            count++;
+            for(int next : nextCourse.get(cur)){
+                indegree[next]--;
+                if(indegree[next] == 0)
+                    toVisit.offer(next);
+            }
+        }
+        return count == numCourses;
+    }
+}
+
 /*Topological sorting!!!
 According to the Wiki about what Topological sorting is (https://en.wikipedia.org/wiki/Topological_sorting)
 and the Kahn's algorithm as shown below:
