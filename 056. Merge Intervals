@@ -1,3 +1,33 @@
+class Solution {
+    public List<Interval> merge(List<Interval> intervals) {
+        Deque<Interval> result = new LinkedList<>();
+        if(intervals == null || intervals.size() == 0) 
+             return new ArrayList<Interval>(result);
+        Collections.sort(intervals, new Comparator<Interval>(){
+            public int compare(Interval i1, Interval i2){
+                if(i1.start != i2.start){
+                    return Integer.compare(i1.start, i2.start);
+                }else{
+                    return Integer.compare(i1.end, i2.end);
+                }
+            }
+        });
+        for(Interval a : intervals){
+           if(result.isEmpty()){
+               result.offerLast(a);
+           }else{
+               if(result.peekLast().end < a.start){
+                   result.offerLast(a);
+               }else{
+                   result.peekLast().end = Math.max(result.peekLast().end, a.end);
+               }
+           }
+        }
+        return new ArrayList<Interval>(result);
+        
+    }
+}
+
 
 /**
  * Definition for an interval.
