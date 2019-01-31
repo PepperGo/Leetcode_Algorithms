@@ -1,0 +1,32 @@
+class Solution {
+    public int findCheapestPrice(int n, int[][] flights, int src, int dst, int K) {
+        Map<Integer, Map<Integer, Integer>> paths = new HashMap<>();
+        for(int[] flight : flights){
+            if(!paths.containsKey(flight[0])){
+                paths.put(flight[0], new HashMap<Integer, Integer>());
+            }
+            paths.get(flight[0]).put(flight[1], flight[2]);
+        }
+        //e[0]: price, e[1]:start point, e[2]:stops
+        PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>(){
+            public int compare(int[] a, int[] b){
+                return a[0] - b[0];
+            }
+        });
+        pq.offer(new int[]{0, src, K+1});//within k stops, total k+1 steps
+        while(!pq.isEmpty()){
+            int[] cur = pq.poll();
+            int price = cur[0];
+            int city = cur[1];
+            int stops = cur[2];
+            if(city == dst) return price;
+            if(stops > 0){
+                if(paths.get(city) == null) continue;
+                for(int next : paths.get(city).keySet()){
+                    pq.offer(new int[]{price+paths.get(city).get(next), next, stops-1});
+                }
+            }
+        }
+        return -1;
+    }
+}
