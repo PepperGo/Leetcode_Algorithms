@@ -1,3 +1,26 @@
+public class Solution {
+    Map<UndirectedGraphNode, UndirectedGraphNode> map;
+    public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
+        map = new HashMap<>();
+        return getClonedNode(node);
+    }
+    
+    public UndirectedGraphNode getClonedNode(UndirectedGraphNode node){
+        if(node == null) return null;
+        if(map.containsKey(node)){
+            return map.get(node);
+        }
+        UndirectedGraphNode cur = new UndirectedGraphNode(node.label);
+        map.put(node, cur);
+        List<UndirectedGraphNode> curNeighbors = new ArrayList<>();
+        for(UndirectedGraphNode neighbor : node.neighbors){
+            curNeighbors.add(getClonedNode(neighbor));
+        }
+        cur.neighbors = curNeighbors;      
+        return cur;
+    } 
+}
+
 /**
  * Definition for undirected graph.
  * class UndirectedGraphNode {
