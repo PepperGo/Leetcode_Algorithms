@@ -36,3 +36,13 @@ Topological-Sort (G)
 Using BFS
 [Kahn's algorithm](https://en.wikipedia.org/wiki/Topological_sorting)  
 
+
+### 787. Cheapest Flights Within K Stops
+#### 
+[compareTo with primitives -> Integer / int](https://stackoverflow.com/questions/1514910/how-to-properly-compare-two-integers-in-java)    
+
+```
+if a and b are int, Integer.compare(a, b)
+
+if a and b are Integer, a.compareTo(b)
+```
