@@ -20,3 +20,31 @@ class Solution {
         return sum;
     }
 }
+
+
+class Solution {
+    int sum = 0;
+    Stack<Integer> stack = new Stack<>();
+    public int calPoints(String[] ops) {
+        for(String op : ops){
+            if(op.matches("[-]?[0-9]*")){
+                stack.push(Integer.parseInt(op));
+                sum += Integer.parseInt(op);
+            }else if(op.equals("C")){
+                sum -= stack.pop();
+            }else if(op.equals("D")){
+                stack.push(stack.peek()*2);
+                sum += stack.peek();
+            }else{
+                //op: "+"
+                int lastOne = stack.pop();
+                int lastTwo = stack.peek();
+                stack.push(lastOne);
+                int cur = lastOne+lastTwo;
+                stack.push(cur);
+                sum += cur;
+            }
+        }
+        return sum;
+    }
+}
