@@ -1,4 +1,41 @@
 class Solution {
+    private int R, L;
+    private int[][] dirs = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+    public void wallsAndGates(int[][] rooms) {
+        if(rooms.length == 0 || rooms[0].length == 0) return;
+        R = rooms.length;
+        L = rooms[0].length;
+        Queue<int[]> queue = new LinkedList<>();
+        for(int i = 0; i < R; i++){
+            for(int j = 0; j < L; j++){
+                if(rooms[i][j] == 0){
+                    queue.offer(new int[]{i, j});
+                }
+            }
+        }
+        bfs(rooms, queue);
+        
+    }
+    
+    public void bfs(int[][] rooms, Queue<int[]> toVisit){
+        int steps = 0;
+        while(!toVisit.isEmpty()){
+            int[] cur = toVisit.poll();
+            for(int[] dir : dirs){
+                int newX = cur[0] + dir[0];
+                int newY = cur[1] + dir[1];
+                if(newX < 0 || newX >= R || newY < 0 || newY >= L)
+                    continue;
+                if(rooms[newX][newY] != Integer.MAX_VALUE)
+                    continue;
+                toVisit.offer(new int[]{newX, newY});
+                rooms[newX][newY] = rooms[cur[0]][cur[1]]+1;
+            }
+        }
+    }
+}
+
+class Solution {
     private int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     public void wallsAndGates(int[][] rooms) {
         for(int i = 0; i < rooms.length; i++){
