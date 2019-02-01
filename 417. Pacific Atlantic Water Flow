@@ -1,3 +1,48 @@
+//dfs
+class Solution {
+    private int R, L;
+    private int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    public List<int[]> pacificAtlantic(int[][] matrix) {
+        List<int[]> result = new ArrayList<>();
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return result;
+        R = matrix.length;
+        L = matrix[0].length;
+        Queue<int[]> atlanticQ = new LinkedList<>();
+        Queue<int[]> pacificQ = new LinkedList<>();
+        boolean[][] isAtlantic = new boolean[R][L];
+        boolean[][] isPacific = new boolean[R][L];
+        
+        for(int i = 0; i < R; i++){
+            dfs(matrix, isAtlantic, i, 0, Integer.MIN_VALUE);
+            dfs(matrix, isPacific, i, L-1, Integer.MIN_VALUE);
+        }
+        for(int j = 0; j < L; j++){
+            dfs(matrix, isAtlantic, 0, j, Integer.MIN_VALUE);
+            dfs(matrix, isPacific, R-1, j, Integer.MIN_VALUE);
+        }
+    
+        
+        for(int i = 0; i < R; i++){
+            for(int j = 0; j < L; j++){
+                if(isPacific[i][j] && isAtlantic[i][j]){
+                    result.add(new int[]{i, j});
+                }
+            }
+        }
+        return result;
+        
+    }
+    
+    public void dfs(int[][] matrix, boolean[][] isVisited, int x, int y, int height){
+        if(x < 0 || x >= R || y < 0 || y >= L || isVisited[x][y] || matrix[x][y] < height)
+            return;
+        isVisited[x][y] = true;
+        for(int[] dir : dirs){
+            dfs(matrix, isVisited, x+dir[0], y+dir[1], matrix[x][y]);
+        }
+    }
+}
+
 //BFS
 class Solution {
     private int R, L;
