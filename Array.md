@@ -323,3 +323,6 @@ Heap is better at findMin/findMax (O(1)), while BST is good at all finds (O(logN
 [TreeSet in Java - Greeks](https://www.geeksforgeeks.org/treeset-in-java-with-examples/)   
 
 
+### 384. Shuffle an Array
+#### copy value from array
+[copying array by value in java](https://stackoverflow.com/questions/2371568/copying-array-by-value-in-java)    
