@@ -1,4 +1,59 @@
 class Solution {
+    private int R, L;
+    private int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    public List<int[]> pacificAtlantic(int[][] matrix) {
+        List<int[]> result = new ArrayList<>();
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return result;
+        R = matrix.length;
+        L = matrix[0].length;
+        Queue<int[]> atlanticQ = new LinkedList<>();
+        Queue<int[]> pacificQ = new LinkedList<>();
+        boolean[][] isAtlantic = new boolean[R][L];
+        boolean[][] isPacific = new boolean[R][L];
+        
+        for(int i = 0; i < R; i++){
+            pacificQ.offer(new int[]{i, 0});
+            atlanticQ.offer(new int[]{i, L-1});
+            isPacific[i][0] = true;
+            isAtlantic[i][L-1] = true;
+        }
+        for(int j = 0; j < L; j++){
+            pacificQ.offer(new int[]{0, j});
+            atlanticQ.offer(new int[]{R-1, j});
+            isPacific[0][j] = true;
+            isAtlantic[R-1][j] = true;
+        }
+        bfs(matrix, pacificQ, isPacific);
+        bfs(matrix, atlanticQ, isAtlantic);
+        for(int i = 0; i < R; i++){
+            for(int j = 0; j < L; j++){
+                if(isPacific[i][j] && isAtlantic[i][j]){
+                    result.add(new int[]{i, j});
+                }
+            }
+        }
+        return result;
+        
+    }
+    
+    public void bfs(int[][] matrix, Queue<int[]> queue, boolean[][] isVisited){
+        while(!queue.isEmpty()){
+            int[] cur = queue.poll();
+            for(int[] dir : dirs){
+                int newX = cur[0]+dir[0];
+                int newY = cur[1]+dir[1];
+                if(newX < 0 || newX >= R || newY < 0 || newY >= L 
+                   || isVisited[newX][newY] || matrix[newX][newY] < matrix[cur[0]][cur[1]])
+                    continue;
+                isVisited[newX][newY] = true;
+                queue.offer(new int[]{newX, newY});
+            }
+        }
+    }
+}
+
+
+class Solution {
     private int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     
     public List<int[]> pacificAtlantic(int[][] matrix) {
