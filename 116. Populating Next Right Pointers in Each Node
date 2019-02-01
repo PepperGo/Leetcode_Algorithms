@@ -1,3 +1,21 @@
+
+//Recursive
+public class Solution {
+    public void connect(TreeLinkNode root) {
+        if(root == null || root.left == null) return;
+        connectTwoNodes(root.left, root.right);
+    }
+    
+    public void connectTwoNodes(TreeLinkNode node1, TreeLinkNode node2){
+        node1.next = node2;
+        if(node1.left != null){
+            connectTwoNodes(node1.left, node1.right);
+            connectTwoNodes(node1.right, node2.left);
+            connectTwoNodes(node2.left, node2.right);
+        }
+    }
+}
+
 public class Solution {
     public void connect(TreeLinkNode root) {
         if(root == null) return;
