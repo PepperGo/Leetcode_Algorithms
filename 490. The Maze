@@ -1,0 +1,30 @@
+class Solution {
+    private int R, L;
+    private int[][] dirs = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+    public boolean hasPath(int[][] maze, int[] start, int[] destination) {
+        R = maze.length;
+        L = maze[0].length;
+        Queue<int[]> toVisit = new LinkedList<>();
+        boolean[][] isVisited = new boolean[R][L];
+        toVisit.offer(start);
+        isVisited[start[0]][start[1]] = true;
+        while(!toVisit.isEmpty()){
+            int[] cur = toVisit.poll();
+            if(cur[0] == destination[0] && cur[1] == destination[1]) return true;
+            for(int[] dir : dirs){
+                int newX = cur[0]+dir[0];
+                int newY = cur[1]+dir[1];
+                while(newX >= 0 && newX < R && newY >= 0 && newY < L 
+                      && maze[newX][newY] == 0){
+                    newX += dir[0];
+                    newY += dir[1];
+                }
+                if(!isVisited[newX-dir[0]][newY-dir[1]]){
+                    toVisit.offer(new int[]{newX-dir[0], newY-dir[1]});
+                    isVisited[newX-dir[0]][newY-dir[1]] = true;
+                }
+            }
+        }
+        return false;
+    }
+}
