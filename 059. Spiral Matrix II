@@ -1,3 +1,37 @@
+class Solution {
+    public int[][] generateMatrix(int n) {
+        int left = 0, right = n-1;
+        int top = 0, bottom = n-1;
+        int[][] matrix = new int[n][n];
+        int num = 0;
+        while(left <= right && top <= bottom){
+            for(int i = left; i <= right; i++){
+                matrix[top][i] = ++num;
+            }
+            top++;
+            for(int j = top; j <= bottom; j++){
+                matrix[j][right] = ++num;
+            }
+            right--;
+            if(top <= bottom){
+                for(int i = right; i >= left; i--){
+                    matrix[bottom][i] = ++num;
+                }
+                bottom--;
+            }
+            
+            if(left <= right){
+                for(int j = bottom; j >= top; j--){
+                    matrix[j][left] = ++num;
+                }
+                left++;
+            }
+        }
+        return matrix;
+    }
+}
+
+
 public class Solution {
     public int[][] generateMatrix(int n) {
         int[][] matrix = new int[n][n];
