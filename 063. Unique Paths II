@@ -1,4 +1,23 @@
 class Solution {
+    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+        if(obstacleGrid[0][0] == 1) return 0;
+        int[] dis = new int[obstacleGrid[0].length];
+        dis[0] = 1;
+        for(int i = 0; i < obstacleGrid.length; i++){
+            for(int j = 0; j < obstacleGrid[0].length; j++){
+                if(j == 0){
+                    dis[j] = obstacleGrid[i][j] == 1 ? 0 : dis[j];
+                }
+                else
+                    dis[j] = obstacleGrid[i][j] == 1 ? 0 : dis[j - 1] + dis[j];
+            }
+        }
+        return dis[dis.length - 1];
+    }
+}
+
+
+class Solution {
     private int R, L;
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
         if(obstacleGrid == null || obstacleGrid.length == 0 || obstacleGrid[0].length == 0)
@@ -95,20 +114,3 @@ class Solution {
     }
 }
 
-class Solution {
-    public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-        if(obstacleGrid[0][0] == 1) return 0;
-        int[] dis = new int[obstacleGrid[0].length];
-        dis[0] = 1;
-        for(int i = 0; i < obstacleGrid.length; i++){
-            for(int j = 0; j < obstacleGrid[0].length; j++){
-                if(j == 0){
-                    dis[j] = obstacleGrid[i][j] == 1 ? 0 : dis[j];
-                }
-                else
-                    dis[j] = obstacleGrid[i][j] == 1 ? 0 : dis[j - 1] + dis[j];
-            }
-        }
-        return dis[dis.length - 1];
-    }
-}
