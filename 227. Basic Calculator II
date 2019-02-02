@@ -1,3 +1,37 @@
+class Solution {
+    public int calculate(String s) {
+        if(s == null || s.length() == 0) return 0;
+        int num = 0;
+        char oper = '+';
+        Stack<Integer> stack = new Stack<>();
+        for(int i = 0; i < s.length(); i++){
+            if(Character.isDigit(s.charAt(i))){
+                num = num*10 + s.charAt(i) - '0';
+            }
+            char ch = s.charAt(i);
+            if((!Character.isDigit(ch) && ch != ' ')
+              || i == s.length()-1){
+                if(oper == '+'){
+                    stack.push(num);
+                }else if(oper == '-'){
+                    stack.push(-num);
+                }else if(oper == '/'){
+                    stack.push(stack.pop()/num);
+                }else if(oper == '*'){
+                    stack.push(stack.pop()*num);
+                }
+                oper = ch;
+                num = 0;
+            }
+        }
+        int sum = 0;
+        for(int n : stack){
+            sum += n;
+        }
+        return sum;
+    }
+}
+
 public class Solution {
     public int calculate(String s) {
         int len;
