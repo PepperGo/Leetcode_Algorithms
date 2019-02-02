@@ -1,12 +1,41 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+
+class Solution {
+    private int len;
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        len = preorder.length;
+        return buildTreeFromInOrder(preorder, inorder, 0, 0, len-1);
+    }
+    
+    public TreeNode buildTreeFromInOrder(int[] preorder, int[] inorder, int index, int low, int high){
+        if(low > high || index >= len) return null;
+        TreeNode node = new TreeNode(preorder[index]);
+        int idx = getIndex(inorder, low, high+1, node.val);
+        node.left = buildTreeFromInOrder(preorder, inorder, index+1, low, idx-1);
+        node.right = buildTreeFromInOrder(preorder, inorder, index+idx-low+1, idx+1, high);
+        return node;
+    }
+    
+    public int getIndex(int[] nums, int low, int high, int target){
+        int index = low;
+        for(int i = low; i < high; i++){
+            if(nums[i] == target)
+                index = i;
+        }
+        /** Cannot use binary search
+        while(low < high){
+            int mid = low+(high-low)/2;
+            if(nums[mid] < target){
+                low = mid+1;
+            }else{
+                high = mid;
+            }
+        }
+        **/
+        return index;
+    }
+}
+
+
 public class Solution {
     public TreeNode buildTree(int[] preorder, int[] inorder) {
         return getRoot(0,0,inorder.length - 1,preorder,inorder);
