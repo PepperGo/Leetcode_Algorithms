@@ -1,5 +1,47 @@
 class Solution {
     public String minWindow(String s, String t) {
+        HashMap<Character, Integer> freq = new HashMap<>();
+        for(char ch : s.toCharArray()){
+            freq.put(ch, 0);
+        }
+        for(char ch : t.toCharArray()){
+            if(freq.containsKey(ch)){
+                freq.put(ch, freq.get(ch)+1);
+            }else{
+                return ""; // not possible
+            }
+        }
+        int start = 0, end = 0, count = t.length(), min = Integer.MAX_VALUE;
+        String result = "";
+        while(end < s.length()){
+            char ch = s.charAt(end++);
+            freq.put(ch, freq.get(ch)-1);
+            if(freq.get(ch) >= 0){
+                count--;
+            }
+            while(count == 0){//valid
+                if(end-start <= min){
+                    min = end-start;
+                    result = s.substring(start, end);
+                    /*
+                     do s.substring() in the end could be faster
+                     minStart = start;
+                     min = end-start;
+                    */
+                }
+                char head = s.charAt(start++);
+                if(freq.get(head) >= 0){
+                    count++;
+                }
+                freq.put(head, freq.get(head)+1);
+            }
+        }
+        return result;
+    }
+}
+
+class Solution {
+    public String minWindow(String s, String t) {
         Map<Character, Integer> words = new HashMap<>();
         for(int i = 0; i < t.length(); i++){
             char ch = t.charAt(i);
