@@ -1,0 +1,53 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null) return result;
+        //key: col, value: the nodes in that col
+        int min = 0, max = 0;
+        Map<Integer, List<Node>> map = new HashMap<>();
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(new Node(root, 0));
+        while(!queue.isEmpty()){
+            Node cur = queue.poll();
+            min = Math.min(min, cur.col);
+            max = Math.max(max, cur.col);
+            if(!map.containsKey(cur.col)){
+                map.put(cur.col, new ArrayList<Node>());
+            }
+            map.get(cur.col).add(cur);
+            if(cur.treeNode.left != null){
+                queue.offer(new Node(cur.treeNode.left, cur.col-1));
+            }
+            if(cur.treeNode.right != null){
+                queue.offer(new Node(cur.treeNode.right, cur.col+1));
+            }
+        }
+        for(int i = min; i <= max; i++){
+            List<Integer> cols = new ArrayList<>();
+            for(Node node : map.get(i)){
+                cols.add(node.treeNode.val);
+            }
+            result.add(cols);
+        }
+        return result;
+    }
+}
+
+class Node{
+    TreeNode treeNode;
+    int col;
+    
+    Node(TreeNode node, int col){
+        this.treeNode = node;
+        this.col = col;
+    }
+}
