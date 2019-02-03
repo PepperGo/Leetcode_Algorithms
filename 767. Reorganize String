@@ -1,5 +1,36 @@
 class Solution {
     public String reorganizeString(String S) {
+        int[] letters = new int[26];
+        for(char ch : S.toCharArray()){
+            letters[ch-'a']++;
+        }
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>(){
+            //a[0]: count, a[1]: char(in int type)
+            public int compare(int[] a, int[] b){
+                return b[0] - a[0];
+            }
+        });
+        for(int i = 0; i < letters.length; i++){
+            if(letters[i] > (S.length()+1)/2) return "";
+            if(letters[i] != 0){
+                pq.offer(new int[]{letters[i], i+'a'});
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+        int[] prev = new int[]{-1, 1};
+        while(!pq.isEmpty()){
+            int[] cur = pq.poll();
+            if(prev[0] > 0) pq.offer(prev);
+            sb.append((char) cur[1]);
+            cur[0]--;
+            prev = cur;
+        }
+        return sb.toString();
+    }
+}
+
+class Solution {
+    public String reorganizeString(String S) {
         //store characters and count into a map
         Map<Character, Integer> charCounts = new HashMap<>();
         for(int i = 0; i < S.length(); i++){
