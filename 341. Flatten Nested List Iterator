@@ -15,6 +15,44 @@
  *     public List<NestedInteger> getList();
  * }
  */
+
+public class NestedIterator implements Iterator<Integer> {
+
+    Queue<Integer> queue;
+    public NestedIterator(List<NestedInteger> nestedList) {
+        queue = new LinkedList<>();
+        for(NestedInteger ni : nestedList){
+            dfs(ni);
+        }
+    }
+    
+    public void dfs(NestedInteger ni){
+        NestedInteger cur = ni;
+        if(!cur.isInteger()){
+            for(NestedInteger nest : cur.getList()){
+                dfs(nest);
+            }
+        }else{
+            queue.offer(cur.getInteger());
+        }
+    }
+
+    @Override
+    public Integer next() {
+        return queue.poll();
+    }
+
+    @Override
+    public boolean hasNext() {
+        return !queue.isEmpty();
+    }
+}
+
+/**
+ * Your NestedIterator object will be instantiated and called as such:
+ * NestedIterator i = new NestedIterator(nestedList);
+ * while (i.hasNext()) v[f()] = i.next();
+ */
 public class NestedIterator implements Iterator<Integer> {
     
     Stack<NestedInteger> stack = new Stack<>();
