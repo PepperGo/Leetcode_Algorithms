@@ -326,3 +326,25 @@ Heap is better at findMin/findMax (O(1)), while BST is good at all finds (O(logN
 ### 384. Shuffle an Array
 #### copy value from array
 [copying array by value in java](https://stackoverflow.com/questions/2371568/copying-array-by-value-in-java)    
+
+
+
+### 381. Insert Delete GetRandom O(1) - Duplicates allowed
+#### Getting an element from a Set
+[Getting an element from a Set](https://stackoverflow.com/questions/7283338/getting-an-element-from-a-set)   
+```
+    for (Iterator<Foo> it = set.iterator(); it.hasNext(); ) {
+        Foo f = it.next();
+        if (f.equals(new Foo("Hello")))
+            System.out.println("foo found");
+    }
+    
+ or:  
+    set.iterator().next()
+
+```     
+
+
+
+
+
