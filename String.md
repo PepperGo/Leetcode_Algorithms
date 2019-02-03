@@ -181,3 +181,41 @@ If n is non-positive then the pattern will be applied as many times as possible 
 If n is zero then the pattern will be applied as many times as possible, the array can have any length, and trailing empty strings will be discarded.    
 
 
+### 678. Valid Parenthesis String
+#### Coding Style
+```
+找错误：
+class Solution {
+    public boolean checkValidString(String s) {
+        int min_op = 0, max_op = 0;
+        for(char ch : s.toCharArray()){
+            ch == '(' ? min_op++ : min_op--;
+            ch != ')' ? max_op++ : max_op--;
+            if(max_op < 0) return false;
+            min_op = Math.max(min_op, 0);
+        }
+        return min_op == 0;
+    }
+}
+
+正确代码：
+class Solution {
+    public boolean checkValidString(String s) {
+        int min_op = 0, max_op = 0;
+        for(char ch : s.toCharArray()){
+            min_op += ch == '(' ? 1 : -1;
+            max_op += ch != ')' ? 1 : -1;
+            if(max_op < 0) return false;
+            min_op = Math.max(min_op, 0);
+        }
+        return min_op == 0;
+    }
+}
+
+
+(a > b) ? a : b; is an expression which returns one of two values, a or b. 
+The condition, (a > b), is tested. If it is true the first value, a, is returned. 
+If it is false, the second value, b, is returned. 
+Whichever value is returned is dependent on the conditional test, a > b. 
+The condition can be any expression which returns a boolean value.
+```
