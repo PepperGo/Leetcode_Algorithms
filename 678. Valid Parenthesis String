@@ -32,3 +32,17 @@ class Solution {
         return dp[0][n-1];
     }
 }
+
+
+class Solution {
+    public boolean checkValidString(String s) {
+        int min_op = 0, max_op = 0;
+        for(char ch : s.toCharArray()){
+            min_op += ch == '(' ? 1 : -1;
+            max_op += ch != ')' ? 1 : -1;
+            if(max_op < 0) return false;
+            min_op = Math.max(min_op, 0);
+        }
+        return min_op == 0;
+    }
+}
