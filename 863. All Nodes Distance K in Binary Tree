@@ -1,3 +1,46 @@
+class Solution {
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
+        Map<TreeNode, Set<TreeNode>> graph = new HashMap<>();
+        Set<TreeNode> isVisited = new HashSet<>();
+        traverse(root, null, graph);
+        Queue<TreeNode> toVisit = new LinkedList<>();
+        toVisit.offer(target);
+        isVisited.add(target);
+        while(!toVisit.isEmpty() && K >= 1){
+            int size = toVisit.size();
+            while(size-- > 0){
+                TreeNode cur = toVisit.poll();
+                for(TreeNode node : graph.get(cur)){
+                    if(isVisited.contains(node)) continue;
+                    isVisited.add(node);
+                    toVisit.offer(node);
+                }
+            }
+            K--;
+        }
+        List<Integer> result = new ArrayList<>();
+        while(!toVisit.isEmpty()){
+            result.add(toVisit.poll().val);
+        }
+        return result;
+    }
+    
+    public void traverse(TreeNode node, TreeNode prev, Map<TreeNode, Set<TreeNode>> map){
+        if(node == null) return;
+        if(!map.containsKey(node)){
+            map.put(node, new HashSet<TreeNode>());
+        }
+        if(prev != null)
+            map.get(node).add(prev);
+        if(node.left != null)
+            map.get(node).add(node.left);
+        if(node.right != null)
+            map.get(node).add(node.right);
+        traverse(node.left, node, map);
+        traverse(node.right, node, map);
+    }
+}
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
