@@ -1,0 +1,15 @@
+class Solution {
+    private int width = 0;
+    public int widthOfBinaryTree(TreeNode root) {
+        traverse(root, 0, 1, new ArrayList<Integer>());
+        return width;
+    }
+    
+    public void traverse(TreeNode node, int level, int idx, List<Integer> startOfLevel){
+        if(node == null) return;
+        if(level == startOfLevel.size()) startOfLevel.add(idx);
+        width = Math.max(width, idx - startOfLevel.get(level) + 1);
+        traverse(node.left, level+1, 2*idx, startOfLevel);
+        traverse(node.right, level+1, 2*idx+1, startOfLevel);
+    }
+}
