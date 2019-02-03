@@ -1,3 +1,19 @@
+class Solution {
+    public int reverse(int x) {
+        if(x < 0 && x > Integer.MIN_VALUE) return -reverse(-x);
+        int num = 0;
+        while(x > 0){
+             if (Integer.MAX_VALUE / 10 < num 
+                 || (Integer.MAX_VALUE - x % 10) < num * 10) {
+                return 0;
+            }
+            num = num*10 + (x % 10);
+            x /= 10;
+        }
+        return num;
+    }
+}
+
 public class Solution {
     public int reverse(int x) {
         long res = 0;
