@@ -1,5 +1,24 @@
 class Solution {
     int count = 0;
+    public int countSubstrings(String s) {    
+        for(int i = 0; i < s.length(); i++){
+            isValid(s, i, i);
+            isValid(s, i, i+1);
+        }
+        return count;
+    }
+    
+    public void isValid(String s, int low, int high){
+        while(low >= 0 && high < s.length() && s.charAt(low) == s.charAt(high)){
+                count++;
+                low--;
+                high++;
+        }
+    }
+}
+
+class Solution {
+    int count = 0;
     public int countSubstrings(String s) {
         for(int i = 0; i < s.length(); i++){
             extendPalindromic(s, i, i);
@@ -15,5 +34,29 @@ class Solution {
             high++;
             count++;
         }
+    }
+}
+
+
+class Solution {
+    public int countSubstrings(String s) {
+        int count = 0;
+        for(int i = 0; i < s.length(); i++){
+            for(int j = i; j < s.length(); j++){
+                if(isValid(s, i, j))
+                    count++;
+            }
+        }
+        return count;
+    }
+    
+    public boolean isValid(String s, int low, int high){
+        while(low < high){
+            if(s.charAt(low) != s.charAt(high))
+                return false;
+            low++;
+            high--;
+        }
+        return true;
     }
 }
