@@ -1,3 +1,47 @@
+class Solution {
+    private int R, L;
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+        R = matrix.length;
+        L = matrix[0].length;
+        int r = R-1, l = 0;
+        while(r >= 0 && l < L){
+            if(matrix[r][l] < target){
+                l++;
+            }else if(matrix[r][l] > target){
+                r--;
+            }else
+                return true;
+        }
+        return false;
+    }
+}
+
+
+class Solution {
+    private int R, L;
+    public boolean searchMatrix(int[][] matrix, int target) {
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0)
+            return false;
+        R = matrix.length;
+        L = matrix[0].length;
+        int low = 0, high = R*L;// [low, high)
+        while(low < high){
+            int mid = low+(high-low)/2;
+            int i = mid/L;
+            int j = mid%L;
+            System.out.println(i + "-" + j);
+            if(matrix[i][j] < target){
+                low = mid+1;
+            }else{
+                high = mid;
+            }
+        }
+        return low < R*L && matrix[low/L][low%L] == target ? true : false;
+    }
+}
+
 n * m matrix convert to an array => matrix[x][y] => a[x * m + y]
 
 an array convert to n * m matrix => a[x] =>matrix[x / m][x % m];
