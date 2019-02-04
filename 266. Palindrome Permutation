@@ -1,0 +1,13 @@
+class Solution {
+    public boolean canPermutePalindrome(String s) {
+        int[] count = new int[128];
+        for(char ch : s.toCharArray()){
+            count[ch]++;
+        }
+        int singleChar = 0;
+        for(int i = 0; i < 128; i++){
+            singleChar += count[i]%2;
+        }
+        return singleChar <= 1;
+    }
+}
