@@ -1,0 +1,33 @@
+class Solution {
+    public int nextGreaterElement(int n) {
+        char[] nums = (n+"").toCharArray();
+        int len = nums.length;
+        int i = len-2;
+        while(i >= 0 && nums[i] >= nums[i+1]){
+            i--;
+        }
+        if(i < 0) return -1;//descending order
+        int j = len-1;
+        while(j >= 0 && nums[j] <= nums[i]){
+            j--;
+        }
+        swap(nums, i, j);
+        reverse(nums, i+1, len-1);
+        long result = Long.parseLong(new String(nums));
+        return result > Integer.MAX_VALUE ? -1 : (int) result;
+    }
+    
+    public void reverse(char[] nums, int low, int high){
+        while(low < high){
+            swap(nums, low, high);
+            low++;
+            high--;
+        }
+    }
+    
+    public void swap(char[] nums, int i, int j){
+        char temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
