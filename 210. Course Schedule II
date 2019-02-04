@@ -1,3 +1,39 @@
+class Solution {
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+        int[] indegree = new int[numCourses];
+        for(int[] prerequisite : prerequisites){
+            int end = prerequisite[0];
+            int start = prerequisite[1];
+            if(!graph.containsKey(start)){
+                graph.put(start, new HashSet<Integer>());
+            }
+            graph.get(start).add(end);
+            indegree[end]++;
+        }
+        
+        Queue<Integer> toVisit = new LinkedList<>();
+        for(int i = 0; i< indegree.length; i++){
+            if(indegree[i] == 0){
+                toVisit.offer(i);
+            }
+        }
+        int[] order = new int[numCourses];
+        int index = 0;
+        while(!toVisit.isEmpty()){
+            int cur = toVisit.poll();
+            order[index++] = cur;
+            for(int next : graph.getOrDefault(cur, new HashSet<>())){
+                indegree[next]--;
+                if(indegree[next] == 0)
+                    toVisit.offer(next);
+            }
+        }
+        return index == numCourses ? order : new int[]{};
+        
+    }
+}
+
 public class Solution {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         int[][] graph = new int[numCourses][numCourses];
