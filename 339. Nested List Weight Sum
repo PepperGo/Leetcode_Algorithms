@@ -5,6 +5,27 @@
  *     // Constructor initializes an empty nested list.
  *     public NestedInteger();
  *
+ class Solution {
+    int sum = 0;
+    public int depthSum(List<NestedInteger> nestedList) {
+        for(NestedInteger ni : nestedList){
+            dfs(ni, 1);
+        }
+        return sum;
+    }
+    
+    public void dfs(NestedInteger ni, int level){
+        if(ni.isInteger())
+            sum += ni.getInteger()*level;
+        else{
+            for(NestedInteger nest : ni.getList()){
+                dfs(nest, level+1);
+            }
+        }
+    }
+}
+ 
+ 
  *     // Constructor initializes a single integer.
  *     public NestedInteger(int value);
  *
