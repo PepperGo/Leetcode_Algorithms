@@ -1,5 +1,36 @@
 class Solution {
     public int numJewelsInStones(String J, String S) {
+        boolean[] jewels = new boolean[256];
+        for(char ch : J.toCharArray()){
+            jewels[ch] = true;
+        }
+        int sum = 0;
+        for(char ch : S.toCharArray()){
+            if(jewels[ch])
+                sum++;
+        }
+        return sum;
+    }
+}
+
+class Solution {
+    public int numJewelsInStones(String J, String S) {
+        Set<Character> jewels = new HashSet<>();
+        for(char ch : J.toCharArray()){
+            jewels.add(ch);
+        }
+        int sum = 0;
+        for(char ch : S.toCharArray()){
+            if(jewels.contains(ch)){
+                sum++;
+            }
+        }
+        return sum;
+    }
+}
+
+class Solution {
+    public int numJewelsInStones(String J, String S) {
         HashSet<Character> hashSet = new HashSet<Character>();
         for(int i = 0; i < J.length(); i++){
             hashSet.add(J.charAt(i));
