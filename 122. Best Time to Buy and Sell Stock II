@@ -1,3 +1,15 @@
+class Solution {
+    public int maxProfit(int[] prices) {
+        int p_ik0 = 0, p_ik1 = Integer.MIN_VALUE;
+        for(int price : prices){
+            int p_ik0_old = p_ik0;
+            p_ik0 = Math.max(p_ik0, p_ik1 + price);
+            p_ik1 = Math.max(p_ik0_old-price, p_ik1);
+        }
+        return p_ik0;
+    }
+
+
 public class Solution {
     public int maxProfit(int[] prices) {
         int profit = 0;
