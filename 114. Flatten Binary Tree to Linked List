@@ -1,12 +1,20 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+class Solution {
+    TreeNode prev = null;
+    public void flatten(TreeNode root) {
+        traverse(root);
+    }
+    
+    public void traverse(TreeNode node){
+        if(node == null) return;
+        traverse(node.right);
+        traverse(node.left);
+        node.right = prev;
+        node.left = null;
+        prev = node;
+    }
+}
+
+
 public class Solution {
     private TreeNode prev = null;
     public void flatten(TreeNode root) {
