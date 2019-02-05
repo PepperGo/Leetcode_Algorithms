@@ -1,4 +1,38 @@
 public class Codec {
+    private Map<String, String> map = new HashMap<>();
+    private String charSet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    
+    public String getRandomKey(){
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < 6; i++){
+            int idx = new Random().nextInt(charSet.length());
+            sb.append(charSet.charAt(idx));
+        }
+        return sb.toString();
+    }
+    // Encodes a URL to a shortened URL.
+    public String encode(String longUrl) {
+        String key = getRandomKey();
+        while(map.containsKey(key)){
+            key = getRandomKey();
+        }
+        map.put(key, longUrl);
+        return "http://tinyurl.com/"+key;
+    }
+
+    // Decodes a shortened URL to its original URL.
+    public String decode(String shortUrl) {
+        String key = shortUrl.replaceAll("http://tinyurl.com/", "");
+        return map.get(key);
+    }
+}
+
+// Your Codec object will be instantiated and called as such:
+// Codec codec = new Codec();
+// codec.decode(codec.encode(url));
+
+
+public class Codec {
     String chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     HashMap<String, String> hashMap = new HashMap<>();
     
