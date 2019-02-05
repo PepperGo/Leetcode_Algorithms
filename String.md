@@ -219,3 +219,12 @@ If it is false, the second value, b, is returned.
 Whichever value is returned is dependent on the conditional test, a > b. 
 The condition can be any expression which returns a boolean value.
 ```
+
+
+### 165. Compare Version Numbers
+#### String split .
+```
+str.split(".") (wrong)
+str.split("\\.") (right)
+```   
+
