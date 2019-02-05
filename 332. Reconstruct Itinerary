@@ -1,4 +1,29 @@
 class Solution {
+    Map<String, PriorityQueue<String>> map = new HashMap<>();
+    public List<String> findItinerary(String[][] tickets) {
+        for(String[] ticket : tickets){
+            String from = ticket[0];
+            String to = ticket[1];
+            if(!map.containsKey(from)){
+                map.put(from, new PriorityQueue<String>());
+            }
+            map.get(from).offer(to);
+        }
+        LinkedList<String> result = new LinkedList<>();
+        dfs("JFK", result);
+        return result;
+    }
+    
+    public void dfs(String from, LinkedList<String> path){
+        PriorityQueue<String> tos = map.get(from);
+        while(tos != null && !tos.isEmpty()){
+            dfs(tos.poll(), path);
+        }
+        path.addFirst(from);
+    }
+}
+
+class Solution {
     Map<String, PriorityQueue<String>> ticketMap;
     LinkedList<String> path;
     public List<String> findItinerary(String[][] tickets) {
