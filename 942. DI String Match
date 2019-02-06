@@ -1,0 +1,16 @@
+class Solution {
+    public int[] diStringMatch(String S) {
+        int[] array = new int[S.length()+1];
+        int low = 0, high = S.length();
+        for(int i = 0; i < S.length(); i++){
+            char ch = S.charAt(i);
+            if(ch == 'I'){
+                array[i] = low++;
+            }else{
+                array[i] = high--;
+            }
+        }
+        array[S.length()] = low;
+        return array;
+    }
+}
