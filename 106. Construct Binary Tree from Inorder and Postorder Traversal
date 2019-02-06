@@ -1,12 +1,32 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+
+class Solution {
+    private int len;
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+        len = inorder.length;
+        return getTreeNode(inorder, postorder, len-1, 0, len-1);
+    }
+    
+    public TreeNode getTreeNode(int[] inorder, int[] postorder, int postIndex, int inLow, int inHigh){
+        if(inLow > inHigh || postIndex < 0) return null;
+        int val = postorder[postIndex];
+        TreeNode root = new TreeNode(val);
+        int idx = searchInRange(inorder, val, inLow, inHigh);
+        root.right = getTreeNode(inorder, postorder, postIndex-1, idx+1, inHigh);
+        root.left = getTreeNode(inorder, postorder, postIndex-1- (inHigh-idx), inLow, idx-1);
+        return root;
+    }
+    
+    public int searchInRange(int[] nums, int target, int low, int high){
+        for(int i = low; i <= high; i++){
+            if(target == nums[i])
+                return i;
+        }
+        throw new IllegalArgumentException("can't find target value");
+    }
+}
+
+
+
 public class Solution {
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         return getRoot(postorder.length-1, 0, inorder.length-1, inorder, postorder);
