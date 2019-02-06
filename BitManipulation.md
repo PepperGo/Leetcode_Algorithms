@@ -6,11 +6,12 @@
 
 #### Java Operator Precedence
 [Java Operator Precedence Table](http://www.cs.bilkent.edu.tr/~guvenir/courses/CS101/op_precedence.html)   
-
-+ -   (11)
+```
++ -   (11)   
 >> << (10)
 > <   (9)
 ==    (8) 
+```   
 
 
 
