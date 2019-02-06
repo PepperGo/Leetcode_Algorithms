@@ -1,5 +1,49 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
+        int[] tail = new int[nums.length];
+        int size = 0;
+        for(int num : nums){
+            int i = 0, j = size;
+            while(i < j){
+                int mid = i + (j-i)/2;
+                if(tail[mid] < num){
+                    i = mid+1;
+                }else{
+                    j = mid;
+                }
+            }
+            tail[i] = num;
+            if(i == size) size++;
+        }
+        return size;
+    }
+}
+
+
+//https://segmentfault.com/a/1190000003819886
+
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        if(nums.length == 0) return 0;
+        int[] dp = new int[nums.length];
+        dp[0] = 1;
+        int maxLength = 1;
+        for(int i = 1; i < dp.length; i++){
+            int len = 0;
+            for(int j = 0; j < i; j++){
+                if(nums[i] > nums[j])
+                    len = Math.max(len, dp[j]);
+            }
+            dp[i] = len+1;
+            maxLength = Math.max(dp[i], maxLength);
+        }
+        return maxLength;
+    }
+}
+
+
+class Solution {
+    public int lengthOfLIS(int[] nums) {
 	   if(nums.length == 0) return 0;
        int[] dp = new int[nums.length];
 	   dp[0] = 1; // end in index 0
