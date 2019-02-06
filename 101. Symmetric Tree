@@ -1,12 +1,37 @@
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode(int x) { val = x; }
- * }
- */
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        return isTwoTreeSymmetric(root, root);
+    }
+    
+    public boolean isTwoTreeSymmetric(TreeNode n1, TreeNode n2){
+        if(n1 == null && n2 == null) return true;
+        if(n1 == null || n2 == null) return false;
+        if(n1.val != n2.val) return false;
+        return isTwoTreeSymmetric(n1.left, n2.right) && isTwoTreeSymmetric(n1.right, n2.left);
+    }
+}
+
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if(root == null) return true;
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            TreeNode cur1 = queue.poll();
+            TreeNode cur2 = queue.poll();
+            if(cur1 == null && cur2 == null) continue;
+            if(cur1 == null || cur2 == null) return false;
+            if(cur1.val != cur2.val) return false;
+            queue.offer(cur1.left);
+            queue.offer(cur2.right);
+            queue.offer(cur1.right);
+            queue.offer(cur2.left);
+        }
+        return true;
+    }
+}
+
 public class Solution {
     public boolean isSymmetric(TreeNode root) {
         if(root == null) return true;
