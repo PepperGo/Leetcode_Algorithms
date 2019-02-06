@@ -1,0 +1,28 @@
+class Solution {
+    private int R, L;
+    private boolean[] rowVisited;
+    private boolean[] colVisited;
+    public void setZeroes(int[][] matrix) {
+        if(matrix == null || matrix.length == 0) return;
+        R = matrix.length; L = matrix[0].length;
+        rowVisited = new boolean[R];
+        colVisited = new boolean[L];
+        
+        for(int i = 0; i < R; i++){
+            for(int j = 0; j < L; j++){
+                if(matrix[i][j] == 0){
+                    rowVisited[i] = true;
+                    colVisited[j] = true;
+                }
+            }
+        }
+            
+        for(int i = 0; i < R; i++){
+            for(int j = 0; j < L; j++){
+                if(rowVisited[i] || colVisited[j]){
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
+}
