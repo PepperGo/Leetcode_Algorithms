@@ -40,3 +40,5 @@
 ### [Heap](./Heap.md)   
 
 ### [Stack](./Stack.md)
+
+### [Bit Manipulation](./BitManipulation.md)
