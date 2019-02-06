@@ -1,5 +1,23 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
+        HashSet<String> set = new HashSet<>();
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j < 9; j++){
+                if(board[i][j] != '.'){
+                    int num = board[i][j] - '0';
+                    if(!set.add(num + " is in row " + i) ||
+                       !set.add(num + " is in col " + j) ||
+                       !set.add(num + " is in section " + i/3 + "-" + j/3))
+                       return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
         HashSet<String> hashSet = new HashSet<>();
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[0].length; j++){
