@@ -1,5 +1,25 @@
 class Solution {
     public int numUniqueEmails(String[] emails) {
+        HashSet<String> map = new HashSet();
+        for(String email : emails){
+            String address = getRealAddress(email);
+            map.add(address);
+        }
+        return map.size();
+    }
+    
+    public String getRealAddress(String email){
+        String[] name = email.split("@");
+        String[] local = name[0].split("\\+");
+        return local[0].replace(".", "")+"@"+name[1];
+    }
+}
+
+
+
+
+class Solution {
+    public int numUniqueEmails(String[] emails) {
         HashSet<String> hashSet = new HashSet<>();
         for(String email : emails){
             hashSet.add(translateToSimpleAddress(email));
