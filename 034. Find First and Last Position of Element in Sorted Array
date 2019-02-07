@@ -1,5 +1,33 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
+        if(nums.length == 0) return new int[]{-1, -1};
+        int low = 0, high = nums.length;
+        while(low < high){
+            int mid = low + (high-low)/2;
+            if(nums[mid] < target){
+                low = mid+1;
+            }else
+                high = mid;
+        }
+        if(low >= nums.length || nums[low] != target) return new int[]{-1,-1};
+        int start = low;
+        low = 0; high = nums.length;
+        while(low < high){
+            int mid = low + (high-low)/2;
+            if(nums[mid] > target){
+                high = mid;
+            }else
+                low = mid+1;
+        }
+        int end = low-1;
+        return new int[]{start, end};
+    }
+}
+
+
+
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
         int start = getFirstGreaterEqual(0, nums.length, nums, target);
         if(start == nums.length || nums[start] != target) return new int[] {-1, -1};
         return new int[]{start, getFirstGreaterEqual(start + 1, nums.length, nums, target + 1) - 1};
