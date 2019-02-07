@@ -1,0 +1,38 @@
+class Solution {
+    public List<Integer> countSmaller(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        if(nums.length == 0) return result;
+        TreeNode root = null;
+        for(int i = nums.length-1; i >= 0; i--){
+            root = insertToTree(result, root, nums[i], 0);
+        }
+        return result;
+    }
+    
+    public TreeNode insertToTree(List<Integer> result, TreeNode node, int target, int preSum){
+        if(node == null){
+            node = new TreeNode(target, 0);
+            result.add(0, preSum);
+        }else if(node.val == target){
+            node.duplicate++;
+            result.add(0, preSum+node.sum);
+        }else if(node.val > target){
+            node.sum++;
+            node.left = insertToTree(result, node.left, target, preSum);
+        }else{
+            node.right = insertToTree(result, node.right, target, preSum + node.duplicate + node.sum);
+        }
+        return node;
+    }
+}
+
+class TreeNode{
+    int val;
+    int duplicate = 1;
+    int sum;
+    TreeNode left, right;
+    public TreeNode(int value, int count){
+        this.val = value;
+        this.sum = count;
+    }
+}
