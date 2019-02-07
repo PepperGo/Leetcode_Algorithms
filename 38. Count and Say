@@ -1,0 +1,54 @@
+class Solution {
+    public String countAndSay(int n) {
+        String prev = "1";
+        String result = "1";
+        for(int i = 2; i < n+1; i++){
+            result = getNextString(prev);
+            prev = result;
+        }
+        return result;
+    }
+    
+    public String getNextString(String str){
+        char[] array = str.toCharArray();
+        String result = "";
+        int count = 1;
+        for(int i = 0; i < array.length-1; i++){
+            if(array[i] != array[i+1]){
+                result = result + count + array[i];
+                count = 1;
+            }else{
+                count++;
+            }
+        }
+        result = result + count + array[array.length-1];
+        return result;
+    }
+}
+
+class Solution {
+    public String countAndSay(int n) {
+        String[] dp = new String[n+1];
+        dp[1] = "1";
+        for(int i = 2; i < dp.length; i++){
+            dp[i] = getNextString(dp[i-1]);
+        }
+        return dp[n];
+    }
+    
+    public String getNextString(String str){
+        char[] array = str.toCharArray();
+        String result = "";
+        int count = 1;
+        for(int i = 0; i < array.length-1; i++){
+            if(array[i] != array[i+1]){
+                result = result + count + array[i];
+                count = 1;
+            }else{
+                count++;
+            }
+        }
+        result = result + count + array[array.length-1];
+        return result;
+    }
+}
