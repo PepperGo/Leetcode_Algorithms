@@ -1,0 +1,12 @@
+class Solution {
+    public int fib(int N) {
+        if(N < 2) return N;
+        int prev = 0, cur = 1;
+        for(int i = 2; i <= N; i++){
+            int sum = prev+cur;
+            prev = cur;
+            cur = sum;
+        }
+        return cur;
+    }
+}
