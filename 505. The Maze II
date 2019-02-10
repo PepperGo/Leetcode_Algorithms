@@ -1,0 +1,42 @@
+class Solution {
+    private int R, L;
+    private int[][] dirs = {{0,1}, {1,0}, {-1,0}, {0,-1}};
+    public int shortestDistance(int[][] maze, int[] start, int[] destination) {
+        R = maze.length; L = maze[0].length;
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>(){
+            public int compare(int[] a, int[] b){
+                return a[0]-b[0];
+                //a[0]: distance, a[1]: x, a[2]: y
+            }
+        });
+        int[][] record = new int[R][L];
+        for(int[] r : record){
+            Arrays.fill(r, Integer.MAX_VALUE);
+        }
+        pq.offer(new int[]{0, start[0], start[1]});
+        while(!pq.isEmpty()){
+            int[] cur = pq.poll();
+            int distance = cur[0];
+            int x = cur[1];
+            int y = cur[2];
+            if(record[x][y] <= distance) continue;
+            record[x][y] = distance;
+            for(int[] dir : dirs){
+                int newX = x;
+                int newY = y;
+                int newDistance = distance;
+                while(newX >= 0 && newX < R && newY >= 0 && newY < L && maze[newX][newY] == 0){
+                    newX = newX + dir[0];
+                    newY = newY + dir[1];
+                    newDistance++;
+                }
+                newX -= dir[0];
+                newY -= dir[1];
+                newDistance--;
+                pq.offer(new int[]{newDistance, newX, newY});
+            }
+        }
+        return record[destination[0]][destination[1]] == Integer.MAX_VALUE ? -1 : record[destination[0]][destination[1]];
+        
+    }
+}
