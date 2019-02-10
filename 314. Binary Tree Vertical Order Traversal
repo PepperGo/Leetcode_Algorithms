@@ -51,3 +51,40 @@ class Node{
         this.col = col;
     }
 }
+
+
+
+This can't work!!!!!!!!!!!!!!!!!!!!!!!!
+
+############ recursive can't assure the higher level comes first
+class Solution {
+    Map<Integer, List<Integer>> map = new HashMap<>();
+    private int min = 0, max = 0;
+    public List<List<Integer>> verticalOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null) return result;
+        min = 0; max = 0;
+        traverse(root, 0);
+        for(int i = min; i <= max; i++){
+            List<Integer> vertical = new ArrayList<>();
+            for(int val : map.getOrDefault(i, new ArrayList<Integer>())){
+                vertical.add(val);
+            }
+            if(vertical.size() != 0) result.add(vertical);
+        }
+        return result;
+    }
+    
+    public void traverse(TreeNode node, int order){
+        if(node == null) return;
+        min = Math.min(min, order);
+        max = Math.max(max, order);
+        if(!map.containsKey(order)){
+            map.put(order, new ArrayList<Integer>());
+        }
+        map.get(order).add(node.val);
+        traverse(node.left, order-1);
+        traverse(node.right, order+1);
+    }
+    
+}
