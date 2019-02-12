@@ -12,6 +12,28 @@ class Solution {
     }
 }
 
+
+//One pass/ data stream
+class Solution {
+    Map<Character, Integer> indexes = new LinkedHashMap<>();
+    Set<Character> set = new HashSet<>();
+    public int firstUniqChar(String s) {
+        for(int i = 0; i < s.length(); i++){
+            char ch = s.charAt(i);
+            if(!set.contains(ch)){
+                set.add(ch);
+                indexes.put(ch, i);
+            }else{
+                if(indexes.containsKey(ch))
+                    indexes.remove(ch);
+            }
+        }
+        return indexes.size() == 0 ? -1 : indexes.entrySet().iterator().next().getValue();
+    }
+}
+
+
+
 class Solution {
     public int firstUniqChar(String s) {
         char[] pos = new char[26];
