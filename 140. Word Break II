@@ -1,4 +1,29 @@
 class Solution {
+    HashMap<Integer, List<String>> map = new HashMap<>();
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        Set<String> set = new HashSet<>(wordDict);
+        return getList(s, set, 0);
+    }
+    
+    public List<String> getList(String s, Set<String> set, int idx){
+        if(map.containsKey(idx)) return map.get(idx);
+        List<String> result = new ArrayList<>();
+        if(idx == s.length()) 
+            result.add("");
+        for(int i = idx+1; i <= s.length(); i++){
+            if(set.contains(s.substring(idx, i))){
+                List<String> list = getList(s, set, i);
+                for(String str : list){
+                    result.add(s.substring(idx,i) + (str.equals("") ? "" : " ") + str);
+                }
+            }
+        }
+        map.put(idx, result);
+        return result;
+    }
+}
+
+class Solution {
     Map<Integer, List<String>> paths = new HashMap<>();
     public List<String> wordBreak(String s, List<String> wordDict) {
         HashSet<String> set = new HashSet<>(wordDict);
