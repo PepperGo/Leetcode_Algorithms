@@ -1,5 +1,84 @@
 https://www.interviewcake.com/concept/java/lru-cache
 
+public class LRUCache {
+    private int capacity;
+    private HashMap<Integer, LRUNode> hashMap = new HashMap<>();
+    private LRUNode head = new LRUNode();
+    private LRUNode tail = new LRUNode();
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        head.next = tail;
+        tail.prev = head;
+    }
+    
+    public int get(int key) {
+        LRUNode node = hashMap.getOrDefault(key, null);
+        if (node == null) {
+            return -1;
+        }
+        moveToHead(node);
+        return node.value;
+    }
+    
+    public void put(int key, int value) {
+        LRUNode curNode = hashMap.getOrDefault(key, null);
+        if (curNode == null) {
+            curNode = new LRUNode();
+            curNode.key = key;
+            curNode.value = value;
+            hashMap.put(key, curNode);
+            addNode(curNode);
+            if (hashMap.size() > capacity) {
+                LRUNode lastNode = popFromTail();
+                hashMap.remove(lastNode.key);
+            }
+          
+        } else {
+            curNode.value = value;
+            moveToHead(curNode);
+        }
+    }
+    
+    /** Add a node right after the head **/
+    private void addNode(LRUNode node) {
+        node.next = head.next;
+        head.next.prev = node;
+        head.next = node;
+        node.prev = head;
+    }
+    
+    /** Remove given node **/
+    private void removeNode(LRUNode node) {
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
+    }
+    
+    private void moveToHead(LRUNode node) {
+        removeNode(node);
+        addNode(node);
+    }
+    
+    private LRUNode popFromTail() {
+        LRUNode node = tail.prev;
+        removeNode(node);
+        return node;
+    }
+    
+    class LRUNode {
+        int key;
+        int value;
+        LRUNode next = null;
+        LRUNode prev = null;
+    }
+}
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
+
 
 class LRUCache {
     private int capacity;
