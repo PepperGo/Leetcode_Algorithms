@@ -1,3 +1,6 @@
+https://www.interviewcake.com/concept/java/lru-cache
+
+
 class LRUCache {
     private int capacity;
     private Map<Integer, LRUNode> map;
