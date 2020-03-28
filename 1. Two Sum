@@ -1,5 +1,19 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
+        // Key: the value of target - nums[i], Value: index i
+        Map<Integer, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i ++) {
+            if (hashMap.containsKey(nums[i])) {
+                return new int[] {hashMap.get(nums[i]), i};
+            }
+            hashMap.put(target - nums[i], i);
+        }
+        throw new IllegalArgumentException("Can't find two valid elements");
+    }
+}
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> set = new HashMap<>();
         for(int i = 0; i < nums.length; i++){
             if(set.containsKey(target-nums[i])){
