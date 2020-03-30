@@ -1,0 +1,48 @@
+class Solution {
+    private int rank = 0;
+    private int[] distance;
+    private int[] low;
+    private List<Integer>[] graph;
+    
+    public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
+        distance = new int[n];
+        low = new int[n];
+        Arrays.fill(distance, -1);
+        List<List<Integer>> result = new ArrayList<>();
+        graph = new ArrayList[n];
+        for(int i = 0; i < n; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        for(List<Integer> path : connections) {
+            graph[path.get(0)].add(path.get(1));
+            graph[path.get(1)].add(path.get(0));
+        }
+        for(int i = 0; i < n; i++) {
+            if (distance[i] == -1) {
+                dfs(i, i, result);
+            }
+        }
+        return result;
+    }
+    
+    // cur: current node, prev: previous node 
+    private void dfs(int cur, int prev, List<List<Integer>> result) {
+        distance[cur] = low[cur] = ++rank;
+        for (int to : graph[cur]) {
+            if (to == prev) {
+                continue;
+            }
+            if (distance[to] == -1) {
+                dfs(to, cur, result);
+                low[cur] = Math.min(low[cur], low[to]);
+                if (low[to] > distance[cur]) {
+                    result.add(Arrays.asList(cur, to));
+                }
+            } else{
+                low[cur] = Math.min(low[cur], distance[to]);
+            }
+        }
+    }
+    
+ 
+}
