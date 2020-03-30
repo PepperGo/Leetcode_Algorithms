@@ -1,5 +1,31 @@
 class Solution {
     public int trap(int[] height) {
+        int leftIndex = 0, rightIndex = height.length - 1;
+        int leftMax = 0, rightMax = 0;
+        int sum = 0;
+        while (leftIndex <= rightIndex) {
+            if (leftMax < rightMax) {
+                if (leftMax > height[leftIndex]) {
+                    sum += leftMax - height[leftIndex];
+                } else {
+                    leftMax = height[leftIndex];
+                }
+                leftIndex++;
+            } else {
+                if (rightMax > height[rightIndex]) {
+                    sum += rightMax - height[rightIndex];
+                } else {
+                    rightMax = height[rightIndex];
+                }
+                rightIndex--;
+            }
+        }
+        return sum;
+    }
+}
+
+class Solution {
+    public int trap(int[] height) {
         if(height == null || height.length == 0) return 0;
         int[] leftMax = new int[height.length];
         int[] rightMax = new int[height.length];
