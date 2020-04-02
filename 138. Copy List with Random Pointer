@@ -1,3 +1,35 @@
+
+class Solution {
+    Map<Node, Node> originToCopyMap = new HashMap<>();
+    
+    public Node copyRandomList(Node head) {
+        if(head == null) return null;
+
+        Node dummy = new Node(0);
+        Node cur = head;
+        Node curCopyNode = new Node(cur.val);
+        originToCopyMap.put(cur, curCopyNode);
+        while(cur != null) {
+            curCopyNode.next = getClonedNode(cur.next);
+            curCopyNode.random = getClonedNode(cur.random);
+            curCopyNode = curCopyNode.next;
+            cur = cur.next;
+        }
+        return originToCopyMap.get(head);        
+    }
+    
+    private Node getClonedNode(Node node) {
+        if (node == null) {
+            return null;
+        } else if (originToCopyMap.containsKey(node)) {
+            return originToCopyMap.get(node);
+        } else {
+            originToCopyMap.put(node, new Node(node.val));
+            return originToCopyMap.get(node);
+        }
+    }
+}
+
 /**
  * Definition for singly-linked list with a random pointer.
  * class RandomListNode {

@@ -1,3 +1,28 @@
+class Solution {
+    public boolean isHappy(int n) {
+        int slow = n;
+        int fast = n;
+        do{
+            slow = getCalculationResult(slow);
+            fast = getCalculationResult(getCalculationResult(fast));            
+        } while(slow != fast);
+        if (slow == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    private int getCalculationResult(int n) {
+        int result = 0;
+        while(n != 0) {
+            result += (n%10) * (n%10);
+            n = n/10;
+        }
+        return result;
+    }
+}
+
 public class Solution {
     public boolean isHappy(int n) {
         int slow = n;
