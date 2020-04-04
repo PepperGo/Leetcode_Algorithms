@@ -1,6 +1,46 @@
 class Solution {
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
+        backtrack(result, "", 0, 0, n);
+        return result;
+    }
+    
+    public void backtrack(List<String> result, String str, int open, int close, int max) {
+        if (open + close == 2*max) {
+            result.add(str);
+            return;
+        }
+        
+        if(open < max) {
+            backtrack(result, str + "(", open+1, close, max);
+        }
+        if(close < open) {
+            backtrack(result, str + ")", open, close+1, max);
+        }
+    }
+}
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<>();
+        if (n == 0) {
+            result.add("");
+        } else {
+            for(int i = 0; i < n; i++) {
+                for(String left : generateParenthesis(i)) {
+                    for (String right : generateParenthesis(n - i - 1)) {
+                        result.add("(" + left + ")" + right);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+}
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> result = new ArrayList<>();
         if(n == 0) return result;
         backtrack(result, "", 0, 0, n);
         return result;

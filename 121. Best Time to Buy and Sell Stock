@@ -1,3 +1,20 @@
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int[] maxProfit = new int[prices.length]; 
+        //maxProfit[i] means the max profit at day i
+        int bestProfit = 0;
+        for(int i = 1; i < prices.length; i++) {
+            maxProfit[i] = Math.max(maxProfit[i-1] + prices[i] - prices[i-1], 0);
+            if (maxProfit[i] > bestProfit) {
+                bestProfit = maxProfit[i];
+            }
+        }
+        return bestProfit;
+    }
+}
+
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/discuss/75924/Most-consistent-ways-of-dealing-with-the-series-of-stock-problems
 class Solution {
     //T[i][k][0]
     //T[i][k][1]
