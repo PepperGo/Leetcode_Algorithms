@@ -1,5 +1,41 @@
 class Solution {
     public String minWindow(String s, String t) {
+        //K: Character in String t, V: count of Character
+        HashMap<Character, Integer> countMap = new HashMap<>();
+        for(int i = 0; i < t.length(); i++) {
+            char ch = t.charAt(i);
+            countMap.put(ch, countMap.getOrDefault(ch, 0)+1);
+        }
+        int low = 0, high = 0, count = t.length();
+        int minIndex = 0, maxIndex = 0, maxL = Integer.MAX_VALUE;
+        while(high < s.length()) {
+            char tail = s.charAt(high);
+            countMap.put(tail, countMap.getOrDefault(tail, 0) - 1);
+            if (countMap.get(tail) >= 0) {
+                count--;
+            }
+            while (count == 0) {
+                if (high-low+1 <= maxL) {
+                    maxIndex = high;
+                    minIndex = low;
+                    maxL = high-low+1;
+                }
+                char head = s.charAt(low);
+                if (countMap.get(head) >= 0) {
+                    count++;
+                }
+                countMap.put(head, countMap.get(head)+1);
+                low++;
+            }
+            high++;
+        }
+        if (maxL == Integer.MAX_VALUE) return "";
+        return s.substring(minIndex, maxIndex+1);
+    }
+}
+
+class Solution {
+    public String minWindow(String s, String t) {
         HashMap<Character, Integer> freq = new HashMap<>();
         for(char ch : s.toCharArray()){
             freq.put(ch, 0);

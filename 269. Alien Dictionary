@@ -1,4 +1,128 @@
 class Solution {
+    //DFS Topological Sorting
+    Stack<Character> stack = new Stack<>();
+    public String alienOrder(String[] words) {
+        ArrayList<Character>[] graph = new ArrayList[26];
+        for(int i = 0; i < graph.length; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        // -1: not existed 0: unvisited 1: visiting 2: visited
+        int[] status = new int[26]; 
+        Arrays.fill(status, -1);
+        for(String str : words) {
+            for(int i = 0; i < str.length(); i++) {
+                status[str.charAt(i)-'a'] = 0;
+            }
+        }
+        
+        for (int i = 0; i < words.length-1; i++) {
+            String word1 = words[i];
+            String word2 = words[i+1];
+            for (int j = 0; j < Math.min(word1.length(), word2.length()); j++) {
+                if (word1.length() > word2.length() && word1.startsWith(word2)) {
+                    return "";
+                }
+                if (word1.charAt(j) != word2.charAt(j)) {
+                    graph[word1.charAt(j) - 'a'].add(word2.charAt(j));
+                    break;
+                }
+            }
+        }
+        
+        for (int i = 0; i < 26; i++) {
+            if (status[i] == 0) {
+                char ch = (char) (i+'a');
+                if(!topologicalSort(ch, status, graph)) {
+                    return "";            
+                }
+            }
+        }
+        
+        String result = "";
+        while(!stack.isEmpty()) {
+            result = result + stack.pop();
+        }
+        return result;
+        
+    }
+    
+    private boolean topologicalSort(char ch, int[] status, ArrayList<Character>[] graph) {
+        status[ch-'a'] = 1;
+        for(char next : graph[ch-'a']) {
+            if (status[next-'a'] == 1) return false;
+            if (status[next-'a'] == 0) {
+                if(!topologicalSort(next, status, graph)) {
+                    return false;
+                }
+            }
+        }
+        status[ch-'a'] = 2;
+        stack.push(ch);
+        return true;
+    }
+}
+
+//BFS degrees
+
+class Solution {
+    public String alienOrder(String[] words) {
+        // -1: not existed, 0: 0 degree
+        int[] degree = new int[26];
+        ArrayList<Character>[] graph = new ArrayList[26];
+        for(int i = 0; i < graph.length; i++) {
+            graph[i] = new ArrayList<>();
+        }
+        Arrays.fill(degree, -1);
+        for(String str : words) {
+            for(int i = 0; i < str.length(); i++) {
+                degree[str.charAt(i)-'a'] = 0;
+            }
+        }
+        
+        for (int i = 0; i < words.length-1; i++) {
+            String word1 = words[i];
+            String word2 = words[i+1];
+            for (int j = 0; j < Math.min(word1.length(), word2.length()); j++) {
+                if (word1.length() > word2.length() && word1.startsWith(word2)) {
+                    return "";
+                }
+                if (word1.charAt(j) != word2.charAt(j)) {
+                    graph[word1.charAt(j) - 'a'].add(word2.charAt(j));
+                    degree[word2.charAt(j) - 'a']++;
+                    break;
+                }
+            }
+        }
+        
+        Queue<Character> queue = new LinkedList<>();
+        for(int i = 0; i < 26; i++) {
+            if (degree[i] == 0) {
+                queue.add((char) (i+'a'));
+            }
+        }
+        String result = "";
+        while(!queue.isEmpty()) {
+            char ch = queue.poll();
+            result = result + ch;
+            for(char next : graph[ch-'a']) {
+                degree[next-'a']--;
+                if(degree[next -'a'] == 0) {
+                    queue.add(next);
+                }
+            }
+        }
+        for(int rest : degree) {
+            if (rest != 0 && rest != -1) {
+                return "";
+            }
+        }
+        return result;
+    }
+}
+
+
+
+class Solution {
     public String alienOrder(String[] words) {
         Map<Character, Set<Character>> graph = new HashMap<>();
         Map<Character, Integer> inDegree = new HashMap<>();
